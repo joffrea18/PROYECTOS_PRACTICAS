@@ -6,6 +6,7 @@ button {
 }
 
 .menu-button {
+    margin-top: 5rem;
     color: white;
     background-color: grey;
     border-style: hidden ;
@@ -21,7 +22,7 @@ button:active {
 }
 
 p {
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
     font-size: 38px;
     font-weight: 300;
 }
