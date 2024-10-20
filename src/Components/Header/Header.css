@@ -4,3 +4,12 @@
     box-sizing: border-box;
 }
 
+.header-logo {
+    text-align: left;
+
+}
+
+.header-button {
+    text-align: right;
+}
+

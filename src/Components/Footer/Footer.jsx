@@ -3,7 +3,7 @@ import './Footer.css';
 // import logo from '../Assets/logo.png';
 // import instagram from '../Assets/all_products';
 // import whatsapp from '../Assets/all_products';
-import facebook from '../../Assets/all_products';
+// import facebook from '../../Assets/all_products';
 
 const Footer = () => {
     return (
@@ -23,17 +23,17 @@ const Footer = () => {
                     {/* <img src={instagram} alt="instagram_icon" /> */}
                 </div>
                 <div className="footer_icons_container">
-                    {<img src={facebook} alt="facebook_icon" />}
+                    {/* {<img src={facebook} alt="facebook_icon" />} */}
                 </div>
                 <div className="footer_icons_container">
                     {/* <img src={whatsapp} alt="whatsapp_icon" /> */}
                 </div>
-                <div className="footer_copyrigth">
-                    <hr />
-                    <p>Copyrigth @ 2024 </p>
-                    <hr />
-                    <p>MICROSYSCOM</p>
-                </div>
+                {/* <div className="footer_copyrigth"> */}
+                    {/* <hr /> */}
+                    {/* <p>Copyrigth @ 2024 </p> */}
+                    {/* <hr /> */}
+                    {/* <p>MICROSYSCOM</p> */}
+                {/* </div> */}
             </div>
         </div>
     );

@@ -1,29 +1,27 @@
 button {
-    /* box-sizing: content-box; */
-
-    width: 180px;
-    height: 100px;
+    cursor: pointer;
+    width: 340px;
+    height: 60px;
+    font-weight: bold;
 }
 
 .menu-button {
-    color: black;
-    font-style: oblique;
+    color: white;
     background-color: grey;
-    border-style: none;
-    border-radius: 20%;
-    width: 90px;
-    height: 40px;
-    border-style: hidden;
+    border-style: hidden ;
+    border-radius: 40%;
     text-align: center;
 }
 
 button:active {
     transform: scale(1.09);
+    cursor: pointer;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.754);
 }
 
 p {
     margin-top: 2rem;
-    color: #171717;
     font-size: 38px;
-    font-weight: 600;
+    font-weight: 300;
 }
