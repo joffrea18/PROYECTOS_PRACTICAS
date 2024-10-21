@@ -11,21 +11,35 @@ const Welcome = () => {
          setEmailAddress(e.target.value);
        };
 
+       if (emailAddress === 0){
+        return <e className="through"></e>
+       }
+
+    //    Introducir operador ternario que admita la next page si se tiene
+    //    aquí el input relleno
+
     return (
         <div>
+        {/* emailAddress = '' ? */}
         <form>
-            <label htmlFor="email">Introduce tu dirección de dominio:</label>
+            <label htmlFor="empresa">
+                <p>Introduce el nombre de empresa</p>
+                </label>
                 <input
-                   value={emailAddress}
-                   onChange={handleChange}
-                  type="text"
-                  id="email"
-                //   required
+                    value={emailAddress}
+                    onChange={handleChange}
+                    type="text"
+                    id="empresa"
+                    required
                 />
         </form>
-        <Button variant='contained' className='init-button' >
-        <Link style={{ textDecoration: 'none' }} to='/:id'>VALIDAR</Link>
+        <Link style={{ textDecoration: 'none' }} to='/buttonppal'>
+        <Button variant='contained'  >
+        <p>VALIDAR</p>
         </Button>
+        </Link>
+        {/* : */}
+
         </div>
     );
 }

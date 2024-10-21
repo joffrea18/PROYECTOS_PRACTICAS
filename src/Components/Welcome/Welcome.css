@@ -1,5 +1,30 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
+} */
+label {
+    /* margin: 2rem 20px; */
+    /* padding: 2rem; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    font-size:x-large ;
+
 }
 
+form {
+    padding: 1rem;
+    margin: 2rem;
+}
+
+input {
+    width: 200px;
+    height: 30px;
+}
+
+link {
+    text-decoration: none;
+    color: white;
+}

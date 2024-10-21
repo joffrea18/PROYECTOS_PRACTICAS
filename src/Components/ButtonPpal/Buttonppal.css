@@ -3,26 +3,19 @@ button {
     width: 340px;
     height: 60px;
     font-weight: bold;
+    text-decoration: none;
 }
 
 .menu-button {
-    margin-top: 5rem;
-    color: white;
-    background-color: grey;
-    border-style: hidden ;
-    border-radius: 40%;
-    text-align: center;
-}
-
-button:active {
-    transform: scale(1.09);
-    cursor: pointer;
-    font-weight: bold;
-    background-color: rgba(0, 0, 0, 0.754);
+    padding: 5 200px;
 }
 
 p {
-    /* margin-top: 2rem; */
     font-size: 38px;
     font-weight: 300;
+    
+}
+
+h1{
+    font-size: medium;
 }
