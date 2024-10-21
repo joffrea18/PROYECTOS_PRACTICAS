@@ -7,7 +7,7 @@ const Navbar = () => {
     return (
         <div className='navbar'>
             <img src={logo} alt='' />            
-          
+            {/* <h1>{emailAddress}</h1> */}
         </div>
     );
 }

@@ -4,24 +4,19 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 
-const Welcome = () => {
+const Welcome = (props) => {
 
-     const [emailAddress, setEmailAddress] = useState('');
-     const handleChange = (e) => {
-         setEmailAddress(e.target.value);
+     const [ emailAddress, setEmailAddress ] = useState('');
+     const handleChange = (target) => {
+        const { name, value } = target;
+         setEmailAddress({...emailAddress, name, value });
        };
-
-       if (emailAddress === 0){
-        return <e className="through"></e>
-       }
-
-    //    Introducir operador ternario que admita la next page si se tiene
-    //    aquí el input relleno
+       console.log(emailAddress);
+       
 
     return (
         <div>
-        {/* emailAddress = '' ? */}
-        <form>
+       <form>
             <label htmlFor="empresa">
                 <p>Introduce el nombre de empresa</p>
                 </label>
@@ -29,17 +24,20 @@ const Welcome = () => {
                     value={emailAddress}
                     onChange={handleChange}
                     type="text"
-                    id="empresa"
+                    placeholder='Indica el nombre de la empresa'
+                    name="empresa"
                     required
                 />
         </form>
+        { 
+        emailAddress.length >= 5 ?
         <Link style={{ textDecoration: 'none' }} to='/buttonppal'>
-        <Button variant='contained'  >
-        <p>VALIDAR</p>
-        </Button>
+            <Button variant='contained'  >
+            <p>VALIDAR</p>
+            </Button>
         </Link>
-        {/* : */}
-
+        : <p>CAMPO OBLIGATORIO</p>
+    } 
         </div>
     );
 }
