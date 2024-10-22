@@ -6,6 +6,9 @@ import Buttonppal from '../ButtonPpal/Buttonppal';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 
+// Componente Padre
+
+
 const Welcome = () => {
 
     // Arranco mi localStorage con lo almcenado en la variable emailAddress que
@@ -18,6 +21,10 @@ const Welcome = () => {
          setEmailAddress(target.value);
         };
         // console.log(emailAddress, id);
+        
+        // Cambiar valor de email 
+        // Pasar con nuevo nombre como prop
+        const email = emailAddress.toString();
         
         const handleSubmit = (e) => {
             e.preventDefault()
