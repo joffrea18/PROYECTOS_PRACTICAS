@@ -33,7 +33,7 @@ const SwitchInfo = () => {
            <h1 className='back-button'>BACK</h1>
            </Button>
             </Link>
-           <Link style={{textDecoration : 'none' }} to='/switchinfo/{id}' > 
+           <Link style={{textDecoration : 'none' }} to='/printeroption/{id}' > 
            <Button variant='contained' >
             <h1 className='next-button'>PRINT REPORT</h1>
            </Button>

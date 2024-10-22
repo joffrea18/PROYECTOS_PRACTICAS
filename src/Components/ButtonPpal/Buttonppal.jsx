@@ -37,7 +37,7 @@ const Buttonppal = ({ businessA }) => {
                     className='menu-button'>
                     
                     <Link
-                    to='/buttonppal/routerinfo/{id}'
+                    to='/buttonppal/{id}'
                     >
 
                 <Button

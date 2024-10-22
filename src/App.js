@@ -17,18 +17,18 @@ import Options from './Components/ButtonPpal/Options';
 // Aquí debo de mirar introducir al email como prop al
 // componente de Buttonppal
 
-function App() {
+function App({ businessA, id }) {
 
   // const [text, setText ] = useState('');
   return (
     <div className="App">
-     <Navbar />
+     <Navbar businessA={businessA} id={id} />
       <Routes>
         <Route path='/' element={<Welcome />} />
-        <Route path='/buttonppal/{id}' element={<Buttonppal />} />
-        <Route path='/buttonppal/routerinfo/{id}' element={<RouterInfo />} />
-        <Route path='/buttonppal/firewallinfo/{id}' element={<FirewallInfo />} />
-        <Route path='/buttonppal/switchinfo/{id}' element={<SwitchInfo />} />
+        <Route path='/buttonppal/{id}' element={<Options businessA={businessA} id={id} />} />
+        <Route path='/buttonppal/routerinfo/{id}' element={<RouterInfo businessA={businessA} id={id} />} />
+        <Route path='/buttonppal/firewallinfo/{id}' element={<FirewallInfo businessA={businessA} id={id} />} />
+        <Route path='/buttonppal/switchinfo/{id}' element={<SwitchInfo businessA={businessA} id={id} />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />

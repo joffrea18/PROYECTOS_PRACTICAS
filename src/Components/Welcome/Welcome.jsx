@@ -11,23 +11,28 @@ import Button from '@mui/material/Button';
 
 const Welcome = () => {
 
-     const [ business, setBusiness ] = React.useState('');
+    const [ business, setBusiness ] = React.useState('');
     const [ id, setId ] = useState(1);
+
+    
 
      const handleChange = ({target}) => {
          setBusiness(target.value);
+         
         };
         // console.log(emailAddress, id);
+        console.log(business);
+        
 
         const businessA = business.toString();
         
         const handleSubmit = (e) => {
             e.preventDefault()
-            // setBusiness(...business);
+            setBusiness(...businessA);
         }
-        console.log(business);
+        console.log(businessA);
         
-        console.log(id);
+        // console.log(id);
 
     return (
         <div>
@@ -45,7 +50,7 @@ const Welcome = () => {
                 />
         </form>
         { 
-        business.length > 6 ?
+        businessA.length > 6 ?
         
         <Buttonppal
             businessA={businessA}
@@ -58,15 +63,3 @@ const Welcome = () => {
 }
 
 export default Welcome;
-
-
-{/* Sí que se visualiza lo contenido en emailAddress */}
-{/* <section>
-    <p>{emailAddress}</p>
-</section> */}
-
-// <Link style={{ textDecoration: 'none' }} to='/buttonppal/{id}'>
-//     <Button variant='contained' onClick={clickEmail} >
-//     <p>VALIDAR</p>
-//     </Button>
-// </Link>

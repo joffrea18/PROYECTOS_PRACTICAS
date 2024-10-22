@@ -4,11 +4,14 @@ import Button from '@mui/material/Button';
 
 const FirewallInfo = () => {
     
+
+
     return (
         <div>
             <section className='firewall-section' id='firewall'>
                 <h2>Firewall</h2>
             </section>
+
             <form className='firewall-form' action='get'  >
                 <label for="firewall-fabricante">Fabricante</label>
                 <input type="text" id="firewall-fabricante" name="firewall-fabricante" />
@@ -38,15 +41,30 @@ const FirewallInfo = () => {
                     <input type="checkbox" name="monitoreo-dispositivo" /> Monitoreo del dispositivo
                 </div>
             
-           <Link style={{textDecoration : 'none' }} to='/buttonppal/{id}' > 
-            <Button variant='contained' className='back-button' >
+           <Link
+            style={{textDecoration : 'none' }}
+            to='/buttonppal/routerinfo/{id}' > 
+            
+            <Button
+                variant='contained'
+                className='back-button' >
+
            <h1 className='back-button'>BACK</h1>
+
            </Button>
             </Link>
-           <Link style={{textDecoration : 'none' }} to='/buttonppal/switchinfo/{id}' > 
-           <Button variant='contained' className='next-button'>
+           <Link
+                style={{textDecoration : 'none' }}
+                to='/buttonppal/switchinfo/{id}' > 
+
+           <Button
+                variant='contained'
+                className='next-button'>
+
             <h1 className='next-button'>NEXT</h1>
+
            </Button>
+
            </Link>
            </form>
         </div>
