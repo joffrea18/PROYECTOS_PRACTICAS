@@ -9,18 +9,14 @@ import Options from './Options';
 const Buttonppal = ({ emailAddress }) => {
 
     const [menu, setMenu] = useState("options");
-    // He metido una mueva variable que me retorne
-    // un valor NO UNDEFINED, pasando este nuevo valor
-    // como props en el Component.
-    // VALIDAR FUNCIONALIDAD
-    const email = emailAddress.toString();
+    
     
     return (
         <div>
              { <>
                 <form action="" className='menu-button'>
                     <Link
-                    to={<Options email={email}/>}>
+                    to={<Options emailAddress={emailAddress}/>}>
                 <Button variant='contained' >
                     <p>MICROSYSCOM</p>
                 </Button>
