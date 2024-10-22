@@ -22,7 +22,7 @@ const Buttonppal = ({ emailAddress }) => {
                 </Button>
             </Link>
             <section>
-                <Link style={{textDecoration: 'none'}} to='/' ><h1>BACK HOME</h1>
+                <Link style={{textDecoration: 'none'}} to='/' ><h1>HOME</h1>
                 </Link>
             </section>
             </form>

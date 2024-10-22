@@ -14,10 +14,10 @@ const Welcome = () => {
     // Arranco mi localStorage con lo almcenado en la variable emailAddress que
     // debe estar vacío al arrancar.
 
-     const [ emailAddress, setEmailAddress ] = React.useState('');
+     const [ state, setEmailAddress ] = React.useState('');
      // Dado que es solo un registro
      // dar valor de inicio 1 al id
-    const [ id, setId ] = useState('');
+    const [ id, setId ] = useState(1);
 
      const handleChange = ({target}) => {
          setEmailAddress(target.value);
@@ -43,7 +43,7 @@ const Welcome = () => {
         <div>
        <form onSubmit={handleSubmit}>
             <label htmlFor="empresa">
-                <p>Introduce el nombre de empresa</p>
+                <p>WRITE YOUR BUSINESS NAME</p>
                 </label>
                 <input
                     value={emailAddress}
@@ -57,7 +57,7 @@ const Welcome = () => {
         { 
         emailAddress.length > 6 ?
         
-        <Buttonppal emailAddress={emailAddress}/>
+        <Buttonppal email={email}/>
         : null
     } 
         </div>

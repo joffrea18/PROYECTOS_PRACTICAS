@@ -9,6 +9,7 @@ export const getUserEmail = async ({ emailAddress }) => {
     });
 
     const json = await response.json();
+    // const variable = transformData(json);
     console.log(emailAddress);
     // console.log(id);
 

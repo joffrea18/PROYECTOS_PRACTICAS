@@ -14,7 +14,7 @@ const Options = ({ emailAddress }) => {
     return (
         <div>
             <Button >
-                Options
+                OPTIONS
              <Menu>
                 {
                     <FirewallInfo emailAddress={emailAddress} />
