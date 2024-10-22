@@ -5,7 +5,10 @@ import Button from '@mui/material/Button';
 const RouterInfo = ({ emailAddress }) => {
 
     console.log(emailAddress);
-    
+    // Agregar useState con las clave: valor
+    // de cada uno de los inputs & chexbox
+    // Repetir en cada Page 
+    // Mirar como esto me genera una estadística
 
     return (
         <div>
