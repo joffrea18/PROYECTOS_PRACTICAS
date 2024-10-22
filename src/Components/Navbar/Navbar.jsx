@@ -1,13 +1,19 @@
 import './Navbar.css';
 import logo from '../../Assets/logo.jpg';
+// import { useState } from 'react';
 
 
-const Navbar = () => {
+const Navbar = ({ emailAddress }) => {
+
+   // const [ emailAddress, setEmailAddress ] = useState('');
 
     return (
         <div className='navbar'>
-            <img src={logo} alt='' />            
-            {/* <h1>{emailAddress}</h1> */}
+            {
+                emailAddress ?
+                {emailAddress} :
+                <img src={logo} alt='' />
+            }
         </div>
     );
 }

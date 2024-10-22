@@ -1,13 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import Button from '@mui/material/Button';
 
-const RouterInfo = () => {
+const RouterInfo = ({ emailAddress }) => {
+
+    console.log(emailAddress);
+    
+
     return (
         <div>
-            <form action="get">
             <section class="category-card" id="router">
                 <h2>Router</h2>
+                {/* <p>{ emailAddress }</p> */}
+                </section>
+                <form action="get">
                 {/* <div class="input-group"> */}
                     <label for="router-isp">ISP</label>
                     <input type="text" id="router-isp" name="router-isp" />
@@ -42,14 +48,13 @@ const RouterInfo = () => {
                     <label for="backup-ip">IP Estática de Backup</label>
                     <input type="text" id="backup-ip" name="backup-ip" />
                 {/* </div> */}
-            </section>
             </form>
-            <Link style={{textDecoration : 'none' }} to='/buttonppal' > 
+            <Link style={{textDecoration : 'none' }} to='/buttonppal/{id}' > 
             <Button variant='contained' className='back-button' >
            <h1 className='back-button'>BACK</h1>
            </Button>
             </Link>
-           <Link style={{textDecoration : 'none' }} to='/firewallinfo' > 
+           <Link style={{textDecoration : 'none' }} to='/firewallinfo/{id}' > 
            <Button variant='contained' className='next-button'>
             <h1 className='next-button'>NEXT</h1>
            </Button>
