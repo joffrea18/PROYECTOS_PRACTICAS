@@ -15,7 +15,9 @@ const Welcome = () => {
     // debe estar vacío al arrancar.
 
      const [ emailAddress, setEmailAddress ] = React.useState('');
-     const [ id, setId ] = useState('');
+     // Dado que es solo un registro
+     // dar valor de inicio 1 al id
+    const [ id, setId ] = useState('');
 
      const handleChange = ({target}) => {
          setEmailAddress(target.value);
