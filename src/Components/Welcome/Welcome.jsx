@@ -11,32 +11,22 @@ import Button from '@mui/material/Button';
 
 const Welcome = () => {
 
-    // Arranco mi localStorage con lo almcenado en la variable emailAddress que
-    // debe estar vacío al arrancar.
-
-     const [ state, setEmailAddress ] = React.useState('');
-     // Dado que es solo un registro
-     // dar valor de inicio 1 al id
+     const [ business, setBusiness ] = React.useState('');
     const [ id, setId ] = useState(1);
 
      const handleChange = ({target}) => {
-         setEmailAddress(target.value);
+         setBusiness(target.value);
         };
         // console.log(emailAddress, id);
-        
-        // Cambiar valor de email 
-        // Pasar con nuevo nombre como prop
-        const email = emailAddress.toString();
+
+        const businessA = business.toString();
         
         const handleSubmit = (e) => {
             e.preventDefault()
-            // setEmailAddress(...emailAddress);
+            // setBusiness(...business);
         }
-        console.log(emailAddress);
+        console.log(business);
         
-        const clickEmail = (id) => {
-            setId(id);
-        }
         console.log(id);
 
     return (
@@ -46,7 +36,7 @@ const Welcome = () => {
                 <p>WRITE YOUR BUSINESS NAME</p>
                 </label>
                 <input
-                    value={emailAddress}
+                    value={business}
                     onChange={handleChange}
                     type="text"
                     placeholder='Indica el nombre de la empresa'
@@ -55,9 +45,12 @@ const Welcome = () => {
                 />
         </form>
         { 
-        emailAddress.length > 6 ?
+        business.length > 6 ?
         
-        <Buttonppal email={email}/>
+        <Buttonppal
+            businessA={businessA}
+            id={id}/>
+
         : null
     } 
         </div>

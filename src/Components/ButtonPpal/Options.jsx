@@ -7,7 +7,7 @@ import RouterInfo from '../../Pages/RouterInfo';
 import SwitchInfo from '../../Pages/SwitchInfo';
 import { Button } from '@mui/material';
 
-const Options = ({ emailAddress }) => {
+const Options = ({ businessA, id }) => {
 
     const [menu, setMenu] = useState("options");
 
@@ -17,11 +17,11 @@ const Options = ({ emailAddress }) => {
                 OPTIONS
              <Menu>
                 {
-                    <FirewallInfo emailAddress={emailAddress} />
+                    <FirewallInfo businessA={businessA} id={id}/>
                     ?
-                    <RouterInfo emailAddress={emailAddress} />
+                    <RouterInfo businessA={businessA} id={id}/>
                     :
-                    <SwitchInfo emailAddress={emailAddress} />
+                    <SwitchInfo businessA={businessA} id={id}/>
                 }
             </Menu>
             </Button>

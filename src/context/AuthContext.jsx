@@ -1,40 +1,37 @@
 import { createContext, useEffect, useState } from "react";
-import { getUserEmail } from "../Pages/services/services";
+import { getId } from "../Pages/services/services";
 import { useNavigate } from 'react-router-dom';
 
 export const AuthContext = createContext();
 
-const AuthProviderContext = ({children}) => {
-
-    const navigate = useNavigate(); 
-    const [ emailAddress, setEmailAddress ] = useState('');
+const AuthProviderContext = ({ children }) => {
+ 
+    const [ id, setId ] = useState('');
+    const [ businessA, setBusinessA ] = useState('');
 
 
     useEffect(() => {
-        localStorage.setItem('emailAddress', emailAddress);
-    }, [emailAddress]);
+        localStorage.setItem('id', id);
+        // localStorage.setBusinessA('business', businessA);
+    }, [id, businessA]);
 
     useEffect (() => {
-    const getMyUserEmail = async () => {
+    const getMyId = async () => {
         try {
-            const info = await getUserEmail({ emailAddress });
-            setEmailAddress(info);
+            const info = await getId({ id, businessA });
+            setId(info);
+            setBusinessA(info);
         } catch (error) {
-            logOut();
+            return error;
         }
     }
 
-    if(emailAddress) getMyUserEmail()
+    if( id ) getMyId()
+}, [ id, businessA ]);
 
-}, [ emailAddress ]);
-
-    const logOut = () => {
-        setEmailAddress('');
-        navigate('/');
-    }
     
     return (
-        <AuthContext.Provider value={{ emailAddress }} >
+        <AuthContext.Provider value={{ id, businessA }} >
             {children}
         </AuthContext.Provider>
     );

@@ -29,6 +29,7 @@
 }
 
 form{
+  position: relative;
   box-sizing: border-box;
   text-align: center;
   justify-content: center;

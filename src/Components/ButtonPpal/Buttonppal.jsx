@@ -1,29 +1,70 @@
 import './Buttonppal.css';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
-import { slide as Menu } from 'react-burger-menu';
-import React, { useState } from 'react';
+// import { slide as Menu } from 'react-burger-menu';
+import React, { useEffect, useState } from 'react';
 import Options from './Options';
+import { getId } from '../../Pages/services/services';
 
 
-const Buttonppal = ({ emailAddress }) => {
+const Buttonppal = ({ businessA }) => {
 
     const [menu, setMenu] = useState("options");
+    const [id, setId] = useState('');
+    const [business, setBusiness] = useState('');
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchId = async () => {
+            try {
+                const fetchedId = await getId({ id: 1 }); // Llama a la función con un id específico
+                setId(fetchedId); // Almacena el id obtenido en el estado
+            } catch (error) {
+                setError(error.message); // Maneja errores
+            }
+        };
+
+        fetchId();
+    }, [id]);
     
+    // await getId();
     
     return (
         <div>
              { <>
-                <form action="" className='menu-button'>
+                <form
+                    action=""
+                    className='menu-button'>
+                    
                     <Link
-                    to={<Options emailAddress={emailAddress}/>}>
-                <Button variant='contained' >
+                    to='/buttonppal/routerinfo/{id}'
+                    >
+
+                <Button
+                    variant='contained' >
+                    
                     <p>MICROSYSCOM</p>
+
                 </Button>
+
+                <Options
+                        businessA={businessA}
+                        id={id}
+                        className='options_link'
+                        />
+
             </Link>
+
             <section>
-                <Link style={{textDecoration: 'none'}} to='/' ><h1>HOME</h1>
+
+                <Link
+                    style={{textDecoration: 'none'}}
+                    to='/' >
+                        
+                        <h1>HOME</h1>
+
                 </Link>
+
             </section>
             </form>
                </>

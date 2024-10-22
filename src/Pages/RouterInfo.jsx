@@ -1,20 +1,22 @@
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import Button from '@mui/material/Button';
+import { getId } from './services/services';
 
-const RouterInfo = ({ emailAddress }) => {
 
-    console.log(emailAddress);
+const RouterInfo = ({ business }) => {
+
     // Agregar useState con las clave: valor
     // de cada uno de los inputs & chexbox
     // Repetir en cada Page 
     // Mirar como esto me genera una estadística
 
+
     return (
         <div>
             <section class="category-card" id="router">
                 <h2>Router</h2>
-                {/* <p>{ emailAddress }</p> */}
+                <h2>{ business }</h2>
                 </section>
                 <form action="get">
                 {/* <div class="input-group"> */}
@@ -52,16 +54,38 @@ const RouterInfo = ({ emailAddress }) => {
                     <input type="text" id="backup-ip" name="backup-ip" />
                 {/* </div> */}
             </form>
-            <Link style={{textDecoration : 'none' }} to='/buttonppal/{id}' > 
-            <Button variant='contained' className='back-button' >
-           <h1 className='back-button'>BACK</h1>
+            <Link
+                style={{textDecoration : 'none' }}
+                to='/' > 
+
+            <Button
+                variant='contained'
+                className='back-button' >
+           
+           <h1
+                className='back-button'>
+                    HOME
+                </h1>
+
            </Button>
             </Link>
-           <Link style={{textDecoration : 'none' }} to='/firewallinfo/{id}' > 
-           <Button variant='contained' className='next-button'>
-            <h1 className='next-button'>NEXT</h1>
+           
+           <Link
+                style={{textDecoration : 'none' }}
+                to='/buttonppal/firewallinfo/{id}' > 
+
+           <Button
+                variant='contained'
+                className='next-button'>
+
+            <h1
+                className='next-button'>
+                        NEXT
+                        </h1>
+
            </Button>
            </Link>
+        
         </div>
     );
 }

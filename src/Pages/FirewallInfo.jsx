@@ -38,12 +38,12 @@ const FirewallInfo = () => {
                     <input type="checkbox" name="monitoreo-dispositivo" /> Monitoreo del dispositivo
                 </div>
             
-           <Link style={{textDecoration : 'none' }} to='/routerinfo/{id}' > 
+           <Link style={{textDecoration : 'none' }} to='/buttonppal/{id}' > 
             <Button variant='contained' className='back-button' >
            <h1 className='back-button'>BACK</h1>
            </Button>
             </Link>
-           <Link style={{textDecoration : 'none' }} to='/switchinfo/{id}' > 
+           <Link style={{textDecoration : 'none' }} to='/buttonppal/switchinfo/{id}' > 
            <Button variant='contained' className='next-button'>
             <h1 className='next-button'>NEXT</h1>
            </Button>

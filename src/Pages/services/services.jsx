@@ -1,22 +1,22 @@
 // Este servicio me valida el Email
 
-export const getUserEmail = async ({ emailAddress }) => {
-    const response = await fetch(`/routerinfo/${emailAddress}`, {
+export const getId = async ({ businessA, id }) => {
+    const response = await fetch(`/routerinfo/${id}`, {
         method: "GET",
         headers: {
-            Authorization: emailAddress,
+            Authorization: id,
         },
     });
 
     const json = await response.json();
-    // const variable = transformData(json);
-    console.log(emailAddress);
+    console.log(id, businessA);
     // console.log(id);
 
     if(!response.ok){
         throw new Error(json.message);
     }
-
-    return json.info;
-
+    
+    return JSON.stringify(json.businessA);
+    
+    
 }

@@ -19,3 +19,7 @@ p {
 h1{
     font-size: medium;
 }
+
+.options_link {
+    color: none;
+}
