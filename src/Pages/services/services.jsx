@@ -1,7 +1,7 @@
 // Este servicio me valida el Email
 
 export const getId = async ({ business, id }) => {
-    const response = await fetch(`/routerinfo/${id}`, {
+    const response = await fetch(`/routerinfo/${id}/`, {
         method: "GET",
         headers: {
             Authorization: id,

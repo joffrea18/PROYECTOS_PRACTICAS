@@ -1,111 +1,116 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
+import './PagesCSS/Pages.css';
+import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { useState, useEffect } from 'react';
-// import { getId } from './services/services';
-import Options from '../Components/ButtonPpal/Options';
 import { getId } from './services/services';
-import { calculateNewValue } from '@testing-library/user-event/dist/utils';
+import { usePoints } from '../context/PointsContext';
 
 
 const RouterInfo = ({ business, id }) => {
 
-    // Agregar useState con las clave: valor
-    // de cada uno de los inputs & chexbox
-    // Repetir en cada Page 
-    // Mirar como esto me genera una estadística
-    // const businessOptions = toString(business.num1);
-    console.log(business, id);
-
-    const [ inputValue, setInput ] = useState({ num1: '',
-                                                num2: '',
-                                                num3: '',
-                                                num4: '',
-                                                num5: '',
-                                                num6: ''  });
-
-    const [ checkboxes, setChexboxes ] = useState({ num7: '',
-                                                   num8: '' });
-
-
-       const points = {
-        num1: 10, // Puntos para ISP
-        num2: 5,  // Puntos para Teléfono asociado
-        num3: 6,  // Puntos para IP Estática
-        num4: 8,  // Puntos para ISP de Backup
-        num5: 8,  // Puntos para Teléfono de Backup
-        num6: 8,  // Puntos para IP Estática de Backup
-        num7: 5,  // Puntos para IP estática
-        num8: 50   // Puntos Fibra Backup
-
-        // Total 100
-    };
-   
-    useEffect(() => {
-    const fetchData = async () => {
-        try {
-            await getId();           
-        } catch (error) {
-            return error;
-        }
-    };
-    fetchData();
-}, []);
-
-    const handleInput = (e) => {
-        const { name, value } = e.target;
-        setInput({
-            ...inputValue,
-            [name]: value,
-        });
-    }
-
-    const handleCheckbox = (e) => {
-        const { name, checked } = e.target;
-        setChexboxes({
-            ...checkboxes,
-            [name]: checked,
-        });
-    }
-
-    const calculateInputPoints = () => {
-        let totalPoints = 0;
-
-        // Sumar puntos de los inputs
-        Object.keys(inputValue).forEach((key) => {
-            if (inputValue[key]) {
-                totalPoints += points[key]; // Sumar puntos si hay valor en el input
-            }
-        });
-
-        return totalPoints;
-    };
-
-    const calculateCheckboxPoints = () => {
-        let totalPoints = 0;
-
-        // Sumar puntos de los checkboxes
-        Object.keys(checkboxes).forEach((key) => {
-            if (checkboxes[key]) {
-                totalPoints += points[key]; // Sumar puntos si el checkbox está activo
-            }
-        });
-
-        return totalPoints;
-    };
-
-    const totalPoints = () => {
-        return calculateInputPoints() + calculateCheckboxPoints();
-    };
-
-    console.log(inputValue);
+    // Actualizamos los datos y utilizamos el Contexto del Provider
+    const { setPoints } = usePoints();
     
-    return (
-        <div>
+    
+    // Repetir en cada Page 
+    
+    console.log(business, id);
+    
+    const [ inputValue, setInput ] = useState({ num1: '',
+        num2: '',
+        num3: '',
+        num4: '',
+        num5: '',
+        num6: ''  });
+        
+        const [ checkboxes, setChexboxes ] = useState({ num7: '',
+            num8: '' });
+            
+            
+            const points = {
+                num1: 10, // Puntos para ISP
+                num2: 5,  // Puntos para Teléfono asociado
+                num3: 6,  // Puntos para IP Estática
+                num4: 8,  // Puntos para ISP de Backup
+                num5: 8,  // Puntos para Teléfono de Backup
+                num6: 8,  // Puntos para IP Estática de Backup
+                num7: 5,  // Puntos para IP estática
+                num8: 50   // Puntos Fibra Backup
+                
+                // Total 100
+            };
+            
+            useEffect(() => {
+                const fetchData = async () => {
+                    try {
+                        await getId();           
+                    } catch (error) {
+                        return error;
+                    }
+                };
+                fetchData();
+            }, []);
+            
+            const handleInput = (e) => {
+                const { name, value } = e.target;
+                setInput({
+                    ...inputValue,
+                    [name]: value,
+                });
+            }
+            
+            const handleCheckbox = (e) => {
+                const { name, checked } = e.target;
+                setChexboxes({
+                    ...checkboxes,
+                    [name]: checked,
+                });
+            }
+            
+            const calculateInputPoints = () => {
+                let totalPoints = 0;
+                
+                // Sumar puntos de los inputs
+                Object.keys(inputValue).forEach((key) => {
+                    if (inputValue[key]) {
+                        totalPoints += points[key]; // Sumar puntos si hay valor en el input
+                    }
+                });
+                
+                return totalPoints;
+            };
+            
+            const calculateCheckboxPoints = () => {
+                let totalPoints = 0;
+                
+                // Sumar puntos de los checkboxes
+                Object.keys(checkboxes).forEach((key) => {
+                    if (checkboxes[key]) {
+                        totalPoints += points[key]; // Sumar puntos si el checkbox está activo
+                    }
+                });
+                
+                return totalPoints;
+            };
+            
+            const totalPoints = () => {
+                return calculateInputPoints() + calculateCheckboxPoints();
+            };
+            
+            useEffect(() => {
+                setPoints(totalPoints()); // Actualiza los puntos en el contexto
+            }, [inputValue, checkboxes]); // Dependencias para actualizar cuando cambie algo
+            
+            console.log(inputValue);
+            
+            return (
+                <div>
             <section className="category-card" id="router">
                 <h2>Router</h2>
+                {/* Llega OBJECT */}
                 {/* {/* <p>{ id }</p> */}
-                <h2>{ id }</h2>
+                {/* <h2>{ id }</h2> */}
                 </section>
                 <form action="get">
                 {/* <div class="input-group"> */}
@@ -209,7 +214,7 @@ const RouterInfo = ({ business, id }) => {
            
            <h1
                 className='back-button'>
-                    HOME
+                    RETURN
                 </h1>
 
            </Button>
@@ -217,7 +222,7 @@ const RouterInfo = ({ business, id }) => {
            
            <Link
                 style={{textDecoration : 'none' }}
-                to={`/buttonppal/firewallinfo/`} > 
+                to={`/buttonppal/firewallinfo`} > 
 
            <Button
                 variant='contained'

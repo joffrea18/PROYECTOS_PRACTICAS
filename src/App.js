@@ -25,11 +25,11 @@ function App({ business, id }) {
      <Navbar business={business} id={id} />
       <Routes>
         <Route path='/' element={<Welcome />} />
-        <Route to={`/buttonppal/`} element={<Options business={business} id={id} />} />
-        <Route path={`/buttonppal/routerinfo/`} element={<RouterInfo business={business} id={id} />} />
-        <Route path={`/buttonppal/firewallinfo/`} element={<FirewallInfo business={business} id={id} />} />
-        <Route path={`/buttonppal/switchinfo/`} element={<SwitchInfo business={business} id={id} />} />
-        {/* <Route path='*' element={<NotFound />} /> */}
+        <Route to={`/buttonppal`} element={<Options business={business} id={id} />} />
+        <Route path={`/buttonppal/routerinfo`} element={<RouterInfo business={business} id={id} />} />
+        <Route path={`/buttonppal/firewallinfo`} element={<FirewallInfo business={business} id={id} />} />
+        <Route path={`/buttonppal/switchinfo`} element={<SwitchInfo business={business} id={id} />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />
     </div>

@@ -1,7 +1,6 @@
 import './Buttonppal.css';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
-// import { slide as Menu } from 'react-burger-menu';
 import React, { useEffect, useState } from 'react';
 import Options from './Options';
 import { getId } from '../../Pages/services/services';
@@ -42,6 +41,7 @@ const Buttonppal = ({ business }) => {
                          style={{textDecoration : 'none' }}
                          to='/buttonppal/{id}'
                     >
+                        
 
                 <Button
                     variant='contained' >

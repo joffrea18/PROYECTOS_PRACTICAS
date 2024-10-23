@@ -1,19 +1,33 @@
 import './Navbar.css';
 import logo from '../../Assets/logo.jpg';
-// import { useState } from 'react';
+import { useEffect } from 'react';
+import { getId } from '../../Pages/services/services';
 
 
-const Navbar = ({ businessA, id }) => {
+const Navbar = ({ business, id }) => {
 
    // const [ emailAddress, setEmailAddress ] = useState('');
+
+   // mirar de meter un " await getId "  para mostrar el ID en la
+//    cabecera
+useEffect(() => {
+    const fetchData = async () => {
+        try {
+            await getId();           
+        } catch (error) {
+            return error;
+        }
+    };
+    fetchData();
+}, []);
 
     return (
         <div className='navbar'>
             {
-                businessA ?
+                business ?
                 <>
                 <h1>
-                    {businessA}
+                    {business}
                 </h1>
                 <h1>
                     ID USER: {id}

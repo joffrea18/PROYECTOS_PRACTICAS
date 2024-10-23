@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
+import './PagesCSS/Pages.css';
+import { usePoints } from '../context/PointsContext';
 
 const FirewallInfo = ({ business, id }) => {
     
+    const { points } = usePoints();
     /*
     Este es el bloque de lógica a aplicar en este componente (ADAPTAR)
 
@@ -178,10 +181,11 @@ const FirewallInfo = ({ business, id }) => {
                         type="checkbox" 
                         name='' />Acceso Limitado Geograficamente a la VPN
                 </div>
+                </form>
             
            <Link
             style={{textDecoration : 'none' }}
-            to={`/buttonppal/routerinfo/`} > 
+            to={`/buttonppal/routerinfo`} > 
             
             <Button
                 variant='contained'
@@ -189,13 +193,13 @@ const FirewallInfo = ({ business, id }) => {
 
            <h1
             className='back-button'>
-                BACK</h1>
+                RETURN</h1>
 
            </Button>
             </Link>
            <Link
                 style={{textDecoration : 'none' }}
-                to={`/buttonppal/switchinfo/`} > 
+                to={`/buttonppal/switchinfo`} > 
 
            <Button
                 variant='contained'
@@ -207,7 +211,7 @@ const FirewallInfo = ({ business, id }) => {
 
            </Button>
            </Link>
-           </form>
+           <h1>POINTS: {points}</h1>
         </div>
     );
 }

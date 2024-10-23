@@ -1,10 +1,6 @@
 import React from 'react';
 import './Welcome.css';
-import { useState, useEffect } from 'react';
-import Buttonppal from '../ButtonPpal/Buttonppal';
-// import { getUserEmail } from '../../Pages/services/services';
-import { Link } from 'react-router-dom';
-import Button from '@mui/material/Button';
+import { useState } from 'react';
 import Options from '../ButtonPpal/Options';
 
 // Componente Padre
@@ -15,14 +11,14 @@ const Welcome = ( ) => {
     const [ business, setBusiness ] = useState({ num1: '' });
     const [ id, setId ] = useState(1);
 
-    
 
       const handleChange = ( e ) => {
           // setBusiness(target.value);
+          e.preventDefault();
           const { name, value } = e.target;
           setBusiness(
               {
-                  ...business,
+                  business,
                   [name]: value,
               });
    
@@ -39,13 +35,16 @@ const Welcome = ( ) => {
         console.log(business.num1);
         
         // console.log(id);
+        // onSubmit={handleSubmit}
         // const businessA = business.num1
 
     return (
         <div>
-       <form onSubmit={handleSubmit}>
+            <br />
+            <br />
+       <form >
             <label htmlFor="empresa">
-                <p>WRITE YOUR BUSINESS NAME</p>
+                <p>BUSINESS NAME</p>
                 </label>
                 <input
                     value={business.num1}

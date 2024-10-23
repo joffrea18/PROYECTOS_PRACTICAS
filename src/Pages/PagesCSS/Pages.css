@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Color de fondo para toda la página */
+}
+
+.category-card {
+    text-align: center; /* Centra el texto */
+    margin: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+    background: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra para efecto de elevación */
+    padding: 20px;
+    max-width: 400px; /* Ancho máximo del formulario */
+    margin: auto; /* Centramos el formulario en el contenedor */
+    position: relative;
+    z-index: 1; /* Asegura que esté en la parte superior del fondo */
+}
+
+label {
+    margin-top: 10px; /* Espacio entre las etiquetas y los inputs */
+}
+
+input[type="text"] {
+    width: 100%; /* Ancho completo del input */
+    padding: 10px;
+    margin-top: 5px; /* Espacio entre el label y el input */
+    border: 1px solid #ccc; /* Borde del input */
+    border-radius: 5px; /* Bordes redondeados para el input */
+}
+
+input[type="checkbox"] {
+    margin-left: 10px; /* Espacio a la izquierda del checkbox */
+}
+
+.back-button, .next-button {
+    margin-top: 20px; /* Espacio entre el formulario y los botones */
+    padding: 10px 20px; /* Espaciado en los botones */
+}
+
+/* Estilo para el fondo de la página */
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Altura completa de la ventana */
+    background: linear-gradient(45deg, #6b6e9c, #3a3d58); /* Gradiente de fondo */
+    overflow: hidden; /* Para evitar overflow de elementos hijos */
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.3); /* Fondo blanco semitransparente */
+    z-index: 0; /* Asegura que esté detrás del formulario */
+}
