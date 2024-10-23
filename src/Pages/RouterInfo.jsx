@@ -12,7 +12,6 @@ const RouterInfo = ({ business, id }) => {
     // Actualizamos los datos y utilizamos el Contexto del Provider
     const { setPoints } = usePoints();
     
-    
     // Repetir en cada Page 
     
     console.log(business, id);
@@ -123,11 +122,10 @@ const RouterInfo = ({ business, id }) => {
                         placeholder='ISP'
                         value={inputValue.num1}
                          />
-                         {/* Pensar de modificar estos value por valor estático dado que este
-                         me valida sólo los numbers */}
-                {/* </div> */}
-                {/* <div class="input-group"> */}
-                    <label for="router-telefono">Teléfono asociado</label>
+
+                    <label for="router-telefono">
+                        Teléfono asociado</label>
+
                     <input
                         type="text"
                         id="router-telefono"
@@ -135,9 +133,10 @@ const RouterInfo = ({ business, id }) => {
                         onChange={handleInput}
                         placeholder='Teléfono asociado'
                         value={inputValue.num2}/>
-                {/* </div> */}
-                {/* <div class="input-group"> */}
-                    <label for="router-ip">IP Estática</label>
+
+                    <label for="router-ip">
+                        IP Estática</label>
+
                     <input
                         type="text"
                         id="router-ip"
@@ -145,10 +144,10 @@ const RouterInfo = ({ business, id }) => {
                         onChange={handleInput}
                         placeholder='IP Estática'
                         value={inputValue.num3}/>
-                {/* </div> */}
-                {/* <div class="checkbox-group"> */}
-                    {/* <div class="checkbox-wrapper-25"> */}
-                        <label for="router-ip-estatica">IP Estática</label>
+
+                        <label for="router-ip-estatica">
+                            IP Estática</label>
+
                         <input
                             type="checkbox"
                             // id="router-ip-estatica"
@@ -156,30 +155,30 @@ const RouterInfo = ({ business, id }) => {
                             checked={ checkboxes.num1 }
                             onChange={handleCheckbox}
                             /> 
-                    {/* </div> */}
-                    {/* <div class="checkbox-wrapper-25"> */}
-                        <label for="fibra-backup">Fibra Backup</label>
+
+                        <label for="fibra-backup">
+                            Fibra Backup</label>
+
                         <input
                             type="checkbox"
-                            // id="fibra-backup"
                             name="num8"
                             onclick="toggleBackupFields()"
                             checked={ checkboxes.num2 }
                             onChange={handleCheckbox}/> 
-                    {/* </div> */}
-                {/* </div> */}
-                {/* <div class="input-group"> */}
-                    <label for="backup-isp">ISP de Backup</label>
+
+                    <label for="backup-isp">
+                        ISP de Backup</label>
+
                     <input
                         type="text"
-                        // id="backup-isp"
                         name="num4"
                         onChange={handleInput}
                         placeholder='ISP de Backup'
                         value={inputValue.num4}/>
-                {/* </div> */}
-                {/* <div class="input-group"> */}
-                    <label for="backup-telefono">Teléfono de Backup</label>
+
+                    <label for="backup-telefono">
+                        Teléfono de Backup</label>
+
                     <input
                         type="text"
                         id="backup-telefono"
@@ -187,9 +186,10 @@ const RouterInfo = ({ business, id }) => {
                         onChange={handleInput}
                         placeholder='Teléfono de Backup'
                         value={inputValue.num5}/>
-                {/* </div> */}
-                {/* <div class="input-group"> */}
-                    <label for="backup-ip">IP Estática de Backup</label>
+
+                    <label for="backup-ip">
+                        IP Estática de Backup</label>
+
                     <input
                         type="text"
                         id="backup-ip"
@@ -197,13 +197,14 @@ const RouterInfo = ({ business, id }) => {
                         onChange={handleInput}
                         placeholder='IP Estática de Backup'
                         value={inputValue.num6}/>
-                {/* </div> */}
             </form>
+
             <section>
                 <p>POINTS FROM ROUTER: 
                 { totalPoints() }
                 </p>
             </section>
+
             <Link
                 style={{textDecoration : 'none' }}
                 to='/' > 

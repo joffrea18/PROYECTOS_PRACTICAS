@@ -1,35 +1,67 @@
 import React from 'react';
+import './PagesCSS/Pages.css';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
-import './PagesCSS/Pages.css';
+import { useState, useEffect } from 'react';
+import { getId } from './services/services';
 import { usePoints } from '../context/PointsContext';
 
 const FirewallInfo = ({ business, id }) => {
     
     const { points } = usePoints();
-    /*
-    Este es el bloque de lógica a aplicar en este componente (ADAPTAR)
+    
+    // Este es el bloque de lógica a aplicar en este componente (ADAPTAR)
+    // Está reventando en la lectura de "name" en la arrow function / función manejadora
 
-     const [ inputValue, setInput ] = useState({ num1: '',
-                                                num2: '',
-                                                num3: '',
-                                                num4: '',
-                                                num5: '',
-                                                num6: ''  });
+     const [ inputValue, setInput ]
+        = useState({
+            val1: '',
+            val2: '', });
 
-    const [ checkboxes, setChexboxes ] = useState({ num7: '',
-                                                   num8: '' });
+    const [ checkboxes, setChexboxes ]
+        = useState({
+            val3: '',
+            val4: '',
+            val5: '',
+            val6: '',
+            val7: '',
+            val8: '',
+            val9: '',
+            val10: '',
+            val11: '',
+            val12: '',
+            val13: '',
+            val14: '',
+            val15: '',
+            val16: '',
+            val17: '',
+            val18: '',
+            val19: '' 
+         });
 
 
-       const points = {
-        num1: 10, // Puntos para ISP
-        num2: 5,  // Puntos para Teléfono asociado
-        num3: 6,  // Puntos para IP Estática
-        num4: 8,  // Puntos para ISP de Backup
-        num5: 8,  // Puntos para Teléfono de Backup
-        num6: 8,  // Puntos para IP Estática de Backup
-        num7: 5,  // Puntos para IP estática
-        num8: 50   // Puntos Fibra Backup
+       const pointsf = {
+        val1: 3, // 
+        val2: 5,  // 
+        val3: 2,  // 
+        val4: 5,  // 
+        val5: 5,  // 
+        val6: 5,  // 
+        val7: 5,  // 
+        val8: 5,   //
+        val9: 5, //
+        val10: 5, //
+        val11: 5, //
+        val12: 5, //
+        val13: 5, //
+        val14: 5, //
+        val15: 5, //
+        val16: 5, //
+        val17: 5, //
+        val18: 5, //
+        val19: 5, //
+        val20: 5, //
+        val21: 5 //
 
         // Total 100
     };
@@ -53,6 +85,8 @@ const FirewallInfo = ({ business, id }) => {
         });
     }
 
+    console.log(handleInput(toString(inputValue)));
+    
     const handleCheckbox = (e) => {
         const { name, checked } = e.target;
         setChexboxes({
@@ -61,13 +95,16 @@ const FirewallInfo = ({ business, id }) => {
         });
     }
 
+    console.log(handleCheckbox());
+    
+
     const calculateInputPoints = () => {
         let totalPoints = 0;
 
         // Sumar puntos de los inputs
         Object.keys(inputValue).forEach((key) => {
             if (inputValue[key]) {
-                totalPoints += points[key]; // Sumar puntos si hay valor en el input
+                totalPoints += pointsf[key]; // Sumar puntos si hay valor en el input
             }
         });
 
@@ -80,7 +117,7 @@ const FirewallInfo = ({ business, id }) => {
         // Sumar puntos de los checkboxes
         Object.keys(checkboxes).forEach((key) => {
             if (checkboxes[key]) {
-                totalPoints += points[key]; // Sumar puntos si el checkbox está activo
+                totalPoints += pointsf[key]; // Sumar puntos si el checkbox está activo
             }
         });
 
@@ -94,8 +131,6 @@ const FirewallInfo = ({ business, id }) => {
     console.log(inputValue);
 
 
-    */
-
 
     return (
         <div>
@@ -108,79 +143,148 @@ const FirewallInfo = ({ business, id }) => {
             <form
                 className='firewall-form'
                 action='get'  >
+
                 <label
                     for="firewall-fabricante">Fabricante</label>
+
                 <input
                     type="text"
-                    id="firewall-fabricante"
-                    name="firewall-fabricante" />
+                    name="val1"
+                    onChange={handleInput}
+                    placeholder='Fabricante'
+                    value={inputValue.val1}/>
+
                     <label
                         for="firewall-modelo">Modelo</label>
+
                     <input
                         type="text"
                         id="firewall-modelo"
-                        name="firewall-modelo" />
-                    <hn/>
-                    {/* <label for="firewall-modelo">Licencia</label> */}
-                <div class="checkbox-group">
-                    {/* <hr /> */}
+                        name="val2"
+                        placeholder='Modelo'
+                        onChange={handleInput}
+                        value={inputValue.val2}/>
+                    <br/>
+
                     {/* LICENCIA prela los demás checkboxes */}
                     <input
                         type="checkbox"
-                        name="licencia"
-                        placeholder='Licencia'
+                        name="val3"
+                        value={checkboxes.val3}
+                        onChange={handleCheckbox}
                     /> Licencia
-                    {/* <label for="firewall-modelo"></label> */}
+
                     <input
                         type="checkbox"
-                        name="acceso-ui-exterior" /> Acceso limitado a la UI desde una IP del exterior
-                    {/* <label htmlFor="get" > */}
+                        name="val4"
+                        value={checkboxes.val4}
+                        onChange={handleCheckbox}
+                        /> Acceso limitado a la UI desde una IP del exterior
+
                     <input
                         type="checkbox"
-                        name="acceso-ui-interno" /> Acceso limitado a la UI desde un puerto de gestión desde el interior
+                        name="val5"
+                        value={checkboxes.val5}
+                        onChange={handleCheckbox}
+                        /> Acceso limitado a la UI desde un puerto de gestión desde el interior
+
                     <input
                         type="checkbox"
-                        name="alertas-login" /> Sistema de alertas de inicio de sesión
+                        name="val6"
+                        value={checkboxes.val6}
+                        onChange={handleCheckbox}
+                        /> Sistema de alertas de inicio de sesión
+
                     <input
                         type="checkbox"
-                        name="vpn-segura" /> VPN bajo protocolo seguro y con MFA
+                        name="val7"
+                        value={checkboxes.val7}
+                        onChange={handleCheckbox}
+                        /> VPN bajo protocolo seguro y con MFA
+
                     <input
                         type="checkbox"
-                        name="anti-malware" /> Servicios Anti-Malware
+                        name="val8"
+                        value={checkboxes.val8}
+                        onChange={handleCheckbox}
+                        /> Servicios Anti-Malware
+
                     <input
                         type="checkbox"
-                        name="filtro-reputacion" /> Filtros de reputación
+                        name="val9"
+                        value={checkboxes.val9}
+                        onChange={handleCheckbox}
+                        /> Filtros de reputación
+
                     <input
                         type="checkbox"
-                        name="ips" /> IPS
+                        name="val9"
+                        value={checkboxes.val9}
+                        onChange={handleCheckbox}
+                        /> IPS
+
                     <input
                         type="checkbox"
-                        name="sandboxing" /> SandBoxing
+                        name="val10"
+                        value={checkboxes.val10}
+                        onChange={handleCheckbox}
+                        /> SandBoxing
+
                     <input
                         type="checkbox"
-                        name="email-security" /> Email Security
+                        name="val11"
+                        value={checkboxes.val11}
+                        onChange={handleCheckbox}
+                        /> Email Security
+
                     <input
                         type="checkbox"
-                        name="cdr" /> Collaborative Detection and Response
+                        name="val12"
+                        value={checkboxes.val12}
+                        onChange={handleCheckbox}
+                        /> Collaborative Detection and Response
+
                     <input
                         type="checkbox"
-                        name="ssl-inspection" /> SSL Inspection
+                        name="val13"
+                        value={checkboxes.val13}
+                        onChange={handleCheckbox}
+                        /> SSL Inspection
+
                     <input
                         type="checkbox"
-                        name="segmentacion-vlan" /> Segmentación por VLANs
+                        name="val14"
+                        value={checkboxes.val14}
+                        onChange={handleCheckbox}
+                        /> Segmentación por VLANs
+
                     <input
                         type="checkbox"
-                        name="certificado-confiable" /> Certificado confiable
+                        name="val15"
+                        value={checkboxes.val15}
+                        onChange={handleCheckbox}
+                        /> Certificado confiable
+
                     <input
                         type="checkbox"
-                        name="backup-semanal" /> Backup automático de frecuencia ≤ 1 semana
+                        name="val16"
+                        value={checkboxes.val16}
+                        onChange={handleCheckbox}
+                        /> Backup automático de frecuencia ≤ 1 semana
+
                     <input
                         type="checkbox"
-                        name="monitoreo-dispositivo" /> Monitoreo del dispositivo
+                        name="val17"
+                        value={checkboxes.val17}
+                        onChange={handleCheckbox}
+                        /> Monitoreo del dispositivo
+
                     <input
                         type="checkbox" 
-                        name='' />Acceso Limitado Geograficamente a la VPN
-                </div>
+                        name="val18"
+                        value={checkboxes.val18}
+                        onChange={handleCheckbox}
+                        />Acceso Limitado Geograficamente a la VPN
                 </form>
             
            <Link
@@ -211,7 +315,7 @@ const FirewallInfo = ({ business, id }) => {
 
            </Button>
            </Link>
-           <h1>POINTS: {points}</h1>
+           <h1>POINTS: {pointsf}</h1>
         </div>
     );
 }
