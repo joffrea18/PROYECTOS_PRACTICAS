@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 
-const FirewallInfo = () => {
+const FirewallInfo = ({ business, id }) => {
     
 
 
@@ -43,28 +43,31 @@ const FirewallInfo = () => {
             
            <Link
             style={{textDecoration : 'none' }}
-            to='/buttonppal/routerinfo/{id}' > 
+            to={`/buttonppal/routerinfo/`} > 
             
             <Button
                 variant='contained'
                 className='back-button' >
 
-           <h1 className='back-button'>BACK</h1>
+           <h1
+            className='back-button'>
+                BACK</h1>
 
            </Button>
             </Link>
            <Link
                 style={{textDecoration : 'none' }}
-                to='/buttonppal/switchinfo/{id}' > 
+                to={`/buttonppal/switchinfo/`} > 
 
            <Button
                 variant='contained'
                 className='next-button'>
 
-            <h1 className='next-button'>NEXT</h1>
+            <h1
+                className='next-button'>
+                    NEXT</h1>
 
            </Button>
-
            </Link>
            </form>
         </div>

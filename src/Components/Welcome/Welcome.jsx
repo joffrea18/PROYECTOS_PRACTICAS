@@ -5,34 +5,41 @@ import Buttonppal from '../ButtonPpal/Buttonppal';
 // import { getUserEmail } from '../../Pages/services/services';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
+import Options from '../ButtonPpal/Options';
 
 // Componente Padre
+// El dato de business.num1 se muestra en el Dom
 
+const Welcome = ( ) => {
 
-const Welcome = () => {
-
-    const [ business, setBusiness ] = React.useState('');
+    const [ business, setBusiness ] = useState({ num1: '' });
     const [ id, setId ] = useState(1);
 
     
 
-     const handleChange = ({target}) => {
-         setBusiness(target.value);
-         
-        };
+      const handleChange = ( e ) => {
+          // setBusiness(target.value);
+          const { name, value } = e.target;
+          setBusiness(
+              {
+                  ...business,
+                  [name]: value,
+              });
+   
+         };
         // console.log(emailAddress, id);
-        console.log(business);
+        console.log(business.num1);
         
 
-        const businessA = business.toString();
+        // const businessA = business.toString();
         
         const handleSubmit = (e) => {
-            e.preventDefault()
-            setBusiness(...businessA);
+            e.preventDefault();
         }
-        console.log(businessA);
+        console.log(business.num1);
         
         // console.log(id);
+        // const businessA = business.num1
 
     return (
         <div>
@@ -41,19 +48,20 @@ const Welcome = () => {
                 <p>WRITE YOUR BUSINESS NAME</p>
                 </label>
                 <input
-                    value={business}
+                    value={business.num1}
                     onChange={handleChange}
                     type="text"
                     placeholder='Indica el nombre de la empresa'
-                    name="empresa"
+                    name="num1"
                     required
                 />
         </form>
+        {/* <p>{business.num1}</p> */}
         { 
-        businessA.length > 6 ?
+            business.num1.length > 6 ?
         
-        <Buttonppal
-            businessA={businessA}
+        <Options
+            business={business}
             id={id}/>
 
         : null

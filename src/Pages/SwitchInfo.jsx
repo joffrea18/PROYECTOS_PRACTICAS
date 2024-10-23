@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 
-const SwitchInfo = () => {
+const SwitchInfo = ({ business, id }) => {
     return (
         <div>
             <section class="category-card" id="switch">
@@ -28,14 +28,25 @@ const SwitchInfo = () => {
                     <div class="checkbox-wrapper-25"><input type="checkbox" name="monitoreo-dispositivo-switch" /> Monitoreo del dispositivo</div>
                 </div>
             </section>
-            <Link style={{textDecoration : 'none' }} to='/buttonppal/{id}' > 
-            <Button variant='contained' className='back-button' >
-           <h1 className='back-button'>BACK</h1>
+            <Link
+                style={{textDecoration : 'none' }}
+                to={`/buttonppal/`} > 
+            <Button
+                variant='contained'
+                className='back-button' >
+           <h1
+            className='back-button'>
+                BACK</h1>
            </Button>
             </Link>
-           <Link style={{textDecoration : 'none' }} to='/printeroption/{id}' > 
+
+           <Link
+            style={{textDecoration : 'none' }}
+            to={`/printeroption/`} > 
            <Button variant='contained' >
-            <h1 className='next-button'>PRINT REPORT</h1>
+            <h1
+                className='next-button'>
+                    PRINT REPORT</h1>
            </Button>
            </Link>
         </div>

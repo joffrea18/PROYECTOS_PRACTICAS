@@ -7,11 +7,13 @@ import Options from './Options';
 import { getId } from '../../Pages/services/services';
 
 
-const Buttonppal = ({ businessA }) => {
+// Desde aquí ya el valor empieza a ser undefined
+
+const Buttonppal = ({ business }) => {
 
     const [menu, setMenu] = useState("options");
     const [id, setId] = useState('');
-    const [business, setBusiness] = useState('');
+    // const [business, setBusiness] = useState('');
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -37,7 +39,8 @@ const Buttonppal = ({ businessA }) => {
                     className='menu-button'>
                     
                     <Link
-                    to='/buttonppal/{id}'
+                         style={{textDecoration : 'none' }}
+                         to='/buttonppal/{id}'
                     >
 
                 <Button
@@ -48,7 +51,7 @@ const Buttonppal = ({ businessA }) => {
                 </Button>
 
                 <Options
-                        businessA={businessA}
+                        business={business}
                         id={id}
                         className='options_link'
                         />
