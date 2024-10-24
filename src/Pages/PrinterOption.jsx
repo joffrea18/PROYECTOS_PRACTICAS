@@ -60,7 +60,8 @@ const PrinterOption = () => {
             <Button
                 variant="contained"
                 color="primary"
-                onClick={generatePDF}>
+                onClick={generatePDF}
+                className='back-button'>
                 Generate PDF
             </Button>
             <Link

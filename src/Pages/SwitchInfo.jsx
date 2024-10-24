@@ -218,7 +218,8 @@ const SwitchInfo = ( ) => {
             style={{textDecoration : 'none' }}
             to={`/buttonppal/printeroption`} > 
            <Button
-            variant='contained' >
+            variant='contained'
+            className='back-button' >
                     PRINT REPORT
            </Button>
            </Link>
