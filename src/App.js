@@ -12,7 +12,10 @@ import RouterInfo from './Pages/RouterInfo';
 import FirewallInfo from './Pages/FirewallInfo';
 import NotFound from './Pages/NotFound';
 import SwitchInfo from './Pages/SwitchInfo';
+import PrinterOption from './Pages/PrinterOption';
 import Options from './Components/ButtonPpal/Options';
+import { PointsProvider } from './context/PointsContext';
+// import {AuthProvider} from './context/AuthContext';
 
 // Aquí debo de mirar introducir al email como prop al
 // componente de Buttonppal
@@ -22,15 +25,20 @@ function App({ business, id }) {
   // const [text, setText ] = useState('');
   return (
     <div className="App">
-     <Navbar business={business} id={id} />
-      <Routes>
-        <Route path='/' element={<Welcome />} />
-        <Route to={`/buttonppal`} element={<Options business={business} id={id} />} />
-        <Route path={`/buttonppal/routerinfo`} element={<RouterInfo business={business} id={id} />} />
-        <Route path={`/buttonppal/firewallinfo`} element={<FirewallInfo business={business} id={id} />} />
-        <Route path={`/buttonppal/switchinfo`} element={<SwitchInfo business={business} id={id} />} />
-        <Route path='*' element={<NotFound />} />
-      </Routes>
+      {/* <AuthProvider> */}
+      <PointsProvider>
+        <Navbar business={business} id={id} />
+         <Routes>
+           <Route path='/' element={<Welcome />} />
+           <Route to={`/buttonppal`} element={<Options business={business} id={id} />} />
+           <Route path={`/buttonppal/routerinfo`} element={<RouterInfo business={business} id={id} />} />
+           <Route path={`/buttonppal/firewallinfo`} element={<FirewallInfo business={business} id={id} />} />
+           <Route path={`/buttonppal/switchinfo`} element={<SwitchInfo business={business} id={id} />} />
+           <Route path={`/buttonppal/printeroption`} element={<PrinterOption business={business} id={id} />} />
+           <Route path='*' element={<NotFound />} />
+         </Routes>
+      </PointsProvider>
+      {/* </AuthProvider> */}
       <Footer />
     </div>
   );

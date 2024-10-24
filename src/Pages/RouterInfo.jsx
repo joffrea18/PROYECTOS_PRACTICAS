@@ -23,7 +23,8 @@ const RouterInfo = ({ business, id }) => {
         num5: '',
         num6: ''  });
         
-        const [ checkboxes, setChexboxes ] = useState({ num7: '',
+        const [ checkboxes, setChexboxes ] =
+            useState({ num7: '',
             num8: '' });
             
             
@@ -98,10 +99,16 @@ const RouterInfo = ({ business, id }) => {
             };
             
             useEffect(() => {
-                setPoints(totalPoints()); // Actualiza los puntos en el contexto
+                const total = totalPoints();
+                setPoints((prevPoints) => ({
+                    ...prevPoints,
+                    router: total,
+                })); // Actualiza los puntos en el contexto
             }, [inputValue, checkboxes]); // Dependencias para actualizar cuando cambie algo
             
             console.log(inputValue);
+            console.log(totalPoints());
+            
             
             return (
                 <div>
@@ -109,7 +116,7 @@ const RouterInfo = ({ business, id }) => {
                 <h2>Router</h2>
                 {/* Llega OBJECT */}
                 {/* {/* <p>{ id }</p> */}
-                {/* <h2>{ id }</h2> */}
+                <h2>{ business }</h2>
                 </section>
                 <form action="get">
                 {/* <div class="input-group"> */}
@@ -200,9 +207,9 @@ const RouterInfo = ({ business, id }) => {
             </form>
 
             <section>
-                <p>POINTS FROM ROUTER: 
+                {/* <p>POINTS FROM ROUTER: 
                 { totalPoints() }
-                </p>
+                </p> */}
             </section>
 
             <Link

@@ -6,11 +6,10 @@ import { useState, useEffect } from 'react';
 import { getId } from './services/services';
 import { usePoints } from '../context/PointsContext';
 
-const FirewallInfo = ({ business, id }) => {
-    
-    const { points } = usePoints();
-    
-    // Este es el bloque de lógica a aplicar en este componente (ADAPTAR)
+const FirewallInfo = ( ) => {
+
+    const { setPoints } = usePoints();
+
     // Está reventando en la lectura de "name" en la arrow function / función manejadora
 
      const [ inputValue, setInput ]
@@ -20,7 +19,7 @@ const FirewallInfo = ({ business, id }) => {
 
     const [ checkboxes, setChexboxes ]
         = useState({
-            val3: '',
+            val3: false,
             val4: '',
             val5: '',
             val6: '',
@@ -36,18 +35,18 @@ const FirewallInfo = ({ business, id }) => {
             val16: '',
             val17: '',
             val18: '',
-            val19: '' 
+            val19: ''
          });
 
 
        const pointsf = {
-        val1: 3, // 
-        val2: 5,  // 
-        val3: 2,  // 
-        val4: 5,  // 
-        val5: 5,  // 
-        val6: 5,  // 
-        val7: 5,  // 
+        val1: 3, //
+        val2: 5,  //
+        val3: 2,  //
+        val4: 5,  //
+        val5: 5,  //
+        val6: 5,  //
+        val7: 5,  //
         val8: 5,   //
         val9: 5, //
         val10: 5, //
@@ -65,11 +64,11 @@ const FirewallInfo = ({ business, id }) => {
 
         // Total 100
     };
-   
+
     useEffect(() => {
     const fetchData = async () => {
         try {
-            await getId();           
+            await getId();
         } catch (error) {
             return error;
         }
@@ -78,6 +77,7 @@ const FirewallInfo = ({ business, id }) => {
 }, []);
 
     const handleInput = (e) => {
+        // e.preventDefault;
         const { name, value } = e.target;
         setInput({
             ...inputValue,
@@ -85,8 +85,8 @@ const FirewallInfo = ({ business, id }) => {
         });
     }
 
-    console.log(handleInput(toString(inputValue)));
-    
+    console.log(inputValue.name);
+
     const handleCheckbox = (e) => {
         const { name, checked } = e.target;
         setChexboxes({
@@ -95,8 +95,8 @@ const FirewallInfo = ({ business, id }) => {
         });
     }
 
-    console.log(handleCheckbox());
-    
+    console.log(checkboxes.name);
+
 
     const calculateInputPoints = () => {
         let totalPoints = 0;
@@ -128,10 +128,19 @@ const FirewallInfo = ({ business, id }) => {
         return calculateInputPoints() + calculateCheckboxPoints();
     };
 
-    console.log(inputValue);
+    console.log(inputValue.name);
 
+    useEffect(() => {
+        const total = totalPoints();
+        setPoints((prevPoints) => ({
+            ...prevPoints,
+            firewall: total,
+        })); // Actualiza los puntos en el contexto
+    }, [inputValue, checkboxes]); // Dependencias para actualizar cuando cambie algo
+    
 
-
+    console.log(totalPoints());
+    
     return (
         <div>
             <section
@@ -280,17 +289,17 @@ const FirewallInfo = ({ business, id }) => {
                         /> Monitoreo del dispositivo
 
                     <input
-                        type="checkbox" 
+                        type="checkbox"
                         name="val18"
                         value={checkboxes.val18}
                         onChange={handleCheckbox}
                         />Acceso Limitado Geograficamente a la VPN
                 </form>
-            
+
            <Link
             style={{textDecoration : 'none' }}
-            to={`/buttonppal/routerinfo`} > 
-            
+            to={`/buttonppal/routerinfo`} >
+
             <Button
                 variant='contained'
                 className='back-button' >
@@ -303,7 +312,7 @@ const FirewallInfo = ({ business, id }) => {
             </Link>
            <Link
                 style={{textDecoration : 'none' }}
-                to={`/buttonppal/switchinfo`} > 
+                to={`/buttonppal/switchinfo`} >
 
            <Button
                 variant='contained'
@@ -315,7 +324,7 @@ const FirewallInfo = ({ business, id }) => {
 
            </Button>
            </Link>
-           <h1>POINTS: {pointsf}</h1>
+           {/* <h1>POINTS: {totalPoints()}</h1> */}
         </div>
     );
 }

@@ -5,18 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import AuthProviderContext from './context/AuthContext';
-import { PointsProvider } from './context/PointsContext';
+// import { PointsProvider } from './context/PointsContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
       <BrowserRouter>
-        <AuthProviderContext>
-          <PointsProvider>
+        {/* <AuthProviderContext> */}
+          {/* <PointsProvider> */}
             <App />
-          </PointsProvider>
-        </AuthProviderContext>
+          {/* </PointsProvider> */}
+        {/* </AuthProviderContext> */}
       </BrowserRouter>
   </React.StrictMode>
 );

@@ -1,10 +1,10 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useContext } from "react";
 import { getId } from "../Pages/services/services";
 // import { useNavigate } from 'react-router-dom';
 
 export const AuthContext = createContext();
 
-const AuthProviderContext = ({ children }) => {
+const AuthProvider = ({ children }) => {
  
     const [ id, setId ] = useState('');
     const [ businessA, setBusinessA ] = useState('');
@@ -35,7 +35,10 @@ const AuthProviderContext = ({ children }) => {
             {children}
         </AuthContext.Provider>
     );
-}
+        
+};
 
-export default AuthProviderContext
+export const useId = () => {
+    return useContext(AuthContext);
+};
 
