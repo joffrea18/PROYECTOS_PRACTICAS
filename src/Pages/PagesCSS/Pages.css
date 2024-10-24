@@ -37,11 +37,8 @@ input[type="text"] {
     border-radius: 5px; /* Bordes redondeados para el input */
 }
 
-input[type="checkbox"] {
-    margin-left: 10px; /* Espacio a la izquierda del checkbox */
-}
-
-.back-button, .next-button {
+.back-button,
+.next-button {
     margin-top: 20px; /* Espacio entre el formulario y los botones */
     padding: 10px 20px; /* Espaciado en los botones */
 }

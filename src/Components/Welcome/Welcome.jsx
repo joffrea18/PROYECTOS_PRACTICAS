@@ -2,13 +2,14 @@ import React from 'react';
 import './Welcome.css';
 import { useState } from 'react';
 import Options from '../ButtonPpal/Options';
+import Navbar from '../Navbar/Navbar';
 
 // Componente Padre
 // El dato de business.num1 se muestra en el Dom
 
 const Welcome = ( ) => {
 
-    const [ business, setBusiness ] = useState({ num1: '' });
+    const [ business, setBusiness ] = useState({ val1: '' });
     const [ id, setId ] = useState(1);
 
 
@@ -16,15 +17,15 @@ const Welcome = ( ) => {
           // setBusiness(target.value);
           e.preventDefault();
           const { name, value } = e.target;
-          setBusiness(
+          setBusiness((prevBusiness) => (
               {
-                  business,
+                ...prevBusiness,
                   [name]: value,
-              });
+              }));
    
          };
         // console.log(emailAddress, id);
-        console.log(business.num1);
+        console.log(business.val1);
         
 
         // const businessA = business.toString();
@@ -32,7 +33,7 @@ const Welcome = ( ) => {
         const handleSubmit = (e) => {
             e.preventDefault();
         }
-        console.log(business.num1);
+        console.log(business.val1);
         
         // console.log(id);
         // onSubmit={handleSubmit}
@@ -40,30 +41,33 @@ const Welcome = ( ) => {
 
     return (
         <div>
+            <Navbar />
             <br />
             <br />
-       <form >
+       <form 
+        onSubmit={handleSubmit}>
             <label htmlFor="empresa">
-                <p>BUSINESS NAME</p>
+                <p>¡ WELCOME !</p>
                 </label>
                 <input
-                    value={business.num1}
+                    value={business.val1}
                     onChange={handleChange}
                     type="text"
                     placeholder='Indica el nombre de la empresa'
-                    name="num1"
+                    name="val1"
                     required
                 />
         </form>
         {/* <p>{business.num1}</p> */}
         { 
-            business.num1.length > 6 ?
+            business.val1.length > 6 ? (
         
         <Options
             business={business}
-            id={id}/>
+            id={id}
+            />
 
-        : null
+        ) : null
     } 
         </div>
     );

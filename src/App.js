@@ -27,7 +27,7 @@ function App({ business, id }) {
     <div className="App">
       {/* <AuthProvider> */}
       <PointsProvider>
-        <Navbar business={business} id={id} />
+        {/* <Navbar business={business} id={id} /> */}
          <Routes>
            <Route path='/' element={<Welcome />} />
            <Route to={`/buttonppal`} element={<Options business={business} id={id} />} />

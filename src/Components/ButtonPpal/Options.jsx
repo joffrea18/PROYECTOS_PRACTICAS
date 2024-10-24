@@ -7,7 +7,7 @@ import { Button } from '@mui/material';
 
 const Options = ({ business, id }) => {
 
-    const businessOptions = toString(business.num1);
+    const businessOptions = toString(business.val1);
     console.log(businessOptions, id);
     
     return (
@@ -16,7 +16,7 @@ const Options = ({ business, id }) => {
                 <br />
                 {/* <h1>{id}</h1> */}
                 {/* Esto se renderiza en el Dom correctamente */}
-                {/* <p>{ business.num1 }</p> */}
+                {/* <p>{ business.val1 }</p> */}
                 <Button >
                     <p style={
                         {color: 

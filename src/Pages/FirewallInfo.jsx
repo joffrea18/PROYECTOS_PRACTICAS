@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import { useState, useEffect } from 'react';
 import { getId } from './services/services';
 import { usePoints } from '../context/PointsContext';
+import Navbar from '../Components/Navbar/Navbar';
 
 const FirewallInfo = ( ) => {
 
@@ -142,7 +143,8 @@ const FirewallInfo = ( ) => {
     console.log(totalPoints());
     
     return (
-        <div>
+        <div >
+            <Navbar />
             <section
                 className='firewall-section'
                 id='firewall'>

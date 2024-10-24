@@ -4,7 +4,7 @@ import { getId } from "../Pages/services/services";
 
 export const AuthContext = createContext();
 
-const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children }) => {
  
     const [ id, setId ] = useState('');
     const [ businessA, setBusinessA ] = useState('');

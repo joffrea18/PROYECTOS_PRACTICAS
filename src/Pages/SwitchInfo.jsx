@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { usePoints } from '../context/PointsContext';
 import { getId } from './services/services';
+import Navbar from '../Components/Navbar/Navbar';
 
 const SwitchInfo = ( ) => {
 
@@ -120,7 +121,8 @@ const SwitchInfo = ( ) => {
     console.log(totalPoints());
 
     return (
-        <div>
+        <div >
+            <Navbar />
             <section
                 class="category-card"
                 id="switch">

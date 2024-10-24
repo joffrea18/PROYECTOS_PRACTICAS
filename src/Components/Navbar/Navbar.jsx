@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { getId } from '../../Pages/services/services';
 
 
-const Navbar = ({ business, id }) => {
+const Navbar = ({ business }) => {
 
    // const [ emailAddress, setEmailAddress ] = useState('');
 
@@ -23,19 +23,13 @@ useEffect(() => {
 
     return (
         <div className='navbar'>
-            {
-                business ?
-                <>
-                <h1>
-                    {business}
-                </h1>
-                <h1>
-                    ID USER: {id}
-                </h1>
-                <img src={logo} alt='' /> 
-                </> :
-                <img src={logo} alt='' />
-            }
+                <img 
+                    id= 'img-logo'
+                    src={logo} alt='logo-microsyscom' />
+                <p
+                    id='navbar-p'>
+                    MICROSYSCOM
+                </p>
         </div>
     );
 }

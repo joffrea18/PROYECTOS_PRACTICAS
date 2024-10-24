@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import { useState, useEffect } from 'react';
 import { getId } from './services/services';
 import { usePoints } from '../context/PointsContext';
+import Navbar from '../Components/Navbar/Navbar';
 
 
 const RouterInfo = ({ business, id }) => {
@@ -108,14 +109,16 @@ const RouterInfo = ({ business, id }) => {
             
             console.log(inputValue);
             console.log(totalPoints());
+            console.log(business);
+            
             
             
             return (
-                <div>
-            <section className="category-card" id="router">
+                <div >
+                <Navbar />
+                <section className="category-card" id="router">
                 <h2>Router</h2>
                 {/* Llega OBJECT */}
-                {/* {/* <p>{ id }</p> */}
                 <h2>{ business }</h2>
                 </section>
                 <form action="get">

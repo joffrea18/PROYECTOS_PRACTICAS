@@ -45,3 +45,12 @@
     margin-left: -60px;
 }
 
+#navbar-p {
+    color: black;
+    font-style: italic;
+}
+
+#img-logo {
+    margin: 2rem;
+    align-items: self-end;
+}

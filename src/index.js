@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import AuthProviderContext from './context/AuthContext';
+import {AuthContext} from './context/AuthContext';
 // import { PointsProvider } from './context/PointsContext';
 
 
@@ -12,11 +12,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
       <BrowserRouter>
-        {/* <AuthProviderContext> */}
+        {/* <AuthContext> */}
           {/* <PointsProvider> */}
             <App />
           {/* </PointsProvider> */}
-        {/* </AuthProviderContext> */}
+        {/* </AuthContext> */}
       </BrowserRouter>
   </React.StrictMode>
 );

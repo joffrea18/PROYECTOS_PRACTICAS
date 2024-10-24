@@ -1,11 +1,11 @@
 import React from 'react';
-import { Bar } from 'react-chartjs-2';
-import { Chart, LinearScale, CategoryScale, BarElement, Title, Tooltip } from 'chart.js';
+import { Doughnut } from 'react-chartjs-2';
+import { Chart, ArcElement, Title, Tooltip, Legend } from 'chart.js';
 import { usePoints } from '../../context/PointsContext';
 
 // Se deben registrar las escalas del Chart
     // dado que la versión es superior a v3
-Chart.register(LinearScale, CategoryScale, BarElement, Title, Tooltip);
+Chart.register(ArcElement, Title, Tooltip, Legend);
 
 const PointsChart = () => {
     const { points } = usePoints();
@@ -16,27 +16,20 @@ const PointsChart = () => {
             {
                 label: 'Total Points',
                 data: [points.router, points.firewall, points.switch],
-                backgroundColor: ['rgba(0, 160, 255, 1)'],
+                backgroundColor: [
+                    'rgba(0, 160, 100, 1)', // Color para Router
+                    'rgba(255, 202, 252, 1)', // Color para Firewall
+                    'rgba(0, 123, 255, 1)', // Color para Switch
+                ],
             },
         ],
     };
 
     const options = {
-        scales: {
-            y: {
-                beginAtZero: true,
-                // ticks: {
-                //     color: 'blue', // Cambia 'blue' al color deseado
-                // },
-            },
-            x: {
-                ticks: {
-                    color: 'red', // Cambia 'red' al color deseado
-                },
-            },
-        },
+        responsive: true,
         plugins: {
             legend: {
+                position: 'top',
                 labels: {
                     color: 'green', // Cambia 'green' al color deseado
                 },
@@ -52,7 +45,7 @@ const PointsChart = () => {
     return (
         <div>
             {/* <h2>Points Distribution</h2> */}
-            <Bar data={data} options={options} />
+            <Doughnut data={data} options={options} />
         </div>
     );
 };
