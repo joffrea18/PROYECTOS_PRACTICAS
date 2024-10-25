@@ -132,7 +132,8 @@ const SwitchInfo = ( ) => {
                 <form action="get">
                     <label
                         for="switch-fabricante">
-                            Fabricante:</label>
+                            Fabricante
+                            </label>
                     <input
                         type="text"
                         name="val1"
@@ -142,7 +143,7 @@ const SwitchInfo = ( ) => {
                 
                     <label
                         for="switch-modelo">
-                            Modelo:</label>
+                            Modelo</label>
                     <input
                         type="text"
                         name="val2"
@@ -152,55 +153,71 @@ const SwitchInfo = ( ) => {
                 
                     <label
                         for="switch-notas">
-                            Notas:</label>
+                            Notas</label>
                     <textarea
                         name="val3"
                         onChange={handleInput}
                         placeholder='Apunta tus Notas aquí'
                         value={inputValue.val3} />
-                                                 
+
+                    <label htmlFor="">                       
                         <input
                             type="checkbox"
                             name="val4"
                             onChange={handleCheckbox}
                             value={checkboxes.val4} />
                         Licencia
+                        </label>
+                        <br />
                         
+                        <label htmlFor="">
                         <input
                             type="checkbox"
                             name="val5"
                             onChange={handleCheckbox}
                             value={checkboxes.val5} />
                         Anti-storm
-                        
-                    
+                        </label>
+                        <br />
+
+                        <label htmlFor="">                    
                         <input
                             type="checkbox"
                             name="val6"
                             onChange={handleCheckbox}
                             value={checkboxes.val6} />
                         Segmentación por VLANs
-                        
+                        </label>
+                        <br />
+
+                        <label htmlFor="">
                         <input
                             type="checkbox"
                             name="val7"
                             onChange={handleCheckbox}
                             value={checkboxes.val7} />
                         Gestión aislad
+                        </label>
+                        <br />
                     
+                        <label htmlFor="">
                         <input
                            type="checkbox"
                            name="val8"
                            onChange={handleCheckbox}
                            value={checkboxes.val8} />
-                        Backup automático de frecuencia ≤ 1 semana
-                        
+                        Backup automático
+                        </label>
+                        <br />
+
+                        <label htmlFor="">
                         <input
                             type="checkbox"
                             name="val9"
                             onChange={handleCheckbox}
                             value={checkboxes.val9} />
                         Monitoreo del dispositivo
+                        </label>
                         
                 </form>
                 
@@ -209,18 +226,24 @@ const SwitchInfo = ( ) => {
                 to={`/buttonppal/firewallinfo`} > 
             <Button
                 variant='contained'
-                className='back-button' >
+                className='back-button'
+                style={{
+                    margin: '10px 20px 10px 20px'
+                }}>
                 RETURN
            </Button>
             </Link>
 
            <Link
             style={{textDecoration : 'none' }}
-            to={`/buttonppal/printeroption`} > 
+            to={`/buttonppal/accespointinfo`} > 
            <Button
             variant='contained'
-            className='back-button' >
-                    PRINT REPORT
+            className='back-button'
+            style={{
+                margin: '10px 20px 10px 20px'
+            }}>
+                    NEXT
            </Button>
            </Link>
            {/* <h1>POINTS: { totalPoints() }</h1> */}

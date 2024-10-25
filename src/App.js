@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 // import { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Switch } from 'react-router-dom';
 // import { slide as Menu } from 'react-burger-menu';
 import Footer from './Components/Footer/Footer';
 import Navbar from './Components/Navbar/Navbar';
@@ -15,6 +15,7 @@ import SwitchInfo from './Pages/SwitchInfo';
 import PrinterOption from './Pages/PrinterOption';
 import Options from './Components/ButtonPpal/Options';
 import { PointsProvider } from './context/PointsContext';
+import AccesPoint from './Pages/AccesPoint';
 // import {AuthProvider} from './context/AuthContext';
 
 // Aquí debo de mirar introducir al email como prop al
@@ -34,6 +35,7 @@ function App({ business, id }) {
            <Route path={`/buttonppal/routerinfo`} element={<RouterInfo business={business} id={id} />} />
            <Route path={`/buttonppal/firewallinfo`} element={<FirewallInfo business={business} id={id} />} />
            <Route path={`/buttonppal/switchinfo`} element={<SwitchInfo business={business} id={id} />} />
+           <Route path={`/buttonppal/accespointinfo`} element={<AccesPoint business={business} id={id} />} />
            <Route path={`/buttonppal/printeroption`} element={<PrinterOption business={business} id={id} />} />
            <Route path='*' element={<NotFound />} />
          </Routes>

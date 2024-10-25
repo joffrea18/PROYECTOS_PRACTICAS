@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import Options from './Options';
 import { getId } from '../../Pages/services/services';
 
+// Este componente se podría eliminar, de momento no se renderiza
 
 // Desde aquí ya el valor empieza a ser undefined
 

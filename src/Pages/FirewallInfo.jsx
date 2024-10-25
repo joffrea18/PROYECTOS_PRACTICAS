@@ -178,124 +178,174 @@ const FirewallInfo = ( ) => {
                     <br/>
 
                     {/* LICENCIA prela los demás checkboxes */}
+                    <label htmlFor="">
                     <input
                         type="checkbox"
                         name="val3"
                         value={checkboxes.val3}
                         onChange={handleCheckbox}
                     /> Licencia
+                    </label>
+                    <br />
 
+                    <label htmlFor="">
                     <input
                         type="checkbox"
                         name="val4"
                         value={checkboxes.val4}
                         onChange={handleCheckbox}
-                        /> Acceso limitado a la UI desde una IP del exterior
+                        /> Acceso UI desde IP exterior
+                    </label>
+                    <br />
 
+                    <label htmlFor="">
                     <input
                         type="checkbox"
                         name="val5"
                         value={checkboxes.val5}
                         onChange={handleCheckbox}
-                        /> Acceso limitado a la UI desde un puerto de gestión desde el interior
+                        /> Acceso UI desde puerto interior
+                    </label>
+                    <br />
 
+                    <label htmlFor="">
                     <input
                         type="checkbox"
                         name="val6"
                         value={checkboxes.val6}
                         onChange={handleCheckbox}
-                        /> Sistema de alertas de inicio de sesión
+                        /> Sistema de alertas Login
+                    </label>
+                    <br />
 
+                    <label htmlFor="">
                     <input
                         type="checkbox"
                         name="val7"
                         value={checkboxes.val7}
                         onChange={handleCheckbox}
-                        /> VPN bajo protocolo seguro y con MFA
+                        /> VPN protocolo seguro & MFA
+                    </label>
+                    <br />
 
+                    <label htmlFor="">
                     <input
                         type="checkbox"
                         name="val8"
                         value={checkboxes.val8}
                         onChange={handleCheckbox}
                         /> Servicios Anti-Malware
+                    </label>
+                    <br />
 
+                    <label htmlFor="">
                     <input
                         type="checkbox"
                         name="val9"
                         value={checkboxes.val9}
                         onChange={handleCheckbox}
                         /> Filtros de reputación
+                    </label>
+                    <br />
 
+                    <label htmlFor="">
                     <input
                         type="checkbox"
                         name="val9"
                         value={checkboxes.val9}
                         onChange={handleCheckbox}
                         /> IPS
+                    </label>
+                    <br />
 
+                    <label htmlFor="">
                     <input
                         type="checkbox"
                         name="val10"
                         value={checkboxes.val10}
                         onChange={handleCheckbox}
                         /> SandBoxing
+                    </label>
+                    <br />
 
+                    <label htmlFor="">
                     <input
                         type="checkbox"
                         name="val11"
                         value={checkboxes.val11}
                         onChange={handleCheckbox}
                         /> Email Security
+                    </label>
+                    <br />
 
+                    <label htmlFor="">
                     <input
                         type="checkbox"
                         name="val12"
                         value={checkboxes.val12}
                         onChange={handleCheckbox}
-                        /> Collaborative Detection and Response
+                        /> Detection & Response
+                    </label>
+                    <br />
 
+                    <label htmlFor="">
                     <input
                         type="checkbox"
                         name="val13"
                         value={checkboxes.val13}
                         onChange={handleCheckbox}
                         /> SSL Inspection
+                    </label>
+                    <br />
 
+                    <label htmlFor="">
                     <input
                         type="checkbox"
                         name="val14"
                         value={checkboxes.val14}
                         onChange={handleCheckbox}
                         /> Segmentación por VLANs
+                    </label>
+                    <br />
 
+                    <label htmlFor="">
                     <input
                         type="checkbox"
                         name="val15"
                         value={checkboxes.val15}
                         onChange={handleCheckbox}
                         /> Certificado confiable
+                    </label>
+                    <br />
 
+                    <label htmlFor="">
                     <input
                         type="checkbox"
                         name="val16"
                         value={checkboxes.val16}
                         onChange={handleCheckbox}
-                        /> Backup automático de frecuencia ≤ 1 semana
+                        /> Backup automático ≤ 1 semana
+                    </label>
+                    <br />
 
+                    <label htmlFor="">
                     <input
                         type="checkbox"
                         name="val17"
                         value={checkboxes.val17}
                         onChange={handleCheckbox}
                         /> Monitoreo del dispositivo
+                    </label>
+                    <br />
 
+                    <label htmlFor="">
                     <input
                         type="checkbox"
                         name="val18"
                         value={checkboxes.val18}
                         onChange={handleCheckbox}
-                        />Acceso Limitado Geograficamente a la VPN
+                        /> VPN - Limitado Geograficamente
+                    </label>
                 </form>
 
            <Link
@@ -304,7 +354,10 @@ const FirewallInfo = ( ) => {
 
             <Button
                 variant='contained'
-                className='back-button' >
+                className='back-button'
+                style={{
+                    margin: '10px 20px 10px 20px'
+                }} >
 
            <h1
             className='back-button'>
@@ -318,7 +371,10 @@ const FirewallInfo = ( ) => {
 
            <Button
                 variant='contained'
-                className='next-button'>
+                className='next-button'
+                style={{
+                    margin: '10px 20px 10px 20px'
+                }}>
 
             <h1
                 className='next-button'>

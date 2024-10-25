@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Welcome.css';
-import { useState } from 'react';
+// import  from 'react';
 import Options from '../ButtonPpal/Options';
 import Navbar from '../Navbar/Navbar';
 
@@ -9,8 +9,9 @@ import Navbar from '../Navbar/Navbar';
 
 const Welcome = ( ) => {
 
-    const [ business, setBusiness ] = useState({ val1: '' });
+    // const [ business, setBusiness ] = useState(localStorage.getItem({ val1: '' }));
     const [ id, setId ] = useState(1);
+    const [ business, setBusiness ] = useState({ val1: '' });
 
 
       const handleChange = ( e ) => {
@@ -25,7 +26,7 @@ const Welcome = ( ) => {
    
          };
         // console.log(emailAddress, id);
-        console.log(business.val1);
+        // console.log(business.val1);
         
 
         // const businessA = business.toString();
@@ -33,11 +34,18 @@ const Welcome = ( ) => {
         const handleSubmit = (e) => {
             e.preventDefault();
         }
-        console.log(business.val1);
+        // console.log(business.val1);
         
         // console.log(id);
         // onSubmit={handleSubmit}
         // const businessA = business.num1
+
+        // Creo un efecto que me almacene el dato en el local
+        /*
+        useEffect(() => {
+            localStorage.setItem('business', business);
+          }, [business]);
+          */
 
     return (
         <div>

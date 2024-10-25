@@ -156,25 +156,27 @@ const RouterInfo = ({ business, id }) => {
                         value={inputValue.num3}/>
 
                         <label for="router-ip-estatica">
-                            IP Estática</label>
-
-                        <input
+                            <input
                             type="checkbox"
                             // id="router-ip-estatica"
                             name="num7"
                             checked={ checkboxes.num1 }
                             onChange={handleCheckbox}
-                            /> 
+                            />
+                            IP Estática
+                        </label>
+                        <br />
 
                         <label for="fibra-backup">
-                            Fibra Backup</label>
-
-                        <input
+                            <input
                             type="checkbox"
                             name="num8"
                             onclick="toggleBackupFields()"
                             checked={ checkboxes.num2 }
-                            onChange={handleCheckbox}/> 
+                            onChange={handleCheckbox}/>
+                            Fibra Backup
+                        </label>
+                        <br />
 
                     <label for="backup-isp">
                         ISP de Backup</label>
@@ -221,7 +223,10 @@ const RouterInfo = ({ business, id }) => {
 
             <Button
                 variant='contained'
-                className='back-button' >
+                className='back-button'
+                style={{
+                    margin: '10px 20px 10px 20px'
+                }}>
            
            <h1
                 className='back-button'>
@@ -238,7 +243,10 @@ const RouterInfo = ({ business, id }) => {
 
            <Button
                 variant='contained'
-                className='next-button'>
+                className='next-button'
+                style={{
+                    margin: '10px 20px 10px 20px'
+                }}>
 
             <h1
                 className='next-button'>

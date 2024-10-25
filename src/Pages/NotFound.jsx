@@ -11,7 +11,10 @@ const NotFound = () => {
             <h1>Disculpe las molestias, la página a la que intenta ingresar
                 no existe o no es válida.</h1>
             <Link
-                to='/'>
+                to='/'
+                style={{
+                    margin: '0 20px 10px 20px'
+                }}>
                 RETURN</Link>
         </>
     );

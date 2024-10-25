@@ -7,6 +7,7 @@ export const PointsProvider = ({ children }) => {
         router: 0,
         firewall: 0,
         switch: 0,
+        accespoint: 0,
     });
     const [ id, setId ] = useState('');
     const [ businessA, setBusinessA ] = useState('');

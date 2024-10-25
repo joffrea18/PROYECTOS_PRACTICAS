@@ -17,7 +17,10 @@ const Options = ({ business, id }) => {
                 {/* <h1>{id}</h1> */}
                 {/* Esto se renderiza en el Dom correctamente */}
                 {/* <p>{ business.val1 }</p> */}
-                <Button >
+                <Button 
+                    style={{
+                        margin: '0 20px 10px 20px'
+                    }}>
                     <p style={
                         {color: 
                             'white'
@@ -40,6 +43,11 @@ const Options = ({ business, id }) => {
                          to={`/buttonppal/switchinfo`}
                          >
                          <p>Switch</p>
+                     </Link>
+                     <Link
+                         to={`/buttonppal/accespointinfo`}
+                         >
+                         <p>AccesPoint</p>
                      </Link>
                      </Menu>
                 </Button>
