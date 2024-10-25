@@ -74,3 +74,19 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+******************************************************************************************************************************************************************************************************************************************
+
+## PRÓXIMOS AVANCES
+
+# Agregar restricción de botones del checkbox
+# Mostrar nombre de la empresa en el reporte impreso
+# Hacer dinámico el botón de manera emergente
+
+## ALGUNAS LIBRERÍAS INSTALADAS
+
+# npm install gradient
+# npm install react-router-dom
+# npm install @mui/material @emotion/react @emotion/styled
+# npm install chart.js react-chartjs-2
+
