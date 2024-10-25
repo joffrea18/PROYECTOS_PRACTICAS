@@ -53,4 +53,12 @@
 #img-logo {
     margin: 2rem;
     align-items: self-end;
+    width: 100px;
+    height: 100px;
+}
+
+#img-name-logo{
+    margin-top: 4rem;
+    align-items: self-end;
+    width: 300px;
 }

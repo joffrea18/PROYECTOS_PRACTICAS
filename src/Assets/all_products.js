@@ -1,5 +1,6 @@
 import facebook from "./facebook.jpg";
 import logo from "./logo.jpg";
+import logo_microsyscom from "./logo-microsyscom.jpg";
 
 
 let all_product = [
@@ -14,6 +15,12 @@ let all_product = [
         name: "logo",
         category: "all",
         image: logo,
+    },
+    {
+        id: 3,
+        name: "logo-microsyscom",
+        category: "all",
+        image: logo_microsyscom,
     },
 ];
 
