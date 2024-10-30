@@ -5,10 +5,8 @@ import { Button } from '@mui/material';
 
 // El valor sigue undefined && OBJECT
 
-const Options = ({ business, id }) => {
+const Options = () => {
 
-    const businessOptions = toString(business.val1);
-    console.log(businessOptions, id);
     
     return (
             <div>

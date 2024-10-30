@@ -1,64 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Welcome.css';
-// import  from 'react';
 import Options from '../ButtonPpal/Options';
 import Navbar from '../Navbar/Navbar';
+import RouterInfo from '../../Pages/RouterInfo';
 
 // Componente Padre
 // El dato de business.num1 se muestra en el Dom
 
-const Welcome = ( ) => {
+const Welcome = ({ setEntry }) => {
 
-    // const [ business, setBusiness ] = useState(localStorage.getItem({ val1: '' }));
-    const [ id, setId ] = useState(1);
-    const [ business, setBusiness ] = useState({ val1: '' });
+const [business, setBusiness] = useState('');
 
+const handleChange = ( e ) => {
+  setBusiness(e.target.value);
+};
 
-      const handleChange = ( e ) => {
-          // setBusiness(target.value);
-          e.preventDefault();
-          const { name, value } = e.target;
-          setBusiness((prevBusiness) => (
-              {
-                ...prevBusiness,
-                  [name]: value,
-              }));
-   
-         };
-        // console.log(emailAddress, id);
-        // console.log(business.val1);
-        
-
-        // const businessA = business.toString();
-        
-        const handleSubmit = (e) => {
-            e.preventDefault();
-        }
-        // console.log(business.val1);
-        
-        // console.log(id);
-        // onSubmit={handleSubmit}
-        // const businessA = business.num1
-
-        // Creo un efecto que me almacene el dato en el local
-        /*
-        useEffect(() => {
-            localStorage.setItem('business', business);
-          }, [business]);
-          */
+const handleSubmit = ( e ) => {
+    e.preventDefault()
+    setEntry([business])
+}
 
     return (
+        
         <div>
-            <Navbar />
+            
+            {/* <Navbar />
             <br />
-            <br />
-       <form 
-        onSubmit={handleSubmit}>
+            <br /> */}
+           
+       <form
+        onSubmit={ handleSubmit }>
             <label htmlFor="empresa">
                 <p>¡ WELCOME !</p>
                 </label>
                 <input
-                    value={business.val1}
+                    value={business}
                     onChange={handleChange}
                     type="text"
                     placeholder='Indica el nombre de la empresa'
@@ -66,16 +42,9 @@ const Welcome = ( ) => {
                     required
                 />
         </form>
-        {/* <p>{business.num1}</p> */}
         { 
-            business.val1.length > 6 ? (
-        
-        <Options
-            business={business}
-            id={id}
-            />
+         business.length > 5  ? <Options setEntry={setEntry}/> : null
 
-        ) : null
     } 
         </div>
     );

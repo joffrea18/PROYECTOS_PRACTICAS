@@ -3,7 +3,6 @@ import { React , useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { usePoints } from '../context/PointsContext';
-import { getId } from './services/services';
 import Navbar from '../Components/Navbar/Navbar';
 
 const AccesPoint = () => {
@@ -30,17 +29,6 @@ const AccesPoint = () => {
 
         // Total 100
     };
-
-    useEffect(() => {
-    const fetchData = async () => {
-        try {
-            await getId();
-        } catch (error) {
-            return error;
-        }
-    };
-    fetchData();
-}, []);
 
     const handleInput = (e) => {
         // e.preventDefault;
@@ -86,7 +74,7 @@ const totalPoints = () => {
 
     return (
         <div>
-            <Navbar />
+            {/* <Navbar /> */}
             <section
                 id='acess_point'>
                     <h2>ACCES POINT</h2>

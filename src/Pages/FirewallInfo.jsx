@@ -3,148 +3,125 @@ import './PagesCSS/Pages.css';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { useState, useEffect } from 'react';
-import { getId } from './services/services';
 import { usePoints } from '../context/PointsContext';
 import Navbar from '../Components/Navbar/Navbar';
 
-const FirewallInfo = ( ) => {
+const FirewallInfo = () => {
 
-    const { setPoints } = usePoints();
+const { setPoints } = usePoints();
+// Está reventando en la lectura de "name" en la arrow function / función manejadora
 
-    // Está reventando en la lectura de "name" en la arrow function / función manejadora
+const [ inputValue, setInput ]
+    = useState({
+        val1: '',
+        val2: '', });
 
-     const [ inputValue, setInput ]
-        = useState({
-            val1: '',
-            val2: '', });
-
-    const [ checkboxes, setChexboxes ]
-        = useState({
-            val3: false,
-            val4: '',
-            val5: '',
-            val6: '',
-            val7: '',
-            val8: '',
-            val9: '',
-            val10: '',
-            val11: '',
-            val12: '',
-            val13: '',
-            val14: '',
-            val15: '',
-            val16: '',
-            val17: '',
-            val18: '',
-            val19: ''
-         });
+const [ checkboxes, setChexboxes ]
+    = useState({
+        val3: false,
+        val4: '',
+        val5: '',
+        val6: '',
+        val7: '',
+        val8: '',
+        val9: '',
+        val10: '',
+        val11: '',
+        val12: '',
+        val13: '',
+        val14: '',
+        val15: '',
+        val16: '',
+        val17: '',
+        val18: '',
+        val19: ''
+     });
 
 
-       const pointsf = {
-        val1: 3, //
-        val2: 5,  //
-        val3: 2,  //
-        val4: 5,  //
-        val5: 5,  //
-        val6: 5,  //
-        val7: 5,  //
-        val8: 5,   //
-        val9: 5, //
-        val10: 5, //
-        val11: 5, //
-        val12: 5, //
-        val13: 5, //
-        val14: 5, //
-        val15: 5, //
-        val16: 5, //
-        val17: 5, //
-        val18: 5, //
-        val19: 5, //
-        val20: 5, //
-        val21: 5 //
-
+    const pointsf = {
+     val1: 3, //
+     val2: 5,  //
+     val3: 2,  //
+     val4: 5,  //
+     val5: 5,  //
+     val6: 5,  //
+     val7: 5,  //
+     val8: 5,   //
+     val9: 5, //
+     val10: 5, //
+     val11: 5, //
+     val12: 5, //
+     val13: 5, //
+     val14: 5, //
+     val15: 5, //
+     val16: 5, //
+     val17: 5, //
+     val18: 5, //
+     val19: 5, //
+     val20: 5, //
+     val21: 5 //
         // Total 100
     };
 
-    useEffect(() => {
-    const fetchData = async () => {
-        try {
-            await getId();
-        } catch (error) {
-            return error;
+
+const handleInput = (e) => {
+    // e.preventDefault;
+    const { name, value } = e.target;
+    setInput({
+        ...inputValue,
+        [name]: value,
+    });
+}
+
+
+const handleCheckbox = (e) => {
+    const { name, checked } = e.target;
+    setChexboxes({
+        ...checkboxes,
+        [name]: checked,
+    });
+}
+
+
+const calculateInputPoints = () => {
+    let totalPoints = 0;
+    // Sumar puntos de los inputs
+    Object.keys(inputValue).forEach((key) => {
+        if (inputValue[key]) {
+            totalPoints += pointsf[key]; // Sumar puntos si hay valor en el input
         }
-    };
-    fetchData();
-}, []);
+    });
 
-    const handleInput = (e) => {
-        // e.preventDefault;
-        const { name, value } = e.target;
-        setInput({
-            ...inputValue,
-            [name]: value,
-        });
-    }
+    return totalPoints;
+};
 
-    console.log(inputValue.name);
+const calculateCheckboxPoints = () => {
+    let totalPoints = 0;
+    // Sumar puntos de los checkboxes
+    Object.keys(checkboxes).forEach((key) => {
+        if (checkboxes[key]) {
+            totalPoints += pointsf[key]; // Sumar puntos si el checkbox está activo
+        }
+    });
+    return totalPoints;
+};
 
-    const handleCheckbox = (e) => {
-        const { name, checked } = e.target;
-        setChexboxes({
-            ...checkboxes,
-            [name]: checked,
-        });
-    }
+const totalPoints = () => {
+    return calculateInputPoints() + calculateCheckboxPoints();
+};
 
-    console.log(checkboxes.name);
-
-
-    const calculateInputPoints = () => {
-        let totalPoints = 0;
-
-        // Sumar puntos de los inputs
-        Object.keys(inputValue).forEach((key) => {
-            if (inputValue[key]) {
-                totalPoints += pointsf[key]; // Sumar puntos si hay valor en el input
-            }
-        });
-
-        return totalPoints;
-    };
-
-    const calculateCheckboxPoints = () => {
-        let totalPoints = 0;
-
-        // Sumar puntos de los checkboxes
-        Object.keys(checkboxes).forEach((key) => {
-            if (checkboxes[key]) {
-                totalPoints += pointsf[key]; // Sumar puntos si el checkbox está activo
-            }
-        });
-
-        return totalPoints;
-    };
-
-    const totalPoints = () => {
-        return calculateInputPoints() + calculateCheckboxPoints();
-    };
-
-    console.log(inputValue.name);
-
-    useEffect(() => {
-        const total = totalPoints();
-        setPoints((prevPoints) => ({
-            ...prevPoints,
-            firewall: total,
-        })); // Actualiza los puntos en el contexto
-    }, [inputValue, checkboxes]); // Dependencias para actualizar cuando cambie algo
+useEffect(() => {
+    const total = totalPoints();
+    setPoints((prevPoints) => ({
+        ...prevPoints,
+        firewall: total,
+    })); // Actualiza los puntos en el contexto
+}, [inputValue, checkboxes]); // Dependencias para actualizar cuando cambie algo
     
 
-    console.log(totalPoints());
-    
     return (
         <div >
-            <Navbar />
+            {/* <Navbar /> */}
             <section
                 className='firewall-section'
                 id='firewall'>

@@ -59,7 +59,7 @@ const handleClose = () => setOpen(false); // Cerrar el modal
                 id='pdf-content'
                 className='points-num'
                 style={{ textAlign: 'center' }}>
-                <Navbar/>
+                {/* <Navbar/> */}
                 <p>BUSINESS ANALYSIS RESULT</p>
                 <PointsChart points= {points}/>
                 <form action="">
