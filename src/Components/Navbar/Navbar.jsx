@@ -2,6 +2,7 @@ import './Navbar.css';
 import logo from '../../Assets/logo.jpg';
 import logo_microsyscom from '../../Assets/logo-microsyscom.jpg';
 import { useState } from 'react';
+import Welcome from '../Welcome/Welcome';
 
 
 const Navbar = () => {

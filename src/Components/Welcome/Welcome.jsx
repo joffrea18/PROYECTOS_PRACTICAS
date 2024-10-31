@@ -7,9 +7,9 @@ import RouterInfo from '../../Pages/RouterInfo';
 // Componente Padre
 // El dato de business.num1 se muestra en el Dom
 
-const Welcome = ({setEntry}) => {
+const Welcome = ({entry,setEntry}) => {
 
-const [business, setBusiness] = useState({'business': setEntry});
+const [business, setBusiness] = useState({'business': entry});
 const empresa = JSON.stringify(business);
 localStorage.setItem('business', empresa);
 
