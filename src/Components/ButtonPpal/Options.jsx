@@ -1,12 +1,18 @@
 import { slide as Menu } from 'react-burger-menu';
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
+import { useState } from "react";
 
 
 // El valor sigue undefined && OBJECT
 
 const Options = () => {
 
+<<<<<<< Updated upstream
+=======
+    const [ businessA, setBusiness ] = useState('');
+    console.log(businessA);
+>>>>>>> Stashed changes
     
     return (
             <div>

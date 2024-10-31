@@ -21,10 +21,13 @@ import Navbar from './Components/Navbar/Navbar';
 // componente de Buttonppal
 
 function App() {
+<<<<<<< Updated upstream
 
   const [entry, setEntry] = useState([]);
   console.log(entry);
   
+=======
+>>>>>>> Stashed changes
 
   return (
     <div className="App">
@@ -32,10 +35,17 @@ function App() {
       <PointsProvider>
         <Navbar />
          <Routes>
+<<<<<<< Updated upstream
            <Route path='/' element={<Welcome setEntry={setEntry}/>} />
            <Route to={`/buttonppal`} element={<Options entry={entry}/>} />
            <Route path={`/buttonppal/routerinfo`} element={<RouterInfo entry={entry}/>} />
            <Route path={`/buttonppal/firewallinfo`} element={<FirewallInfo entry={entry}/>} />
+=======
+           <Route path='/' element={<Welcome />} />
+           <Route to={`/buttonppal`} element={<Options />} />
+           <Route path={`/buttonppal/routerinfo`} element={<RouterInfo />} />
+           <Route path={`/buttonppal/firewallinfo`} element={<FirewallInfo />} />
+>>>>>>> Stashed changes
            <Route path={`/buttonppal/switchinfo`} element={<SwitchInfo />} />
            <Route path={`/buttonppal/accespointinfo`} element={<AccesPoint />} />
            <Route path={`/buttonppal/printeroption`} element={<PrinterOption />} />

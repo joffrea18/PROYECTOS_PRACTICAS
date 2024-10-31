@@ -7,17 +7,36 @@ import { usePoints } from '../context/PointsContext';
 import Navbar from '../Components/Navbar/Navbar';
 
 
+<<<<<<< Updated upstream
 const RouterInfo = ({entry}) => {
+=======
+const RouterInfo = () => {
+>>>>>>> Stashed changes
 
     // Actualizamos los datos y utilizamos el Contexto del Provider
     const { setPoints } = usePoints();
+    const [ businessA, setBusiness ] = useState('');
+    console.log(businessA);
     
+<<<<<<< Updated upstream
 const [ inputValue, setInput ] = useState({ num1: '',
     num2: '',
     num3: '',
     num4: '',
     num5: '',
     num6: ''  });
+=======
+    // Repetir en cada Page 
+    
+    // console.log(business, id);
+    
+    const [ inputValue, setInput ] = useState({ num1: '',
+        num2: '',
+        num3: '',
+        num4: '',
+        num5: '',
+        num6: ''  });
+>>>>>>> Stashed changes
         
 const [ checkboxes, setChexboxes ] =
     useState({ num7: '',
@@ -80,6 +99,7 @@ const calculateCheckboxPoints = () => {
     return totalPoints;
 };
             
+<<<<<<< Updated upstream
 const totalPoints = () => {
     return calculateInputPoints() + calculateCheckboxPoints();
 };
@@ -91,6 +111,65 @@ useEffect(() => {
         router: total,
     })); // Actualiza los puntos en el contexto
 }, [inputValue, checkboxes]); // Dependencias para actualizar cuando cambie algo
+=======
+            const handleInput = (e) => {
+                const { name, value } = e.target;
+                setInput({
+                    ...inputValue,
+                    [name]: value,
+                });
+            }
+            
+            const handleCheckbox = (e) => {
+                const { name, checked } = e.target;
+                setChexboxes({
+                    ...checkboxes,
+                    [name]: checked,
+                });
+            }
+            
+            const calculateInputPoints = () => {
+                let totalPoints = 0;
+                
+                // Sumar puntos de los inputs
+                Object.keys(inputValue).forEach((key) => {
+                    if (inputValue[key]) {
+                        totalPoints += points[key]; // Sumar puntos si hay valor en el input
+                    }
+                });
+                
+                return totalPoints;
+            };
+            
+            const calculateCheckboxPoints = () => {
+                let totalPoints = 0;
+                
+                // Sumar puntos de los checkboxes
+                Object.keys(checkboxes).forEach((key) => {
+                    if (checkboxes[key]) {
+                        totalPoints += points[key]; // Sumar puntos si el checkbox está activo
+                    }
+                });
+                
+                return totalPoints;
+            };
+            
+            const totalPoints = () => {
+                return calculateInputPoints() + calculateCheckboxPoints();
+            };
+            
+            useEffect(() => {
+                const total = totalPoints();
+                setPoints((prevPoints) => ({
+                    ...prevPoints,
+                    router: total,
+                })); // Actualiza los puntos en el contexto
+            }, [inputValue, checkboxes]); // Dependencias para actualizar cuando cambie algo
+            
+            console.log(inputValue);
+            console.log(totalPoints());
+            console.log(businessA);
+>>>>>>> Stashed changes
             
             
             
@@ -99,7 +178,11 @@ return (
                 {/* <Navbar /> */}
                 <section className="category-card" id="router">
                 <h2>Router</h2>
+<<<<<<< Updated upstream
                 <h1>{entry}</h1>
+=======
+                {/* Llega NULL */}
+>>>>>>> Stashed changes
                 </section>
                 <form action="get">
                 {/* <div class="input-group"> */}
