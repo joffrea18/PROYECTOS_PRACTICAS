@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 const Navbar = () => {
 
-    // const [business, setBusiness] = useState(localStorage.getItem(setEntry))
+const business = localStorage.getItem('business');
 
 return (
     <div className='navbar'>

@@ -8,11 +8,6 @@ import { useState } from "react";
 
 const Options = () => {
 
-<<<<<<< Updated upstream
-=======
-    const [ businessA, setBusiness ] = useState('');
-    console.log(businessA);
->>>>>>> Stashed changes
     
     return (
             <div>

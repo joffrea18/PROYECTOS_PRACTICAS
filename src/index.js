@@ -4,26 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-<<<<<<< Updated upstream
-=======
-import AuthProvider from './context/AuthContext';
-// import { PointsProvider } from './context/PointsContext';
->>>>>>> Stashed changes
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
       <BrowserRouter>
-<<<<<<< Updated upstream
             <App />
-=======
-        <AuthProvider>
-          {/* <PointsProvider> */}
-            <App />
-          {/* </PointsProvider> */}
-        </AuthProvider>
->>>>>>> Stashed changes
       </BrowserRouter>
   </React.StrictMode>
 );

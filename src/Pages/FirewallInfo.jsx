@@ -8,6 +8,7 @@ import Navbar from '../Components/Navbar/Navbar';
 
 const FirewallInfo = () => {
 
+const business = localStorage.getItem('business');
 const { setPoints } = usePoints();
 // Está reventando en la lectura de "name" en la arrow function / función manejadora
 
@@ -125,7 +126,8 @@ useEffect(() => {
             <section
                 className='firewall-section'
                 id='firewall'>
-                <h2>Firewall</h2>
+                <h1>Firewall</h1>
+                <h2>{business}</h2>
             </section>
 
             <form

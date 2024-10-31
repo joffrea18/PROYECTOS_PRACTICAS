@@ -10,8 +10,9 @@ import html2canvas from 'html2canvas';
 
 const PrinterOption = () => {
 
-    const { points } = usePoints();
-    const [open, setOpen] = useState(false); // Estado para controlar el modal
+    const business = localStorage.getItem('business');
+const { points } = usePoints();
+const [open, setOpen] = useState(false); // Estado para controlar el modal
 
     // Suma de puntos
     const totalPoints = points.router
@@ -60,7 +61,8 @@ const handleClose = () => setOpen(false); // Cerrar el modal
                 className='points-num'
                 style={{ textAlign: 'center' }}>
                 {/* <Navbar/> */}
-                <p>BUSINESS ANALYSIS RESULT</p>
+                <h1>BUSINESS ANALYSIS RESULT</h1>
+                <h2>{business}</h2>
                 <PointsChart points= {points}/>
                 <form action="">
                 <h1>

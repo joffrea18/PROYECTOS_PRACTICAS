@@ -7,8 +7,8 @@ import Navbar from '../Components/Navbar/Navbar';
 
 const SwitchInfo = ( ) => {
 
-    // const { points } = usePoints();
-    const { setPoints } = usePoints();
+const business = localStorage.getItem('business');
+const { setPoints } = usePoints();
 
     // Está reventando en la lectura de "name" en la arrow function / función manejadora
 
@@ -115,7 +115,8 @@ const SwitchInfo = ( ) => {
             <section
                 class="category-card"
                 id="switch">
-                <h2>Switch</h2>
+                <h1>Switch</h1>
+                <h2>{business}</h2>
             </section>
 
                 <form action="get">

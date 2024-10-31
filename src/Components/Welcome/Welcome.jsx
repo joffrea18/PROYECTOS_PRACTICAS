@@ -7,9 +7,11 @@ import RouterInfo from '../../Pages/RouterInfo';
 // Componente Padre
 // El dato de business.num1 se muestra en el Dom
 
-const Welcome = ({ setEntry }) => {
+const Welcome = ({setEntry}) => {
 
-const [business, setBusiness] = useState('');
+const [business, setBusiness] = useState({'business': setEntry});
+const empresa = JSON.stringify(business);
+localStorage.setItem('business', empresa);
 
 const handleChange = ( e ) => {
   setBusiness(e.target.value);
@@ -43,7 +45,7 @@ const handleSubmit = ( e ) => {
                 />
         </form>
         { 
-         business.length > 5  ? <Options setEntry={setEntry}/> : null
+         business  ? <Options business={business}/> : null
 
     } 
         </div>

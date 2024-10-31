@@ -7,7 +7,8 @@ import Navbar from '../Components/Navbar/Navbar';
 
 const AccesPoint = () => {
 
-    const { setPoints } = usePoints();
+    const business = localStorage.getItem('business');
+const { setPoints } = usePoints();
 
     // Está reventando en la lectura de "name" en la arrow function / función manejadora
 
@@ -77,7 +78,8 @@ const totalPoints = () => {
             {/* <Navbar /> */}
             <section
                 id='acess_point'>
-                    <h2>ACCES POINT</h2>
+                    <h1>ACCES POINT</h1>
+                    <h2>{business}</h2>
             </section>
 
         <form action="">
