@@ -126,8 +126,8 @@ useEffect(() => {
             <section
                 className='firewall-section'
                 id='firewall'>
+                <h2 className='business'>{business}</h2>
                 <h1>Firewall</h1>
-                <h2>{business}</h2>
             </section>
 
             <form
@@ -160,80 +160,19 @@ useEffect(() => {
                     <label htmlFor="">
                     <input
                         type="checkbox"
-                        name="val3"
-                        value={checkboxes.val3}
-                        onChange={handleCheckbox}
-                    /> Licencia
-                    </label>
-                    <br />
-
-                    <label htmlFor="">
-                    <input
-                        type="checkbox"
-                        name="val4"
-                        value={checkboxes.val4}
-                        onChange={handleCheckbox}
-                        /> Acceso UI desde IP exterior
-                    </label>
-                    <br />
-
-                    <label htmlFor="">
-                    <input
-                        type="checkbox"
-                        name="val5"
-                        value={checkboxes.val5}
-                        onChange={handleCheckbox}
-                        /> Acceso UI desde puerto interior
-                    </label>
-                    <br />
-
-                    <label htmlFor="">
-                    <input
-                        type="checkbox"
-                        name="val6"
-                        value={checkboxes.val6}
-                        onChange={handleCheckbox}
-                        /> Sistema de alertas Login
-                    </label>
-                    <br />
-
-                    <label htmlFor="">
-                    <input
-                        type="checkbox"
-                        name="val7"
-                        value={checkboxes.val7}
-                        onChange={handleCheckbox}
-                        /> VPN protocolo seguro & MFA
-                    </label>
-                    <br />
-
-                    <label htmlFor="">
-                    <input
-                        type="checkbox"
-                        name="val8"
-                        value={checkboxes.val8}
-                        onChange={handleCheckbox}
-                        /> Servicios Anti-Malware
-                    </label>
-                    <br />
-
-                    <label htmlFor="">
-                    <input
-                        type="checkbox"
-                        name="val9"
-                        value={checkboxes.val9}
-                        onChange={handleCheckbox}
-                        /> Filtros de reputación
-                    </label>
-                    <br />
-
-                    <label htmlFor="">
-                    <input
-                        type="checkbox"
                         name="val9"
                         value={checkboxes.val9}
                         onChange={handleCheckbox}
                         /> IPS
+                    </label>
+                    <br />
+                    <label htmlFor="">
+                    <input
+                        type="checkbox"
+                        name="val3"
+                        value={checkboxes.val3}
+                        onChange={handleCheckbox}
+                    /> Licencia
                     </label>
                     <br />
 
@@ -260,20 +199,70 @@ useEffect(() => {
                     <label htmlFor="">
                     <input
                         type="checkbox"
-                        name="val12"
-                        value={checkboxes.val12}
+                        name="val13"
+                        value={checkboxes.val13}
                         onChange={handleCheckbox}
-                        /> Detection & Response
+                        /> SSL Inspection
                     </label>
                     <br />
 
                     <label htmlFor="">
                     <input
                         type="checkbox"
-                        name="val13"
-                        value={checkboxes.val13}
+                        name="val6"
+                        value={checkboxes.val6}
                         onChange={handleCheckbox}
-                        /> SSL Inspection
+                        /> Sistema de alertas Login
+                    </label>
+                    <br />
+
+                    <label htmlFor="">
+                    <input
+                        type="checkbox"
+                        name="val8"
+                        value={checkboxes.val8}
+                        onChange={handleCheckbox}
+                        /> Servicios Anti-Malware
+                    </label>
+                    <br />
+
+                    <label htmlFor="">
+                    <input
+                        type="checkbox"
+                        name="val9"
+                        value={checkboxes.val9}
+                        onChange={handleCheckbox}
+                        /> Filtros de reputación
+                    </label>
+                    <br />
+
+                    <label htmlFor="">
+                    <input
+                        type="checkbox"
+                        name="val12"
+                        value={checkboxes.val12}
+                        onChange={handleCheckbox}
+                        /> Detection & Response
+                    </label>
+                    
+                    <br />
+
+                    <label htmlFor="">
+                    <input
+                        type="checkbox"
+                        name="val15"
+                        value={checkboxes.val15}
+                        onChange={handleCheckbox}
+                        /> Certificado confiable
+                    </label>
+                    <br />
+                    <label htmlFor="">
+                    <input
+                        type="checkbox"
+                        name="val17"
+                        value={checkboxes.val17}
+                        onChange={handleCheckbox}
+                        /> Monitoreo del dispositivo
                     </label>
                     <br />
 
@@ -286,17 +275,35 @@ useEffect(() => {
                         /> Segmentación por VLANs
                     </label>
                     <br />
+                    <label htmlFor="">
+                    <input
+                        type="checkbox"
+                        name="val4"
+                        value={checkboxes.val4}
+                        onChange={handleCheckbox}
+                        /> Acceso UI desde IP exterior
+                    </label>
+                    <br />
 
                     <label htmlFor="">
                     <input
                         type="checkbox"
-                        name="val15"
-                        value={checkboxes.val15}
+                        name="val5"
+                        value={checkboxes.val5}
                         onChange={handleCheckbox}
-                        /> Certificado confiable
+                        /> Acceso UI desde puerto interior
                     </label>
                     <br />
 
+                    <label htmlFor="">
+                    <input
+                        type="checkbox"
+                        name="val7"
+                        value={checkboxes.val7}
+                        onChange={handleCheckbox}
+                        /> VPN protocolo seguro & MFA
+                    </label>
+                    <br />
                     <label htmlFor="">
                     <input
                         type="checkbox"
@@ -304,16 +311,6 @@ useEffect(() => {
                         value={checkboxes.val16}
                         onChange={handleCheckbox}
                         /> Backup automático ≤ 1 semana
-                    </label>
-                    <br />
-
-                    <label htmlFor="">
-                    <input
-                        type="checkbox"
-                        name="val17"
-                        value={checkboxes.val17}
-                        onChange={handleCheckbox}
-                        /> Monitoreo del dispositivo
                     </label>
                     <br />
 
@@ -335,13 +332,10 @@ useEffect(() => {
                 variant='contained'
                 className='back-button'
                 style={{
-                    margin: '10px 20px 10px 20px'
+                    margin: '10px 20px 10px 20px',
+                    boxShadow: '10px 5px 5px black'
                 }} >
-
-           <h1
-            className='back-button'>
-                RETURN</h1>
-
+                RETURN
            </Button>
             </Link>
            <Link
@@ -352,13 +346,10 @@ useEffect(() => {
                 variant='contained'
                 className='next-button'
                 style={{
-                    margin: '10px 20px 10px 20px'
+                    margin: '10px 20px 10px 20px',
+                    boxShadow: '10px 5px 5px black'
                 }}>
-
-            <h1
-                className='next-button'>
-                    NEXT</h1>
-
+                    NEXT
            </Button>
            </Link>
            {/* <h1>POINTS: {totalPoints()}</h1> */}

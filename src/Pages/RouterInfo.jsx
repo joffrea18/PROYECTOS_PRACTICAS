@@ -99,8 +99,8 @@ return (
         <div >
                 {/* <Navbar /> */}
                 <section className="category-card" id="router">
+                <h2 className='business'>{business}</h2>
                 <h1>Router</h1>
-                <h2>{business}</h2>
                 </section>
                 <form action="get">
                 {/* <div class="input-group"> */}
@@ -136,27 +136,6 @@ return (
                         placeholder='IP Estática'
                         value={inputValue.num3}/>
 
-                        <label for="router-ip-estatica">
-                            <input
-                            type="checkbox"
-                            // id="router-ip-estatica"
-                            name="num7"
-                            checked={ checkboxes.num1 }
-                            onChange={handleCheckbox}
-                            />
-                            IP Estática
-                        </label>
-                        <br />
-
-                        <label for="fibra-backup">
-                            <input
-                            type="checkbox"
-                            name="num8"
-                            onclick="toggleBackupFields()"
-                            checked={ checkboxes.num2 }
-                            onChange={handleCheckbox}/>
-                            Fibra Backup
-                        </label>
                         <br />
 
                     <label for="backup-isp">
@@ -190,6 +169,27 @@ return (
                         onChange={handleInput}
                         placeholder='IP Estática de Backup'
                         value={inputValue.num6}/>
+                    <br />
+                <label for="router-ip-estatica">
+                    <input
+                    type="checkbox"
+                    // id="router-ip-estatica"
+                    name="num7"
+                    checked={ checkboxes.num1 }
+                    onChange={handleCheckbox}
+                    />
+                    IP Estática
+                </label>
+                <br />
+                <label for="fibra-backup">
+                            <input
+                            type="checkbox"
+                            name="num8"
+                            onclick="toggleBackupFields()"
+                            checked={ checkboxes.num2 }
+                            onChange={handleCheckbox}/>
+                            Fibra Backup
+                        </label>
             </form>
 
             <section>
@@ -203,16 +203,11 @@ return (
                 variant='contained'
                 className='back-button'
                 style={{
-                    margin: '10px 20px 10px 20px'
+                    margin: '10px 20px 10px 20px',
+                    boxShadow: '10px 5px 5px black'
                 }}>
-           
-           <h1
-                className='back-button'>
                     RETURN
-                </h1>
-
            </Button>
-        
             </Link>
            
            <Link
@@ -223,14 +218,10 @@ return (
                 variant='contained'
                 className='next-button'
                 style={{
-                    margin: '10px 20px 10px 20px'
+                    margin: '10px 20px 10px 20px',
+                    boxShadow: '10px 5px 5px black'
                 }}>
-
-            <h1
-                className='next-button'>
-                        NEXT
-                        </h1>
-
+                     NEXT
            </Button>
            </Link>
         

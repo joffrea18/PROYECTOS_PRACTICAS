@@ -53,8 +53,6 @@ const { setPoints } = usePoints();
         });
     }
 
-    console.log(inputValue.name);
-
     const handleCheckbox = (e) => {
         const { name, checked } = e.target;
         setChexboxes({
@@ -63,7 +61,7 @@ const { setPoints } = usePoints();
         });
     }
 
-    console.log(checkboxes.name);
+    console.log(checkboxes);
 
 
     const calculateInputPoints = () => {
@@ -96,7 +94,7 @@ const { setPoints } = usePoints();
         return calculateInputPoints() + calculateCheckboxPoints();
     };
 
-    console.log(inputValue.name);
+    console.log({inputValue});
 
     useEffect(() => {
         const total = totalPoints();
@@ -115,8 +113,8 @@ const { setPoints } = usePoints();
             <section
                 class="category-card"
                 id="switch">
+                <h2 className='business'>{business}</h2>
                 <h1>Switch</h1>
-                <h2>{business}</h2>
             </section>
 
                 <form action="get">
@@ -141,14 +139,7 @@ const { setPoints } = usePoints();
                         placeholder='Modelo'
                         value={inputValue.val2} />
                 
-                    <label
-                        for="switch-notas">
-                            Notas</label>
-                    <textarea
-                        name="val3"
-                        onChange={handleInput}
-                        placeholder='Apunta tus Notas aquí'
-                        value={inputValue.val3} />
+                    <br />
 
                     <label htmlFor="">                       
                         <input
@@ -168,16 +159,7 @@ const { setPoints } = usePoints();
                             value={checkboxes.val5} />
                         Anti-storm
                         </label>
-                        <br />
-
-                        <label htmlFor="">                    
-                        <input
-                            type="checkbox"
-                            name="val6"
-                            onChange={handleCheckbox}
-                            value={checkboxes.val6} />
-                        Segmentación por VLANs
-                        </label>
+                        
                         <br />
 
                         <label htmlFor="">
@@ -208,6 +190,26 @@ const { setPoints } = usePoints();
                             value={checkboxes.val9} />
                         Monitoreo del dispositivo
                         </label>
+                        <br />
+
+                        <label htmlFor="">                    
+                        <input
+                            type="checkbox"
+                            name="val6"
+                            onChange={handleCheckbox}
+                            value={checkboxes.val6} />
+                        Segmentación por VLANs
+                        </label>
+                        <br />
+                        <label
+                        for="switch-notas">
+                            Notas</label>
+                    <textarea
+                        name="val3"
+                        className='text-area'
+                        onChange={handleInput}
+                        placeholder='Apunta tus Notas aquí'
+                        value={inputValue.val3} />
                         
                 </form>
                 
@@ -218,7 +220,8 @@ const { setPoints } = usePoints();
                 variant='contained'
                 className='back-button'
                 style={{
-                    margin: '10px 20px 10px 20px'
+                    margin: '10px 20px 10px 20px',
+                    boxShadow: '10px 5px 5px black'
                 }}>
                 RETURN
            </Button>
@@ -229,9 +232,10 @@ const { setPoints } = usePoints();
             to={`/buttonppal/accespointinfo`} > 
            <Button
             variant='contained'
-            className='back-button'
+            className='next-button'
             style={{
-                margin: '10px 20px 10px 20px'
+                margin: '10px 20px 10px 20px',
+                boxShadow: '10px 5px 5px black'
             }}>
                     NEXT
            </Button>

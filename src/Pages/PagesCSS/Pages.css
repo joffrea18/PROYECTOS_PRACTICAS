@@ -14,15 +14,16 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center; /* Centra horizontalmente */
-    justify-content: center; /* Centra verticalmente */
+    justify-content: end; /* Centra verticalmente */
     background: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
     border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra para efecto de elevación */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9); /* Sombra para efecto de elevación */
     padding: 20px;
     max-width: 400px; /* Ancho máximo del formulario */
     margin: auto; /* Centramos el formulario en el contenedor */
     position: relative;
     z-index: 1; /* Asegura que esté en la parte superior del fondo */
+    line-height: 1.5;
 }
 
 label {
@@ -37,27 +38,42 @@ input[type="text"] {
     border-radius: 5px; /* Bordes redondeados para el input */
 }
 
+input[type="text"]:hover{
+    background-color: rgba(0, 0, 0, 0.250);
+}
+
 input[type="checkbox"] {
     appearance: none;
     border-radius: 4px;
     cursor: pointer;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     border: 2px solid #ccc;
-    justify-content: baseline;
+    justify-content: center;
 }
 
 input[type="checkbox"]:checked {
-    background: green;
-    border-color: green;
+    background: rgba(114, 185, 114, 0.726);
+    border-color: black
+}
+
+input[type="checkbox"]:hover {
+    background-color: rgba(0, 0, 0, 0.285);
 }
 
 .back-button,
 .next-button {
     margin-top: 2rem;
     width: 170px;
-    margin-top: 20px; /* Espacio entre el formulario y los botones */
+    height: 50px;
+    margin-top: 60px; /* Espacio entre el formulario y los botones */
     padding: 10px 20px; /* Espaciado en los botones */
+}
+
+.back-button:hover,
+.next-button:hover{
+    background-color: lightgreen;
+    transform: scale(1.2);
 }
 
 /* Estilo para el fondo de la página */
@@ -78,4 +94,30 @@ input[type="checkbox"]:checked {
     bottom: 0;
     background: rgba(255, 255, 255, 0.3); /* Fondo blanco semitransparente */
     z-index: 0; /* Asegura que esté detrás del formulario */
+}
+
+.business {
+    text-transform: uppercase;
+    color: aliceblue;
+    text-shadow:
+        -1px -1px 1px #aaa,
+        0px 4px 1px rgba(0, 0, 0, 0.5),
+        4px 4px 5px rgba(0, 0, 0, 0.7),
+        0px 0px 7px rgba(0, 0, 0, 0.4);
+    line-height: 1.5;
+}
+
+.business:hover{
+    transform: scale(1.2);
+}
+
+.text-area {
+    margin-top: 1rem;
+    width: 300px;
+    height: 110px;
+    border: none;
+}
+
+.text-area:hover{
+    background-color: rgba(0, 0, 0, 0.210);
 }

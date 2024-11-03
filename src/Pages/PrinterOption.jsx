@@ -61,8 +61,8 @@ const handleClose = () => setOpen(false); // Cerrar el modal
                 className='points-num'
                 style={{ textAlign: 'center' }}>
                 {/* <Navbar/> */}
+                <h2 className='business'>{business}</h2>
                 <h1>BUSINESS ANALYSIS RESULT</h1>
-                <h2>{business}</h2>
                 <PointsChart points= {points}/>
                 <form action="">
                 <h1>
@@ -93,7 +93,8 @@ const handleClose = () => setOpen(false); // Cerrar el modal
                 onClick={handleOpen}
                 className='back-button'
                 style={{
-                    margin: '0 20px 10px 20px'
+                    margin: '0 20px 10px 20px',
+                    boxShadow: '10px 5px 5px black'
                 }}>
                 Generate PDF
             </Button>

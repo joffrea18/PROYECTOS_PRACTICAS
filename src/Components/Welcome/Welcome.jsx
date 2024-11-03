@@ -26,9 +26,10 @@ const handleSubmit = ( e ) => {
         
         <div>
             
-            {/* <Navbar />
             <br />
-            <br /> */}
+            <br />
+            <br />
+            <br />
            
        <form
         onSubmit={ handleSubmit }>
@@ -36,6 +37,7 @@ const handleSubmit = ( e ) => {
                 <p>¡ WELCOME !</p>
                 </label>
                 <input
+                    className='init_input'
                     value={business}
                     onChange={handleChange}
                     type="text"
@@ -45,7 +47,7 @@ const handleSubmit = ( e ) => {
                 />
         </form>
         { 
-         business  ? <Options business={business}/> : null
+         business.length > 6  ? <Options business={business}/> : null
 
     } 
         </div>

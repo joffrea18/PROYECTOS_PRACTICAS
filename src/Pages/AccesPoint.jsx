@@ -78,8 +78,8 @@ const totalPoints = () => {
             {/* <Navbar /> */}
             <section
                 id='acess_point'>
+                    <h2 className='business'>{business}</h2>
                     <h1>ACCES POINT</h1>
-                    <h2>{business}</h2>
             </section>
 
         <form action="">
@@ -133,6 +133,7 @@ const totalPoints = () => {
             </label>
             <textarea
                 name="val5"
+                className='text-area'
                 onChange={handleInput}
                 placeholder='Apunta tus Observaciones'
                 value={inputValue.val5} />
@@ -146,7 +147,8 @@ const totalPoints = () => {
                 variant='contained'
                 className='back-button'
                 style={{
-                    margin: '10px 20px 10px 20px'
+                    margin: '10px 20px 10px 20px',
+                    boxShadow: '10px 5px 5px black'
                 }}>
                 RETURN
            </Button>
@@ -159,7 +161,8 @@ const totalPoints = () => {
             variant='contained'
             className='back-button'
             style={{
-                margin: '10px 20px 10px 20px'
+                margin: '10px 20px 10px 20px',
+                boxShadow: '10px 5px 5px black'
             }}>
                     PRINT REPORT
            </Button>
