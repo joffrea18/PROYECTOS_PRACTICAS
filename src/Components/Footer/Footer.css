@@ -1,12 +1,13 @@
-html, body {
+html, body, footer {
     height: 100%; /* Asegúrate de que el body ocupe toda la altura */
     margin: 0; /* Eliminar márgenes por defecto */
+    width: 100%;
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Asegura que el contenedor ocupe al menos la altura de la ventana */
+    max-height: 100%; /* Asegura que el contenedor ocupe al menos la altura de la ventana */
 }
 
 .content {
@@ -14,7 +15,7 @@ html, body {
 }
 
 .footer {
-    position: relative;
+    position: absolute;
     display: flex;
     padding: 1rem;
     text-align: center;
@@ -43,16 +44,5 @@ html, body {
     font-size: 20px;
 }
 
-.footer_links li {
-    cursor: pointer;
-}
 
-.footer_social_icon {
-    display: flex;
-    gap: 20px;
-}
 
-img {
-    border-radius: 60%;
-    max-width: 20vw;
-}
