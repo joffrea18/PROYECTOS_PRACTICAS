@@ -19,7 +19,7 @@ form {
     border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9); /* Sombra para efecto de elevación */
     padding: 20px;
-    max-width: 400px; /* Ancho máximo del formulario */
+    max-width: 450px; /* Ancho máximo del formulario */
     margin: auto; /* Centramos el formulario en el contenedor */
     position: relative;
     z-index: 1; /* Asegura que esté en la parte superior del fondo */
@@ -43,6 +43,7 @@ input[type="text"]:hover{
 }
 
 input[type="checkbox"] {
+    margin: 1rem;
     appearance: none;
     border-radius: 4px;
     cursor: pointer;
@@ -120,4 +121,17 @@ input[type="checkbox"]:hover {
 
 .text-area:hover{
     background-color: rgba(0, 0, 0, 0.210);
+}
+
+.desplegable {
+    margin: 1rem;
+    width: 150px;
+    height: 30px;
+    border: 5rem;
+}
+
+.total-points{
+    text-decoration:overline;
+    font-size: xx-large;
+    font-weight: bold;
 }

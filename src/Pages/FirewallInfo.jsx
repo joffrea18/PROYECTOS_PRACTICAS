@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { useState, useEffect } from 'react';
 import { usePoints } from '../context/PointsContext';
-import Navbar from '../Components/Navbar/Navbar';
 
 const FirewallInfo = () => {
 
@@ -122,7 +121,6 @@ useEffect(() => {
 
     return (
         <div >
-            {/* <Navbar /> */}
             <section
                 className='firewall-section'
                 id='firewall'>
@@ -165,7 +163,7 @@ useEffect(() => {
                         onChange={handleCheckbox}
                         /> IPS
                     </label>
-                    <br />
+
                     <label htmlFor="">
                     <input
                         type="checkbox"
@@ -174,7 +172,6 @@ useEffect(() => {
                         onChange={handleCheckbox}
                     /> Licencia
                     </label>
-                    <br />
 
                     <label htmlFor="">
                     <input
@@ -184,7 +181,6 @@ useEffect(() => {
                         onChange={handleCheckbox}
                         /> SandBoxing
                     </label>
-                    <br />
 
                     <label htmlFor="">
                     <input
@@ -194,7 +190,6 @@ useEffect(() => {
                         onChange={handleCheckbox}
                         /> Email Security
                     </label>
-                    <br />
 
                     <label htmlFor="">
                     <input
@@ -204,7 +199,6 @@ useEffect(() => {
                         onChange={handleCheckbox}
                         /> SSL Inspection
                     </label>
-                    <br />
 
                     <label htmlFor="">
                     <input
@@ -214,7 +208,6 @@ useEffect(() => {
                         onChange={handleCheckbox}
                         /> Sistema de alertas Login
                     </label>
-                    <br />
 
                     <label htmlFor="">
                     <input
@@ -224,7 +217,6 @@ useEffect(() => {
                         onChange={handleCheckbox}
                         /> Servicios Anti-Malware
                     </label>
-                    <br />
 
                     <label htmlFor="">
                     <input
@@ -234,7 +226,6 @@ useEffect(() => {
                         onChange={handleCheckbox}
                         /> Filtros de reputación
                     </label>
-                    <br />
 
                     <label htmlFor="">
                     <input
@@ -244,8 +235,6 @@ useEffect(() => {
                         onChange={handleCheckbox}
                         /> Detection & Response
                     </label>
-                    
-                    <br />
 
                     <label htmlFor="">
                     <input
@@ -255,7 +244,7 @@ useEffect(() => {
                         onChange={handleCheckbox}
                         /> Certificado confiable
                     </label>
-                    <br />
+
                     <label htmlFor="">
                     <input
                         type="checkbox"
@@ -264,7 +253,6 @@ useEffect(() => {
                         onChange={handleCheckbox}
                         /> Monitoreo del dispositivo
                     </label>
-                    <br />
 
                     <label htmlFor="">
                     <input
@@ -274,7 +262,7 @@ useEffect(() => {
                         onChange={handleCheckbox}
                         /> Segmentación por VLANs
                     </label>
-                    <br />
+
                     <label htmlFor="">
                     <input
                         type="checkbox"
@@ -283,7 +271,6 @@ useEffect(() => {
                         onChange={handleCheckbox}
                         /> Acceso UI desde IP exterior
                     </label>
-                    <br />
 
                     <label htmlFor="">
                     <input
@@ -293,7 +280,6 @@ useEffect(() => {
                         onChange={handleCheckbox}
                         /> Acceso UI desde puerto interior
                     </label>
-                    <br />
 
                     <label htmlFor="">
                     <input
@@ -303,7 +289,7 @@ useEffect(() => {
                         onChange={handleCheckbox}
                         /> VPN protocolo seguro & MFA
                     </label>
-                    <br />
+
                     <label htmlFor="">
                     <input
                         type="checkbox"
@@ -312,7 +298,6 @@ useEffect(() => {
                         onChange={handleCheckbox}
                         /> Backup automático ≤ 1 semana
                     </label>
-                    <br />
 
                     <label htmlFor="">
                     <input
@@ -322,7 +307,7 @@ useEffect(() => {
                         onChange={handleCheckbox}
                         /> VPN - Limitado Geograficamente
                     </label>
-                </form>
+                    </form>
 
            <Link
             style={{textDecoration : 'none' }}

@@ -18,15 +18,37 @@ const { setPoints } = usePoints();
             val2: '',
             val3: '',
             val4: '',
-            val5: '',        
+            val5: '',
+            val6: '',
+            val7: '',
+            val8: '',
+            val9: '',
+            val10: '',
+            val11: '',
+            val12: '',
+            val13: '',
+            val14: '',
+            val15: '',
+            val16: '',         
         });
 
    const pointsf = {
-        val1: 20, //
-        val2: 20,  //
-        val3: 20,  //
-        val4: 20,  //
-        val5: 20  //
+        val1: 10, //
+        val2: 6,  //
+        val3: 6,  //
+        val4: 6,  //
+        val5: 6,  //
+        val6: 6,
+        val7: 6,
+        val8: 6,
+        val9: 6,
+        val10: 6,
+        val11: 6,
+        val12: 6,
+        val13: 6,
+        val14: 6,
+        val15: 6,
+        val16: 6
 
         // Total 100
     };
@@ -107,26 +129,135 @@ const totalPoints = () => {
 
             <label
                 for="switch-fabricante">
-                    IP / Cloud Gestión
-            </label>
             <input
-                type="text"
+                type="checkbox"
                 name="val3"
                 onChange={handleInput}
                 placeholder='IP o Cloud de Gestión'
                 value={inputValue.val3} />
+                Gestión aislada
+            </label>
+
+            <label
+                for="switch-fabricante">
+            <input
+                type="checkbox"
+                name="val12"
+                onChange={handleInput}
+                value={inputValue.val12} />
+                Control de MAC
+            </label>
+
+            <label
+                for="switch-fabricante">
+            <input
+                type="checkbox"
+                name="val4"
+                onChange={handleInput}
+                value={inputValue.val4} />
+                SSID Ocutlo
+            </label>
+
+            <label
+                for="switch-fabricante">
+            <input
+                type="checkbox"
+                name="val10"
+                onChange={handleInput}
+                value={inputValue.val10} />
+                Desactivar difusión SSID
+            </label>
+
+            <label
+                for="switch-fabricante">
+            <input
+                type="checkbox"
+                name="val7"
+                onChange={handleInput}
+                value={inputValue.val7} />
+                Autentificación RADIUS
+            </label>
             
             <label
                 for="switch-fabricante">
-                 SSID
-            </label>
             <input
-                type="text"
-                name="val4"
+                type="checkbox"
+                name="val15"
                 onChange={handleInput}
-                placeholder='SSID'
-                value={inputValue.val4} />
+                value={inputValue.val15} />
+                Implementación de WIPS
+            </label>
+
+            <label
+                for="switch-fabricante">
+            <input
+                type="checkbox"
+                name="val16"
+                onChange={handleInput}
+                value={inputValue.val16} />
+                Monitoreo del dispositivo
+            </label>
+
+            <label
+                for="switch-fabricante">
+            <input
+                type="checkbox"
+                name="val14"
+                onChange={handleInput}
+                value={inputValue.val14} />
+                Acceso local VPN interna
+            </label>
+
+            <label
+                for="switch-fabricante">
+            <input
+                type="checkbox"
+                name="val6"
+                onChange={handleInput}
+                value={inputValue.val6} />
+                WPA3 / WPA2 - Enterprise
+            </label>
+
+            <label
+                for="switch-fabricante">
+            <input
+                type="checkbox"
+                name="val13"
+                onChange={handleInput}
+                value={inputValue.val13} />
+                Portal Cautivo / Wifi Invitados
+            </label>
             
+            <label
+                for="switch-fabricante">
+            <input
+                type="checkbox"
+                name="val8"
+                onChange={handleInput}
+                value={inputValue.val8} />
+                Segmentación recursos locales
+            </label>
+
+            <label
+                for="switch-fabricante">
+            <input
+                type="checkbox"
+                name="val9"
+                onChange={handleInput}
+                value={inputValue.val9} />
+                Desactivar WPS / WEP / WPA
+            </label>
+
+            <label
+                for="switch-fabricante">
+            <input
+                type="checkbox"
+                name="val11"
+                onChange={handleInput}
+                value={inputValue.val11} />
+                Certificado Autenticación EAP-TLS
+            </label>
+
             <label
                 for="switch-fabricante">
                  Observaciones

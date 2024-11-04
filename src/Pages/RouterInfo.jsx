@@ -104,39 +104,36 @@ return (
                 </section>
                 <form action="get">
                 {/* <div class="input-group"> */}
-                    <label for="router-isp">ISP</label>
-                    <input
-                        type="text"
-                        id="router-isp"
-                        name="num1"
-                        onChange={handleInput}
-                        placeholder='ISP'
+                    <label
+                        for="router-isp"
                         value={inputValue.num1}
-                         />
-
-                    <label for="router-telefono">
-                        Teléfono asociado</label>
-
-                    <input
-                        type="text"
-                        id="router-telefono"
-                        name="num2"
                         onChange={handleInput}
-                        placeholder='Teléfono asociado'
-                        value={inputValue.num2}/>
-
-                    <label for="router-ip">
-                        IP Estática</label>
-
-                    <input
-                        type="text"
-                        id="router-ip"
-                        name="num3"
-                        onChange={handleInput}
-                        placeholder='IP Estática'
-                        value={inputValue.num3}/>
-
+                        >ISP
                         <br />
+                    <select
+                        name='num1'
+                        className='desplegable'
+                         >
+                        <option >Select one Option</option>
+                        <option value="adamo" >Adamo</option>
+                        <option value="amena" >Amena</option>
+                        <option value="euskatel" >Euskaltel</option>
+                        <option value="jazztel" >Jazztel</option>
+                        <option value="masmovil" >Masmovil</option>
+                        <option value="movistar" >Movistar</option>
+                        <option value="vodafone" >Vodafone</option>
+                        <option value="ono" >Ono</option>
+                        <option value="orange" >Orange</option>
+                        <option value="rcable" >Rcable</option>
+                        <option value="yoigo" >Yoigo</option>
+                        <option value="voztelecom" >Voztelecom</option>
+                        <option value="lebara" >Lebara</option>
+                        <option value="lcr" >LCR</option>
+                        <option value="lowi">Lowi</option>
+                        <option value="digi" >Digi</option>
+                        <option value="lyca" >Lyca</option>
+                    </select>
+                    </label>
 
                     <label for="backup-isp">
                         ISP de Backup</label>
@@ -148,9 +145,29 @@ return (
                         placeholder='ISP de Backup'
                         value={inputValue.num4}/>
 
+                    {/* <input
+                        type="text"
+                        id="router-isp"
+                        name="num1"
+                        
+                        placeholder='ISP'
+                        value={inputValue.num1}
+                         /> */}
+
+                    <label for="router-telefono">
+                        Teléfono asociado</label>
+
+                    <input
+                        type="text"
+                        id="router-telefono"
+                        name="num2"
+                        onChange={handleInput}
+                        placeholder='Teléfono asociado'
+                        value={inputValue.num2}/>
+                    
                     <label for="backup-telefono">
                         Teléfono de Backup</label>
-
+                    
                     <input
                         type="text"
                         id="backup-telefono"
@@ -159,6 +176,17 @@ return (
                         placeholder='Teléfono de Backup'
                         value={inputValue.num5}/>
 
+                    <label for="router-ip">
+                        IP Estática</label>
+
+                    <input
+                        type="text"
+                        id="router-ip"
+                        name="num3"
+                        onChange={handleInput}
+                        placeholder='IP Estática'
+                        value={inputValue.num3}/>
+                    
                     <label for="backup-ip">
                         IP Estática de Backup</label>
 
@@ -170,17 +198,7 @@ return (
                         placeholder='IP Estática de Backup'
                         value={inputValue.num6}/>
                     <br />
-                <label for="router-ip-estatica">
-                    <input
-                    type="checkbox"
-                    // id="router-ip-estatica"
-                    name="num7"
-                    checked={ checkboxes.num1 }
-                    onChange={handleCheckbox}
-                    />
-                    IP Estática
-                </label>
-                <br />
+                
                 <label for="fibra-backup">
                             <input
                             type="checkbox"

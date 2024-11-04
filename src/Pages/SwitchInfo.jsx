@@ -139,8 +139,6 @@ const { setPoints } = usePoints();
                         placeholder='Modelo'
                         value={inputValue.val2} />
                 
-                    <br />
-
                     <label htmlFor="">                       
                         <input
                             type="checkbox"
@@ -149,7 +147,6 @@ const { setPoints } = usePoints();
                             value={checkboxes.val4} />
                         Licencia
                         </label>
-                        <br />
                         
                         <label htmlFor="">
                         <input
@@ -159,8 +156,6 @@ const { setPoints } = usePoints();
                             value={checkboxes.val5} />
                         Anti-storm
                         </label>
-                        
-                        <br />
 
                         <label htmlFor="">
                         <input
@@ -168,19 +163,8 @@ const { setPoints } = usePoints();
                             name="val7"
                             onChange={handleCheckbox}
                             value={checkboxes.val7} />
-                        Gestión aislad
+                        Gestión aislada
                         </label>
-                        <br />
-                    
-                        <label htmlFor="">
-                        <input
-                           type="checkbox"
-                           name="val8"
-                           onChange={handleCheckbox}
-                           value={checkboxes.val8} />
-                        Backup automático
-                        </label>
-                        <br />
 
                         <label htmlFor="">
                         <input
@@ -190,7 +174,6 @@ const { setPoints } = usePoints();
                             value={checkboxes.val9} />
                         Monitoreo del dispositivo
                         </label>
-                        <br />
 
                         <label htmlFor="">                    
                         <input
@@ -200,7 +183,16 @@ const { setPoints } = usePoints();
                             value={checkboxes.val6} />
                         Segmentación por VLANs
                         </label>
-                        <br />
+                                            
+                        <label htmlFor="">
+                        <input
+                           type="checkbox"
+                           name="val8"
+                           onChange={handleCheckbox}
+                           value={checkboxes.val8} />
+                        Backup automático ≤ 1 semana
+                        </label>
+                        
                         <label
                         for="switch-notas">
                             Notas</label>

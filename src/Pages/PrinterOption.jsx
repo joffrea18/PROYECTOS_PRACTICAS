@@ -81,7 +81,7 @@ const handleClose = () => setOpen(false); // Cerrar el modal
                     ACCES POINTS = {points.accespoint}
                 </h1>
                 <br />
-                <p>
+                <p className='total-points'>
                     TOTAL POINTS = {totalPoints}
                 </p>
             </form>

@@ -15,40 +15,48 @@
         <section class="category">
             <h2>Router</h2>
             <div class="input-group">
-                <label for="router-isp">ISP:</label>
+                <label for="router-isp">ISP:</label> 
+                <!-- DONE -->
                 <input type="text" id="router-isp" name="router-isp">
             </div>
             <div class="input-group">
                 <label for="router-telefono">Teléfono asociado:</label>
                 <input type="text" id="router-telefono" name="router-telefono">
+            <!-- DONE -->
             </div>
             <div class="input-group">
                 <label for="router-ip">IP Estática:</label>
                 <input type="text" id="router-ip" name="router-ip">
+            <!-- DONE -->
             </div>
 
             <div class="checkbox-group">
                 <div class="checkbox-wrapper-25">
                     <input type="checkbox" id="router-ip-estatica" name="router-ip-estatica"> 
                     <label for="router-ip-estatica">IP Estática</label>
+                <!-- DONE, eliminado del diefinitivo -->
                 </div>
                 <div class="checkbox-wrapper-25">
                     <input type="checkbox" id="fibra-backup" name="fibra-backup" onclick="toggleBackupFields()"> 
                     <label for="fibra-backup">Fibra Backup</label>
+                <!-- DONE -->
                 </div>
             </div>
 
             <div class="input-group">
                 <label for="backup-isp">ISP de Backup:</label>
                 <input type="text" id="backup-isp" name="backup-isp" disabled>
+            <!-- DONE -->
             </div>
             <div class="input-group">
                 <label for="backup-telefono">Teléfono de Backup:</label>
                 <input type="text" id="backup-telefono" name="backup-telefono" disabled>
+            <!-- DONE -->
             </div>
             <div class="input-group">
                 <label for="backup-ip">IP Estática de Backup:</label>
                 <input type="text" id="backup-ip" name="backup-ip" disabled>
+            <!-- DONE -->
             </div>
         </section>
 
@@ -56,31 +64,33 @@
         <section class="category">
             <h2>Firewall</h2>
             <div class="input-group">
+                <!-- DONE -->
                 <label for="firewall-fabricante">Fabricante:</label>
                 <input type="text" id="firewall-fabricante" name="firewall-fabricante">
             </div>
             <div class="input-group">
+                <!-- DONE -->
                 <label for="firewall-modelo">Modelo:</label>
                 <input type="text" id="firewall-modelo" name="firewall-modelo">
             </div>
 
             <div class="checkbox-group">
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="licencia"> Licencia</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="acceso-ui-exterior"> Acceso limitado a la UI desde una IP del exterior</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="acceso-ui-interno"> Acceso limitado a la UI desde un puerto de gestión desde el interior</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="alertas-login"> Sistema de alertas de inicio de sesión</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="vpn-segura"> VPN bajo protocolo seguro y con MFA</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="anti-malware"> Servicios Anti-Malware</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="filtro-reputacion"> Filtros de reputación</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="ips"> IPS</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="sandboxing"> SandBoxing</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="email-security"> Email Security</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="cdr"> Collaborative Detection and Response</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="ssl-inspection"> SSL Inspection</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="segmentacion-vlan"> Segmentación por VLANs</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="certificado-confiable"> Certificado confiable</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="backup-semanal"> Backup automático de frecuencia ≤ 1 semana</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="monitoreo-dispositivo"> Monitoreo del dispositivo</div>
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="licencia"> Licencia</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="acceso-ui-exterior"> Acceso limitado a la UI desde una IP del exterior</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="acceso-ui-interno"> Acceso limitado a la UI desde un puerto de gestión desde el interior</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="alertas-login"> Sistema de alertas de inicio de sesión</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="vpn-segura"> VPN bajo protocolo seguro y con MFA</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="anti-malware"> Servicios Anti-Malware</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="filtro-reputacion"> Filtros de reputación</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="ips"> IPS</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="sandboxing"> SandBoxing</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="email-security"> Email Security</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="cdr"> Collaborative Detection and Response</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="ssl-inspection"> SSL Inspection</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="segmentacion-vlan"> Segmentación por VLANs</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="certificado-confiable"> Certificado confiable</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="backup-semanal"> Backup automático de frecuencia ≤ 1 semana</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="monitoreo-dispositivo"> Monitoreo del dispositivo</div> <!-- DONE -->
             </div>
         </section>
 
@@ -88,25 +98,28 @@
         <section class="category">
             <h2>Switch</h2>
             <div class="input-group">
+                <!-- DONE -->
                 <label for="switch-fabricante">Fabricante:</label>
                 <input type="text" id="switch-fabricante" name="switch-fabricante">
             </div>
             <div class="input-group">
+                <!-- DONE -->
                 <label for="switch-modelo">Modelo:</label>
                 <input type="text" id="switch-modelo" name="switch-modelo">
             </div>
             <div class="input-group">
+                <!-- DONE -->
                 <label for="switch-notas">Notas:</label>
                 <textarea id="switch-notas" name="switch-notas"></textarea>
             </div>
 
             <div class="checkbox-group">
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="licencia-switch"> Licencia</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="anti-storm"> Anti-storm</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="segmentacion-vlan-switch"> Segmentación por VLANs</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="gestion-aislada"> Gestión aislada</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="backup-semanal-switch"> Backup automático de frecuencia ≤ 1 semana</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="monitoreo-dispositivo-switch"> Monitoreo del dispositivo</div>
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="licencia-switch"> Licencia</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="anti-storm"> Anti-storm</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="segmentacion-vlan-switch"> Segmentación por VLANs</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="gestion-aislada"> Gestión aislada</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="backup-semanal-switch"> Backup automático de frecuencia ≤ 1 semana</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="monitoreo-dispositivo-switch"> Monitoreo del dispositivo</div> <!-- DONE -->
             </div>
         </section>
 
@@ -114,32 +127,35 @@
         <section class="category">
             <h2>Access Point</h2>
             <div class="input-group">
+                <!-- DONE -->
                 <label for="ap-fabricante">Fabricante:</label>
                 <input type="text" id="ap-fabricante" name="ap-fabricante">
             </div>
             <div class="input-group">
+                <!-- DONE -->
                 <label for="ap-modelo">Modelo:</label>
                 <input type="text" id="ap-modelo" name="ap-modelo">
             </div>
             <div class="input-group">
+                <!-- DONE -->
                 <label for="ap-notas">Notas:</label>
                 <textarea id="ap-notas" name="ap-notas"></textarea>
             </div>
 
             <div class="checkbox-group">
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="wpa3-wpa2"> Uso de WPA3 o WPA2-Enterprise</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="radius"> Autentificación mediante RADIUS</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="segmentacion-redes"> Segmentación de redes y fuera de los recursos locales de la empresa</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="desactivar-wps-wep"> Desactivar WPS, WEP y WPA</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="ssid-oculto"> SSID oculto</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="difusion-ssid"> Desactivar difusión SSID</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="gestion-aislada-ap"> Gestión aislada</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="eap-tls"> Uso de certificado para autenticación EAP-TLS</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="control-mac"> Control de MAC</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="portal-cautivo"> Portal Cautivo para redes Wifi de Invitados</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="vpn-interna"> Acceso a los recursos locales mediante VPN interna</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="wips"> Implementación de WIPS (Wireless Intrusion Prevention System)</div>
-                <div class="checkbox-wrapper-25"><input type="checkbox" name="monitoreo-dispositivo-ap"> Monitoreo del dispositivo</div>
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="wpa3-wpa2"> Uso de WPA3 o WPA2-Enterprise</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="radius"> Autentificación mediante RADIUS</div><!-- DONE --> 
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="segmentacion-redes"> Segmentación de redes y fuera de los recursos locales de la empresa</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="desactivar-wps-wep"> Desactivar WPS, WEP y WPA</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="ssid-oculto"> SSID oculto</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="difusion-ssid"> Desactivar difusión SSID</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="gestion-aislada-ap"> Gestión aislada</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="eap-tls"> Uso de certificado para autenticación EAP-TLS</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="control-mac"> Control de MAC</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="portal-cautivo"> Portal Cautivo para redes Wifi de Invitados</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="vpn-interna"> Acceso a los recursos locales mediante VPN interna</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="wips"> Implementación de WIPS (Wireless Intrusion Prevention System)</div> <!-- DONE -->
+                <div class="checkbox-wrapper-25"><input type="checkbox" name="monitoreo-dispositivo-ap"> Monitoreo del dispositivo</div> <!-- DONE -->
             </div>
         </section>
 
