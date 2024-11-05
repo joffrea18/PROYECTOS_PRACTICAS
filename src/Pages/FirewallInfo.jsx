@@ -16,7 +16,7 @@ const [ inputValue, setInput ]
         val1: '',
         val2: '', });
 
-const [ checkboxes, setChexboxes ]
+const [ checkboxes, setCheckboxes ]
     = useState({
         val3: false,
         val4: '',
@@ -76,7 +76,7 @@ const handleInput = (e) => {
 
 const handleCheckbox = (e) => {
     const { name, checked } = e.target;
-    setChexboxes({
+    setCheckboxes({
         ...checkboxes,
         [name]: checked,
     });
@@ -124,7 +124,7 @@ useEffect(() => {
             <section
                 className='firewall-section'
                 id='firewall'>
-                <h2 className='business'>{business}</h2>
+                {/* <h2 className='business'>{business}</h2> */}
                 <h1>Firewall</h1>
             </section>
 

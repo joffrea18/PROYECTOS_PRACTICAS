@@ -1,10 +1,7 @@
-// import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-// import { slide as Menu } from 'react-burger-menu';
 import Footer from './Components/Footer/Footer';
-// import Header from './Components/Header/Header';
 import Welcome from './Components/Welcome/Welcome';
 import RouterInfo from './Pages/RouterInfo';
 import FirewallInfo from './Pages/FirewallInfo';
@@ -15,7 +12,7 @@ import Options from './Components/ButtonPpal/Options';
 import { PointsProvider } from './context/PointsContext';
 import AccesPoint from './Pages/AccesPoint';
 import Navbar from './Components/Navbar/Navbar';
-// import {AuthProvider} from './context/AuthContext';
+import XDR from './Pages/XDR';
 
 // Aquí debo de mirar introducir al email como prop al
 // componente de Buttonppal
@@ -30,7 +27,7 @@ function App() {
     <div className="App">
       {/* <AuthProvider> */}
       <PointsProvider>
-        <Navbar />
+        <Navbar entry={entry}/>
          <Routes>
            <Route path='/' element={<Welcome setEntry={setEntry}/>} />
            <Route to={`/buttonppal`} element={<Options />} />
@@ -38,6 +35,7 @@ function App() {
            <Route path={`/buttonppal/firewallinfo`} element={<FirewallInfo />} />
            <Route path={`/buttonppal/switchinfo`} element={<SwitchInfo />} />
            <Route path={`/buttonppal/accespointinfo`} element={<AccesPoint />} />
+           <Route path={`/buttonppal/xdr`} element={<XDR />} />
            <Route path={`/buttonppal/printeroption`} element={<PrinterOption />} />
            <Route path='*' element={<NotFound />} />
          </Routes>

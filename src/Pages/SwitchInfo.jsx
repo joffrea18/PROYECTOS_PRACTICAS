@@ -113,7 +113,7 @@ const { setPoints } = usePoints();
             <section
                 class="category-card"
                 id="switch">
-                <h2 className='business'>{business}</h2>
+                {/* <h2 className='business'>{business}</h2> */}
                 <h1>Switch</h1>
             </section>
 

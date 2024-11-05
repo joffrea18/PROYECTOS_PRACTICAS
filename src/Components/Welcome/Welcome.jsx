@@ -38,11 +38,11 @@ const handleSubmit = ( e ) => {
                 </label>
                 <input
                     className='init_input'
-                    value={business}
+                    value={entry}
                     onChange={handleChange}
                     type="text"
                     placeholder='Indica el nombre de la empresa'
-                    name="val1"
+                    name="business"
                     required
                 />
         </form>

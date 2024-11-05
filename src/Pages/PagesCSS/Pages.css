@@ -19,7 +19,7 @@ form {
     border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9); /* Sombra para efecto de elevación */
     padding: 20px;
-    max-width: 450px; /* Ancho máximo del formulario */
+    max-width: 550px; /* Ancho máximo del formulario */
     margin: auto; /* Centramos el formulario en el contenedor */
     position: relative;
     z-index: 1; /* Asegura que esté en la parte superior del fondo */
@@ -31,7 +31,7 @@ label {
 }
 
 input[type="text"] {
-    width: 100%; /* Ancho completo del input */
+    width: 90%; /* Ancho completo del input */
     padding: 10px;
     margin-top: 5px; /* Espacio entre el label y el input */
     border: 1px solid #ccc; /* Borde del input */
@@ -106,6 +106,7 @@ input[type="checkbox"]:hover {
         4px 4px 5px rgba(0, 0, 0, 0.7),
         0px 0px 7px rgba(0, 0, 0, 0.4);
     line-height: 1.5;
+    margin-top: 4rem;
 }
 
 .business:hover{
@@ -114,7 +115,7 @@ input[type="checkbox"]:hover {
 
 .text-area {
     margin-top: 1rem;
-    width: 300px;
+    width: 400px;
     height: 110px;
     border: none;
 }
@@ -125,7 +126,7 @@ input[type="checkbox"]:hover {
 
 .desplegable {
     margin: 1rem;
-    width: 150px;
+    width: 250px;
     height: 30px;
     border: 5rem;
 }

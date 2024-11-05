@@ -3,12 +3,11 @@ import { React , useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { usePoints } from '../context/PointsContext';
-import Navbar from '../Components/Navbar/Navbar';
 
 const AccesPoint = () => {
 
     const business = localStorage.getItem('business');
-const { setPoints } = usePoints();
+    const { setPoints } = usePoints();
 
     // Está reventando en la lectura de "name" en la arrow function / función manejadora
 
@@ -100,7 +99,9 @@ const totalPoints = () => {
             {/* <Navbar /> */}
             <section
                 id='acess_point'>
-                    <h2 className='business'>{business}</h2>
+                    {/* <h2
+                        className='business'>
+                            {business}</h2> */}
                     <h1>ACCES POINT</h1>
             </section>
 
@@ -287,15 +288,15 @@ const totalPoints = () => {
 
            <Link
             style={{textDecoration : 'none' }}
-            to={`/buttonppal/printeroption`} > 
+            to={`/buttonppal/xdr`} > 
            <Button
             variant='contained'
-            className='back-button'
+            className='next-button'
             style={{
                 margin: '10px 20px 10px 20px',
                 boxShadow: '10px 5px 5px black'
             }}>
-                    PRINT REPORT
+                    NEXT
            </Button>
            </Link>
 

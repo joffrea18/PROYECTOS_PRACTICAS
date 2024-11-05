@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { useState, useEffect } from 'react';
 import { usePoints } from '../context/PointsContext';
-import Navbar from '../Components/Navbar/Navbar';
 
 
 const RouterInfo = () => {
@@ -99,7 +98,7 @@ return (
         <div >
                 {/* <Navbar /> */}
                 <section className="category-card" id="router">
-                <h2 className='business'>{business}</h2>
+                {/* <h2 className='business'>{business}</h2> */}
                 <h1>Router</h1>
                 </section>
                 <form action="get">
@@ -114,7 +113,7 @@ return (
                         name='num1'
                         className='desplegable'
                          >
-                        <option >Select one Option</option>
+                        <option >Select one of the Options</option>
                         <option value="adamo" >Adamo</option>
                         <option value="amena" >Amena</option>
                         <option value="euskatel" >Euskaltel</option>
@@ -197,7 +196,6 @@ return (
                         onChange={handleInput}
                         placeholder='IP Estática de Backup'
                         value={inputValue.num6}/>
-                    <br />
                 
                 <label for="fibra-backup">
                             <input
