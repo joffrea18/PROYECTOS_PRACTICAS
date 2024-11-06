@@ -13,6 +13,7 @@ import { PointsProvider } from './context/PointsContext';
 import AccesPoint from './Pages/AccesPoint';
 import Navbar from './Components/Navbar/Navbar';
 import XDR from './Pages/XDR';
+import Servidores from './Pages/Servidores';
 
 // Aquí debo de mirar introducir al email como prop al
 // componente de Buttonppal
@@ -36,6 +37,7 @@ function App() {
            <Route path={`/buttonppal/switchinfo`} element={<SwitchInfo />} />
            <Route path={`/buttonppal/accespointinfo`} element={<AccesPoint />} />
            <Route path={`/buttonppal/xdr`} element={<XDR />} />
+           <Route path={`/buttonppal/servidoresinfo`} element={<Servidores />} />
            <Route path={`/buttonppal/printeroption`} element={<PrinterOption />} />
            <Route path='*' element={<NotFound />} />
          </Routes>

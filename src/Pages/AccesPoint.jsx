@@ -258,18 +258,15 @@ const totalPoints = () => {
                 value={inputValue.val11} />
                 Certificado Autenticación EAP-TLS
             </label>
+            <br />
 
-            <label
-                for="switch-fabricante">
-                 Observaciones
-            </label>
             <textarea
                 name="val5"
                 className='text-area'
                 onChange={handleInput}
                 placeholder='Apunta tus Observaciones'
                 value={inputValue.val5} />
-            
+
         </form>
 
             <Link

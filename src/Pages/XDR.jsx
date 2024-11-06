@@ -131,7 +131,7 @@ useEffect(() => {
     const total = totalPoints();
     setPoints((prevPoints) => ({
         ...prevPoints,
-        firewall: total,
+        xdr: total,
     })); // Actualiza los puntos en el contexto
 }, [inputValue, checkboxes]); // Dependencias para actualizar cuando cambie algo
  
@@ -147,8 +147,11 @@ console.log(totalPoints());
                  <h1>XDR</h1>
             </section>
 
-            <form action="">
-                <label for="xdr-solucion">
+            <form action="get"
+                className='forms'>
+
+                <label
+                    for="xdr-solucion">
                     Solución XDR</label>
                 <input
                     type="text"
@@ -167,6 +170,15 @@ console.log(totalPoints());
                     placeholder='Proveedor'
                     onChange={handleInput}
                     value={inputValue.val2}/>
+                
+                <label htmlFor="">
+                <input
+                    type="checkbox"
+                    name="val7"
+                    onChange={handleCheckbox}
+                    value={checkboxes.val7}/>
+                    Firewall
+                </label>
 
                 <label htmlFor="">
                 <input
@@ -175,6 +187,15 @@ console.log(totalPoints());
                     onChange={handleCheckbox}
                     value={checkboxes.val4}/>
                     Antimalware
+                </label>
+
+                <label htmlFor="">
+                <input
+                    type="checkbox"
+                    name="val9"
+                    onChange={handleCheckbox}
+                    value={checkboxes.val9}/>
+                    Antiphishing
                 </label>
 
                 <label htmlFor="">
@@ -189,19 +210,55 @@ console.log(totalPoints());
                 <label htmlFor="">
                 <input
                     type="checkbox"
-                    name="val6"
+                    name="val18"
                     onChange={handleCheckbox}
-                    value={checkboxes.val6} />
-                    Antiexploit Avanzado
+                    value={checkboxes.val18}/>
+                    APT Protection
                 </label>
 
                 <label htmlFor="">
                 <input
                     type="checkbox"
-                    name="val7"
+                    name="val27"
                     onChange={handleCheckbox}
-                    value={checkboxes.val7}/>
-                    Firewall
+                    value={checkboxes.val27}/>
+                    Threat Hunting
+                </label>
+
+                <label htmlFor="">
+                <input
+                    type="checkbox"
+                    name="val21"
+                    onChange={handleCheckbox}
+                    value={checkboxes.val21}/>
+                    Cifrado de Datos
+                </label>
+
+                <label htmlFor="">
+                <input
+                    type="checkbox"
+                    name="val28"
+                    onChange={handleCheckbox}
+                    value={checkboxes.val28}/>
+                    Remote Forensics
+                </label>
+
+                <label htmlFor="">
+                <input
+                    type="checkbox"
+                    name="val16"
+                    onChange={handleCheckbox}
+                    value={checkboxes.val16}/>
+                    Sandbox Analyzer
+                </label>
+
+                <label htmlFor="">
+                <input
+                    type="checkbox"
+                    name="val6"
+                    onChange={handleCheckbox}
+                    value={checkboxes.val6} />
+                    Antiexploit Avanzado
                 </label>
 
                 <label htmlFor="">
@@ -216,10 +273,19 @@ console.log(totalPoints());
                 <label htmlFor="">
                 <input
                     type="checkbox"
-                    name="val9"
+                    name="val22"
                     onChange={handleCheckbox}
-                    value={checkboxes.val9}/>
-                    Antiphishing
+                    value={checkboxes.val22}/>
+                    Control de Aplicaciones
+                </label>
+
+                <label htmlFor="">
+                <input
+                    type="checkbox"
+                    name="val23"
+                    onChange={handleCheckbox}
+                    value={checkboxes.val23}/>
+                    Control de Navegador
                 </label>
 
                 <label htmlFor="">
@@ -279,87 +345,6 @@ console.log(totalPoints());
                 <label htmlFor="">
                 <input
                     type="checkbox"
-                    name="val16"
-                    onChange={handleCheckbox}
-                    value={checkboxes.val16}/>
-                    Sandbox Analyzer
-                </label>
-
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="val17"
-                    onChange={handleCheckbox}
-                    value={checkboxes.val17}/>
-                    Data Loss Prevention
-                </label>
-
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="val18"
-                    onChange={handleCheckbox}
-                    value={checkboxes.val18}/>
-                    APT Protection
-                </label>
-
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="val19"
-                    onChange={handleCheckbox}
-                    value={checkboxes.val19}/>
-                    IAM/Identity Protection
-                </label>
-
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="val20"
-                    onChange={handleCheckbox}
-                    value={checkboxes.val20}/>
-                    Protección de Correo Electrónico
-                </label>
-
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="val21"
-                    onChange={handleCheckbox}
-                    value={checkboxes.val21}/>
-                    Cifrado de Datos
-                </label>
-
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="val22"
-                    onChange={handleCheckbox}
-                    value={checkboxes.val22}/>
-                    Control de Aplicaciones
-                </label>
-
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="val23"
-                    onChange={handleCheckbox}
-                    value={checkboxes.val23}/>
-                    Control de Navegador
-                </label>
-
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="val24"
-                    onChange={handleCheckbox}
-                    value={checkboxes.val24}/>
-                    Gestión de Parches & Vulnerabilidades
-                </label>
-
-                <label htmlFor="">
-                <input
-                    type="checkbox"
                     name="val25"
                     onChange={handleCheckbox}
                     value={checkboxes.val25}/>
@@ -369,28 +354,19 @@ console.log(totalPoints());
                 <label htmlFor="">
                 <input
                     type="checkbox"
+                    name="val20"
+                    onChange={handleCheckbox}
+                    value={checkboxes.val20}/>
+                    Email Protected
+                </label>
+
+                <label htmlFor="">
+                <input
+                    type="checkbox"
                     name="val26"
                     onChange={handleCheckbox}
                     value={checkboxes.val26}/>
-                    Protección Contra Ransomware
-                </label>
-
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="val27"
-                    onChange={handleCheckbox}
-                    value={checkboxes.val27}/>
-                    Threat Hunting
-                </label>
-
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="val28"
-                    onChange={handleCheckbox}
-                    value={checkboxes.val28}/>
-                    Remote Forensics
+                    Protección Ransomware
                 </label>
 
                 <label htmlFor="">
@@ -399,11 +375,18 @@ console.log(totalPoints());
                     name="val29"
                     onChange={handleCheckbox}
                     value={checkboxes.val29}/>
-                    Gestión de Políticas de Seguridad
+                    Políticas de Seguridad
+                </label>
+
+                <label htmlFor="">
+                <input
+                    type="checkbox"
+                    name="val24"
+                    onChange={handleCheckbox}
+                    value={checkboxes.val24}/>
+                    Gestión de Parches
                 </label>
                             
-                <label for="xdr-notas">
-                    Notas</label>
                 <textarea
                     className='text-area'
                     name="val3"
@@ -428,15 +411,15 @@ console.log(totalPoints());
 
             <Link
             style={{textDecoration : 'none' }}
-            to={`/buttonppal/printeroption`} > 
+            to={`/buttonppal/servidoresinfo`} > 
            <Button
             variant='contained'
-            className='back-button'
+            className='next-button'
             style={{
                 margin: '10px 20px 10px 20px',
                 boxShadow: '10px 5px 5px black'
             }}>
-                    PRINT REPORT
+                    NEXT
            </Button>
            </Link>
             </div>

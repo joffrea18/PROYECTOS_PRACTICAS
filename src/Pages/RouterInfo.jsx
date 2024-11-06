@@ -96,13 +96,12 @@ useEffect(() => {
             
 return (
         <div >
-                {/* <Navbar /> */}
-                <section className="category-card" id="router">
-                {/* <h2 className='business'>{business}</h2> */}
+            <section
+                className="category-card" id="router">
                 <h1>Router</h1>
                 </section>
-                <form action="get">
-                {/* <div class="input-group"> */}
+                <form action="get"
+                    className='forms'>
                     <label
                         for="router-isp"
                         value={inputValue.num1}
@@ -133,9 +132,6 @@ return (
                         <option value="lyca" >Lyca</option>
                     </select>
                     </label>
-
-                    <label for="backup-isp">
-                        ISP de Backup</label>
 
                     <input
                         type="text"

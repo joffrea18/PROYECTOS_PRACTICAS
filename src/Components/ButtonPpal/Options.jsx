@@ -48,6 +48,11 @@ const Options = () => {
                          >
                          <p>AccesPoint</p>
                      </Link>
+                     <Link
+                         to={`/buttonppal/xdr`}
+                         >
+                         <p>XDR</p>
+                     </Link>
                      </Menu>
                 </Button>
                 </div>

@@ -129,7 +129,7 @@ useEffect(() => {
             </section>
 
             <form
-                className='firewall-form'
+                className='forms'
                 action='get'  >
 
                 <label

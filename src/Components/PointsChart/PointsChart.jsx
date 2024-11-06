@@ -10,23 +10,28 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Toolti
 
     const PointsChart = ({ points }) => {
         const data = {
-            labels: ['Router', 'Firewall', 'Switch', 'AccesPoint'],
+            labels: ['Router', 'Firewall', 'Switch', 'AccesPoint', 'XDR'],
             datasets: [
                 {
                     label: 'Total Points',
                     data: [points.router
                         , points.firewall
                         , points.switch
-                        , points.accespoint],
+                        , points.accespoint
+                        , points.xdr],
                     backgroundColor: [
                         'rgba(255, 99, 132, 1)', // Color oscuro
                         'rgba(54, 162, 235, 1)', // Color oscuro
                         'rgba(75, 192, 192, 1)', // Color oscuro
+                        'rgba(159, 90, 253, 1)',
+                        'rgba(108, 59, 42, 1)',
                     ],
                     borderColor: [
                         'rgba(255, 99, 132, 1)',
                         'rgba(54, 162, 235, 1)',
                         'rgba(75, 192, 192, 1)',
+                        'rgba(159, 90, 253, 1)',
+                        'rgba(108, 59, 42, 1)',
                     ],
                     borderWidth: 1,
                 },

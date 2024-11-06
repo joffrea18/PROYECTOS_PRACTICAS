@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import '../Pages/PagesCSS/Pages.css';
 import { usePoints } from '../context/PointsContext';
 import PointsChart from '../Components/PointsChart/PointsChart';
-import Navbar from '../Components/Navbar/Navbar';
 import { Link } from 'react-router-dom';
 import { Button, Modal, Typography } from '@mui/material'; // Importanción de la librería @mui/material
 import jsPDF from 'jspdf';
@@ -18,7 +17,8 @@ const [open, setOpen] = useState(false); // Estado para controlar el modal
     const totalPoints = points.router
         + points.firewall
         + points.switch
-        + points.accespoint;
+        + points.accespoint
+        +points.xdr;
 
 const generatePDF = () => {
     const input = document.getElementById('pdf-content'); // Div que deseas convertir en PDF
@@ -39,6 +39,7 @@ const generatePDF = () => {
         pdf.text(`Total Firewall Points: ${points.firewall}`, 20, 50);
         pdf.text(`Total Switch Points: ${points.switch}`, 20, 60);
         pdf.text(`Total AccesPoint Points: ${points.accespoint}`, 20, 70);
+        pdf.text(`Total XDR Points: ${points.xdr}`, 30, 50);
         pdf.text(`Total Points: ${totalPoints}`, 20, 70);
 
         const imgWidth = 200; // Ancho de la imagen en el PDF
@@ -79,6 +80,10 @@ const handleClose = () => setOpen(false); // Cerrar el modal
                 <br />
                 <h1>
                     ACCES POINTS = {points.accespoint}
+                </h1>
+                <br />
+                <h1>
+                    XDR POINTS = {points.xdr}
                 </h1>
                 <br />
                 <p className='total-points'>

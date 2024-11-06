@@ -192,17 +192,13 @@ const { setPoints } = usePoints();
                            value={checkboxes.val8} />
                         Backup automático ≤ 1 semana
                         </label>
-                        
-                        <label
-                        for="switch-notas">
-                            Notas</label>
+                              
                     <textarea
                         name="val3"
                         className='text-area'
                         onChange={handleInput}
                         placeholder='Apunta tus Notas aquí'
                         value={inputValue.val3} />
-                        
                 </form>
                 
             <Link

@@ -11,23 +11,38 @@ body {
 }
 
 form {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    /* flex-direction: column; */
+    /* flex-wrap: wrap; */
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
     align-items: center; /* Centra horizontalmente */
     justify-content: end; /* Centra verticalmente */
     background: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
     border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9); /* Sombra para efecto de elevación */
+    box-shadow: 6px 6px 40px rgba(0, 0, 0, 0.9); /* Sombra para efecto de elevación */
     padding: 20px;
-    max-width: 550px; /* Ancho máximo del formulario */
+    max-width: 1000px; /* Ancho máximo del formulario */
     margin: auto; /* Centramos el formulario en el contenedor */
     position: relative;
     z-index: 1; /* Asegura que esté en la parte superior del fondo */
     line-height: 1.5;
 }
 
+.forms {
+    text-align: left;
+}
+
 label {
     margin-top: 10px; /* Espacio entre las etiquetas y los inputs */
+    justify-content: left;
+}
+
+input {
+    flex-wrap: wrap;
+    /* width: 90%; */
+    padding: 8px;
+    margin: 8px 0;
 }
 
 input[type="text"] {
@@ -65,10 +80,10 @@ input[type="checkbox"]:hover {
 .back-button,
 .next-button {
     margin-top: 2rem;
-    width: 170px;
-    height: 50px;
+    width: 270px;
+    height: 90px;
     margin-top: 60px; /* Espacio entre el formulario y los botones */
-    padding: 10px 20px; /* Espaciado en los botones */
+    padding: 30px 50px; /* Espaciado en los botones */
 }
 
 .back-button:hover,
@@ -115,8 +130,8 @@ input[type="checkbox"]:hover {
 
 .text-area {
     margin-top: 1rem;
-    width: 400px;
-    height: 110px;
+    width: 200%;
+    height: 150px;
     border: none;
 }
 
@@ -135,4 +150,41 @@ input[type="checkbox"]:hover {
     text-decoration:overline;
     font-size: xx-large;
     font-weight: bold;
+}
+
+.add-server{
+    width: 220px;
+    height: 80px;
+    margin: 1rem;
+    background-color: rgba(12, 51, 222, 0.85);
+    border-radius: 5%;
+    box-shadow: 8px 8px 20px;
+    color:black;
+    font-weight: bold;
+    border: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-server:hover{
+    transform: scale(1.1);
+}
+
+.server-nav {
+    text-align: center;
+    width: 200%;
+    justify-content: center;
+    /* margin: 0.5rem; */
+    padding: 1rem;
+    /* border: 0.2rem black solid; */
+}
+
+.server-nav-w {
+    text-align: center;
+    width: 200%;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* margin: 0.5rem; */
+    padding: 1rem;
+    /* border: 0.2rem black solid; */
 }
