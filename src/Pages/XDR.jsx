@@ -7,8 +7,8 @@ import { usePoints } from '../context/PointsContext';
 
 const XDR = () => {
 
-    const business = localStorage.getItem('business');
-    const { setPoints } = usePoints();
+// const business = localStorage.getItem('business');
+const { setPoints } = usePoints();
 
 const [ inputValue, setInput ]
         = useState({
@@ -395,28 +395,14 @@ console.log(totalPoints());
                     value={inputValue.val3}/>
 
             </form>
-            <Link
-                style={{textDecoration : 'none' }}
-                to={`/buttonppal/accespointinfo`} > 
-            <Button
-                variant='contained'
-                className='back-button'
-                style={{
-                    margin: '10px 20px 10px 20px',
-                    boxShadow: '10px 5px 5px black'
-                }}>
-                RETURN
-           </Button>
-            </Link>
 
             <Link
             style={{textDecoration : 'none' }}
             to={`/buttonppal/servidoresinfo`} > 
            <Button
             variant='contained'
-            className='next-button'
+            id='next-button'
             style={{
-                margin: '10px 20px 10px 20px',
                 boxShadow: '10px 5px 5px black'
             }}>
                     NEXT

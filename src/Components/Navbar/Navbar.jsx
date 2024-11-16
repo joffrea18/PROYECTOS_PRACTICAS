@@ -1,15 +1,13 @@
 import './Navbar.css';
 import logo from '../../Assets/logo.jpg';
 import logo_microsyscom from '../../Assets/logo-microsyscom.jpg';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 
 const Navbar = () => {
 
-// const [, setBusiness] = useState('');
 const business = localStorage.getItem('business');
 
-// if(!business) return setEntry([entry]);
 
 return (
     <div className='navbar'>
@@ -21,7 +19,7 @@ return (
                 {
                  business &&
                  <h1 className='business'>
-                     {business}</h1>
+                     { business}</h1>
                 }
             
             <img 

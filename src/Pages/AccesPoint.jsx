@@ -271,28 +271,13 @@ const totalPoints = () => {
 
         </form>
 
-            <Link
-                style={{textDecoration : 'none' }}
-                to={`/buttonppal/switchinfo`} > 
-            <Button
-                variant='contained'
-                className='back-button'
-                style={{
-                    margin: '10px 20px 10px 20px',
-                    boxShadow: '10px 5px 5px black'
-                }}>
-                RETURN
-           </Button>
-            </Link>
-
            <Link
             style={{textDecoration : 'none' }}
             to={`/buttonppal/xdr`} > 
            <Button
             variant='contained'
-            className='next-button'
+            id='next-button'
             style={{
-                margin: '10px 20px 10px 20px',
                 boxShadow: '10px 5px 5px black'
             }}>
                     NEXT

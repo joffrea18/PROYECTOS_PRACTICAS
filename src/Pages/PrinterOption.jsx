@@ -104,9 +104,8 @@ const handleClose = () => setOpen(false); // Cerrar el modal
                 variant="contained"
                 color="primary"
                 onClick={handleOpen}
-                className='back-button'
+                id='generatepdf-button'
                 style={{
-                    margin: '0 20px 10px 20px',
                     boxShadow: '10px 5px 5px black'
                 }}>
                 Generate PDF

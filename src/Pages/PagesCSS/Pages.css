@@ -84,17 +84,19 @@ input[type="checkbox"]:hover {
     background-color: rgba(0, 0, 0, 0.285);
 }
 
-.back-button,
-.next-button {
-    margin-top: 2rem;
-    width: 270px;
+#next-button,
+#generatepdf-button {
+    /* margin-top: 2rem; */
+    margin-top: 5px;
+    width: 500px;
     height: 90px;
     margin-top: 60px; /* Espacio entre el formulario y los botones */
     padding: 30px 50px; /* Espaciado en los botones */
+    border-radius: 10px;
+    font-size: xx-large;
 }
 
-.back-button:hover,
-.next-button:hover{
+#next-button:hover{
     background-color: lightgreen;
     transform: scale(1.2);
 }

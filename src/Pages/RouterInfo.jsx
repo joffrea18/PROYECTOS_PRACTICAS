@@ -8,9 +8,9 @@ import { usePoints } from '../context/PointsContext';
 
 const RouterInfo = () => {
 
-    const business = localStorage.getItem('business');
-    // Actualizamos los datos y utilizamos el Contexto del Provider
-    const { setPoints } = usePoints();
+// const business = localStorage.getItem('business');
+// Actualizamos los datos y utilizamos el Contexto del Provider
+const { setPoints } = usePoints();
     
 const [ inputValue, setInput ] = useState({ num1: '',
     num2: '',
@@ -206,21 +206,6 @@ return (
 
             <section>
             </section>
-
-            <Link
-                style={{textDecoration : 'none' }}
-                to='/' > 
-
-            <Button
-                variant='contained'
-                className='back-button'
-                style={{
-                    margin: '10px 20px 10px 20px',
-                    boxShadow: '10px 5px 5px black'
-                }}>
-                    RETURN
-           </Button>
-            </Link>
            
            <Link
                 style={{textDecoration : 'none' }}
@@ -228,9 +213,8 @@ return (
 
            <Button
                 variant='contained'
-                className='next-button'
+                id='next-button'
                 style={{
-                    margin: '10px 20px 10px 20px',
                     boxShadow: '10px 5px 5px black'
                 }}>
                      NEXT

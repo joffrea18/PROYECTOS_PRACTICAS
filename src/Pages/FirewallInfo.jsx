@@ -7,7 +7,7 @@ import { usePoints } from '../context/PointsContext';
 
 const FirewallInfo = () => {
 
-const business = localStorage.getItem('business');
+// const business = localStorage.getItem('business');
 const { setPoints } = usePoints();
 // Está reventando en la lectura de "name" en la arrow function / función manejadora
 
@@ -312,28 +312,13 @@ useEffect(() => {
                     </form>
 
            <Link
-            style={{textDecoration : 'none' }}
-            to={`/buttonppal/routerinfo`} >
-
-            <Button
-                variant='contained'
-                className='back-button'
-                style={{
-                    margin: '10px 20px 10px 20px',
-                    boxShadow: '10px 5px 5px black'
-                }} >
-                RETURN
-           </Button>
-            </Link>
-           <Link
                 style={{textDecoration : 'none' }}
                 to={`/buttonppal/switchinfo`} >
 
            <Button
                 variant='contained'
-                className='next-button'
+                id='next-button'
                 style={{
-                    margin: '10px 20px 10px 20px',
                     boxShadow: '10px 5px 5px black'
                 }}>
                     NEXT
