@@ -124,6 +124,7 @@ const { setPoints } = usePoints();
                             </label>
                     <input
                         type="text"
+                        id='switch-fabricante'
                         name="val1"
                         onChange={handleInput}
                         placeholder='Fabricante'
@@ -134,6 +135,7 @@ const { setPoints } = usePoints();
                             Modelo</label>
                     <input
                         type="text"
+                        id='switch-modelo'
                         name="val2"
                         onChange={handleInput}
                         placeholder='Modelo'

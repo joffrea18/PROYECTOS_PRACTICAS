@@ -8,6 +8,7 @@ export const PointsProvider = ({ children }) => {
         firewall: 0,
         switch: 0,
         accespoint: 0,
+        xdr: 0,
     });
     const [ id, setId ] = useState('');
     const [ businessA, setBusinessA ] = useState('');
@@ -26,4 +27,5 @@ export const usePoints = () => {
     return useContext(PointsContext);
 };
 
-// Estas llaves se pueden eliminar si sólo se pasa un return
+// Estas llaves se pueden eliminar si sólo
+// se pasa un return

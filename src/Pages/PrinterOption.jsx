@@ -9,7 +9,7 @@ import html2canvas from 'html2canvas';
 
 const PrinterOption = () => {
 
-    const business = localStorage.getItem('business');
+const business = localStorage.getItem('business');
 const { points } = usePoints();
 const [open, setOpen] = useState(false); // Estado para controlar el modal
 
@@ -65,29 +65,37 @@ const handleClose = () => setOpen(false); // Cerrar el modal
                 <h2 className='business'>{business}</h2>
                 <h1>BUSINESS ANALYSIS RESULT</h1>
                 <PointsChart points= {points}/>
-                <form action="">
+                <form
+                    id='form-pointer'
+                    action="">
                 <h1>
-                    ROUTER POINTS = {points.router}
+                    ROUTER POINTS 
+                    <br /> {points.router}
                 </h1>
                 <br />
                 <h1>
-                    FIREWALL POINTS = {points.firewall}
+                    FIREWALL POINTS
+                    <br /> {points.firewall}
                 </h1>
                 <br />
                 <h1>
-                    SWITCH POINTS = {points.switch}
+                    SWITCH POINTS
+                    <br /> {points.switch}
                 </h1>
                 <br />
                 <h1>
-                    ACCES POINTS = {points.accespoint}
+                    ACCES POINTS
+                    <br /> {points.accespoint}
                 </h1>
                 <br />
                 <h1>
-                    XDR POINTS = {points.xdr}
+                    XDR POINTS
+                    <br /> {points.xdr}
                 </h1>
                 <br />
                 <p className='total-points'>
-                    TOTAL POINTS = {totalPoints}
+                    TOTAL POINTS
+                    <br /> {totalPoints}
                 </p>
             </form>
             </section>

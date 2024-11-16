@@ -133,10 +133,12 @@ useEffect(() => {
                 action='get'  >
 
                 <label
-                    for="firewall-fabricante">Fabricante</label>
-
+                    for="firewall-fabricante">
+                        Fabricante
+                </label>
                 <input
                     type="text"
+                    id='firewall-fabricante'
                     name="val1"
                     onChange={handleInput}
                     placeholder='Fabricante'
@@ -147,7 +149,7 @@ useEffect(() => {
 
                     <input
                         type="text"
-                        id="firewall-modelo"
+                        id='firewall-modelo'
                         name="val2"
                         placeholder='Modelo'
                         onChange={handleInput}

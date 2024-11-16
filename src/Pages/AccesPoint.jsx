@@ -107,22 +107,24 @@ const totalPoints = () => {
 
         <form action="">
             <label
-                for="switch-fabricante">
+                for="accespoint-fabricante">
                  Fabricante
             </label>
             <input
                 type="text"
+                id='accespoint-fabricante'
                 name="val1"
                 onChange={handleInput}
                 placeholder='Fabricante'
                 value={inputValue.val1} />
             
             <label
-                for="switch-fabricante">
+                for="accespoint-modelo">
                  Modelo
             </label>
             <input
                 type="text"
+                id='accespoint-modelo'
                 name="val2"
                 onChange={handleInput}
                 placeholder='Modelo'

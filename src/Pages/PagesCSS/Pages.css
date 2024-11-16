@@ -33,6 +33,13 @@ form {
     text-align: left;
 }
 
+#form-pointer{
+    display: flex;
+    width: 70%;
+    text-align: center;
+    justify-content: center;
+}
+
 label {
     margin-top: 10px; /* Espacio entre las etiquetas y los inputs */
     justify-content: left;
@@ -147,7 +154,7 @@ input[type="checkbox"]:hover {
 }
 
 .total-points{
-    text-decoration:overline;
+    /* text-decoration:overline; */
     font-size: xx-large;
     font-weight: bold;
 }
