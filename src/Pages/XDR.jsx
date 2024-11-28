@@ -45,6 +45,7 @@ const [ checkboxes, setCheckboxes ]
     val27: '',
     val28: '',
     val29: '',
+    val30: '',
     });
 
 const pointsf = {
@@ -76,7 +77,8 @@ const pointsf = {
     val26: 3.4,
     val27: 3.4,
     val28: 3.4,
-    val29: 4.8    
+    val29: 2.4,
+    val30: 2.4,   
 };
 
 console.log(pointsf);
@@ -386,6 +388,20 @@ console.log(totalPoints());
                     value={checkboxes.val24}/>
                     Gestión de Parches
                 </label>
+
+                <label
+                    for="cost-xdr">
+                        <b>COSTES</b>
+                </label>
+                <textarea
+                    type="textarea"
+                    className='text-area'
+                    id='costs-xdr'
+                    name='val30'
+                    placeholder='Adjuntar presupuesto
+                        de Vigía Defender'
+                    onChange={handleInput}
+                    value={inputValue.val30}/>
                             
                 <textarea
                     className='text-area'

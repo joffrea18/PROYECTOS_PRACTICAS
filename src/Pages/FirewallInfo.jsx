@@ -38,30 +38,28 @@ const [ checkboxes, setCheckboxes ]
      });
 
 
-    const pointsf = {
-     val1: 3, //
-     val2: 5,  //
-     val3: 2,  //
-     val4: 5,  //
-     val5: 5,  //
-     val6: 5,  //
-     val7: 5,  //
-     val8: 5,   //
-     val9: 5, //
-     val10: 5, //
-     val11: 5, //
-     val12: 5, //
-     val13: 5, //
-     val14: 5, //
-     val15: 5, //
-     val16: 5, //
-     val17: 5, //
-     val18: 5, //
-     val19: 5, //
-     val20: 5, //
-     val21: 5 //
-        // Total 100
-    };
+const pointsf = {
+ val1: 5, //
+ val2: 5,  //
+ val3: 5,  //
+ val4: 5,  //
+ val5: 5,  //
+ val6: 5,  //
+ val7: 5,  //
+ val8: 5,   //
+ val9: 5, //
+ val10: 5, //
+ val11: 5, //
+ val12: 5, //
+ val13: 5, //
+ val14: 5, //
+ val15: 6, //
+ val16: 6, //
+ val17: 6, //
+ val18: 6, //
+ val19: 6, //
+    // Total 100
+};
 
 
 const handleInput = (e) => {
@@ -309,7 +307,21 @@ useEffect(() => {
                         onChange={handleCheckbox}
                         /> VPN - Limitado Geograficamente
                     </label>
-                    </form>
+
+                    <label 
+                        for="costs-firewall">
+                            <b>COSTES</b>
+                    </label>
+                    <input
+                        type="text"
+                        id='costs-firewall'
+                        name="val19"
+                        onChange={handleInput}
+                        placeholder='Adjuntar
+                            presupuestos de los
+                                Firewalls'
+                        value={inputValue.val19} />
+            </form>
 
            <Link
                 style={{textDecoration : 'none' }}

@@ -11,100 +11,98 @@ const { setPoints } = usePoints();
 
     // Está reventando en la lectura de "name" en la arrow function / función manejadora
 
-     const [ inputValue, setInput ]
-        = useState({
-            val1: '',
-            val2: '',
-            val3: '', });
+const [ inputValue, setInput ]
+   = useState({
+       val1: '',
+       val2: '',
+       val3: '',
+       val10: '' });
 
-    const [ checkboxes, setChexboxes ]
-        = useState({
-            val4: '',
-            val5: '',
-            val6: '',
-            val7: '',
-            val8: '',
-            val9: ''
-         });
-
-
-       const pointsf = {
-        val1: 9, //
-        val2: 9,  //
-        val3: 9,  //
-        val4: 9,  //
-        val5: 9,  //
-        val6: 9,  //
-        val7: 9,  //
-        val8: 9,  //
-        val9: 10  //
-
-        // Total 100
-    };
+const [ checkboxes, setChexboxes ]
+    = useState({
+        val4: '',
+        val5: '',
+        val6: '',
+        val7: '',
+        val8: '',
+        val9: ''
+    });
 
 
-    const handleInput = (e) => {
-        // e.preventDefault;
-        const { name, value } = e.target;
-        setInput({
-            ...inputValue,
-            [name]: value,
-        });
-    }
-
-    const handleCheckbox = (e) => {
-        const { name, checked } = e.target;
-        setChexboxes({
-            ...checkboxes,
-            [name]: checked,
-        });
-    }
-
-    console.log(checkboxes);
+const pointsf = {
+    val1: 9, //
+    val2: 9,  //
+    val3: 9,  //
+    val4: 9,  //
+    val5: 9,  //
+    val6: 9,  //
+    val7: 9,  //
+    val8: 9,  //
+    val9: 5,  //
+    val10: 5  //
+    // Total 100
+};
 
 
-    const calculateInputPoints = () => {
-        let totalPoints = 0;
+const handleInput = (e) => {
+    // e.preventDefault;
+    const { name, value } = e.target;
+    setInput({
+        ...inputValue,
+        [name]: value,
+    });
+}
 
-        // Sumar puntos de los inputs
-        Object.keys(inputValue).forEach((key) => {
-            if (inputValue[key]) {
-                totalPoints += pointsf[key]; // Sumar puntos si hay valor en el input
-            }
-        });
+const handleCheckbox = (e) => {
+    const { name, checked } = e.target;
+    setChexboxes({
+        ...checkboxes,
+        [name]: checked,
+    });
+}
 
-        return totalPoints;
-    };
+console.log(checkboxes);
 
-    const calculateCheckboxPoints = () => {
-        let totalPoints = 0;
 
-        // Sumar puntos de los checkboxes
-        Object.keys(checkboxes).forEach((key) => {
-            if (checkboxes[key]) {
-                totalPoints += pointsf[key]; // Sumar puntos si el checkbox está activo
-            }
-        });
+const calculateInputPoints = () => {
+    let totalPoints = 0;
+    // Sumar puntos de los inputs
+    Object.keys(inputValue).forEach((key) => {
+        if (inputValue[key]) {
+            totalPoints += pointsf[key]; // Sumar puntos si hay valor en el input
+        }
+    });
 
-        return totalPoints;
-    };
+    return totalPoints;
+};
 
-    const totalPoints = () => {
-        return calculateInputPoints() + calculateCheckboxPoints();
-    };
+const calculateCheckboxPoints = () => {
+    let totalPoints = 0;
+    // Sumar puntos de los checkboxes
+    Object.keys(checkboxes).forEach((key) => {
+        if (checkboxes[key]) {
+            totalPoints += pointsf[key]; // Sumar puntos si el checkbox está activo
+        }
+    });
+    return totalPoints;
+};
 
-    console.log({inputValue});
+const totalPoints = () => {
+    return calculateInputPoints() + calculateCheckboxPoints();
+};
 
-    useEffect(() => {
-        const total = totalPoints();
-        setPoints((prevPoints) => ({
-            ...prevPoints,
-            switch: total,
-        })); // Actualiza los puntos en el contexto
-    }, [inputValue, checkboxes]); // Dependencias para actualizar cuando cambie algo
+console.log({inputValue});
+
+useEffect(() => {
+    const total = totalPoints();
+    setPoints((prevPoints) => ({
+        ...prevPoints,
+        switch: total,
+    })); // Actualiza los puntos en el contexto
+}, [inputValue, checkboxes]); // Dependencias para actualizar cuando cambie algo
     
 
-    console.log(totalPoints());
+console.log(totalPoints());
 
     return (
         <div >
@@ -193,13 +191,29 @@ const { setPoints } = usePoints();
                            value={checkboxes.val8} />
                         Backup automático ≤ 1 semana
                         </label>
-                              
-                    <textarea
-                        name="val3"
-                        className='text-area'
-                        onChange={handleInput}
-                        placeholder='Apunta tus Notas aquí'
-                        value={inputValue.val3} />
+
+                        <label 
+                            for="costs-switch">
+                                <b>COSTES</b>
+                        </label>
+                        <input
+                            type="textarea"
+                            className='text-area'
+                            id='costs-switch'
+                            name="val10"
+                            onChange={handleInput}
+                            placeholder='Adjuntar
+                                presupuestos de los Switch
+                                    para las sedes que carecen
+                                    de él'
+                            value={inputValue.val10} /> 
+
+                        <textarea
+                            name="val3"
+                            className='text-area'
+                            onChange={handleInput}
+                            placeholder='Apunta tus Notas aquí'
+                            value={inputValue.val3} />
                 </form>
 
            <Link

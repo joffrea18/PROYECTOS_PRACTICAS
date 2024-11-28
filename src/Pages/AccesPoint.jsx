@@ -28,11 +28,12 @@ const AccesPoint = () => {
             val13: '',
             val14: '',
             val15: '',
-            val16: '',         
+            val16: '',
+            val17: ''         
         });
 
    const pointsf = {
-        val1: 10, //
+        val1: 5, //
         val2: 6,  //
         val3: 6,  //
         val4: 6,  //
@@ -47,7 +48,8 @@ const AccesPoint = () => {
         val13: 6,
         val14: 6,
         val15: 6,
-        val16: 6
+        val16: 6,
+        val17: 5
 
         // Total 100
     };
@@ -261,6 +263,20 @@ const totalPoints = () => {
                 Certificado Autenticación EAP-TLS
             </label>
             <br />
+            <label
+                for="costs-accespoint">
+                    <b>COSTES</b>
+            </label>
+            <textarea
+                type="textarea"
+                className='text-area'
+                id='costs-accespoint'
+                name='val17'
+                placeholder='Adjuntar presupuesto
+                    de  mano de obra para la
+                        configuración por sede'
+                onChange={handleInput}
+                value={inputValue.val17}/>
 
             <textarea
                 name="val5"

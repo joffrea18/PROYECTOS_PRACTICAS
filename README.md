@@ -90,3 +90,24 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 # npm install @mui/material @emotion/react @emotion/styled
 # npm install chart.js react-chartjs-2
 
+### INFORMACION DE LA APP
+## PENDIENTES
+
+# Barra incremental en el proceso de rellenado de
+#   la información
+# Menú en la derecha de forma vertical
+# View report details con todos los campos
+#   añadidos una vez analizados
+# Generar csv que permita logs de errores e
+#   inventario de equipos  
+
+### En el apartado de Costes
+## Listos
+# Firewall
+# Router
+# SwitchInfo
+# AccesPoint
+# XDR
+
+## Pendientes
+# Servidores

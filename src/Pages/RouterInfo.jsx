@@ -17,7 +17,8 @@ const [ inputValue, setInput ] = useState({ num1: '',
     num3: '',
     num4: '',
     num5: '',
-    num6: ''  });
+    num6: '',
+    num9: ''  });
         
 const [ checkboxes, setChexboxes ] =
     useState({ num7: '',
@@ -25,14 +26,15 @@ const [ checkboxes, setChexboxes ] =
             
             
 const points = {
-    num1: 10, // Puntos para ISP
+    num1: 5, // Puntos para ISP
     num2: 5,  // Puntos para Teléfono asociado
     num3: 6,  // Puntos para IP Estática
     num4: 8,  // Puntos para ISP de Backup
     num5: 8,  // Puntos para Teléfono de Backup
     num6: 8,  // Puntos para IP Estática de Backup
     num7: 5,  // Puntos para IP estática
-    num8: 50   // Puntos Fibra Backup
+    num8: 50,   // Puntos Fibra Backup
+    num9: 5
     
     // Total 100
 };
@@ -193,15 +195,32 @@ return (
                         placeholder='IP Estática de Backup'
                         value={inputValue.num6}/>
                 
-                <label for="fibra-backup">
-                            <input
-                            type="checkbox"
-                            name="num8"
-                            onclick="toggleBackupFields()"
-                            checked={ checkboxes.num2 }
-                            onChange={handleCheckbox}/>
-                            Fibra Backup
-                        </label>
+                    <label
+                        for="fibra-backup">
+                        <input
+                                type="checkbox"
+                                name="num8"
+                                onclick="toggleBackupFields()"
+                                checked={ checkboxes.num2 }
+                                onChange={handleCheckbox}/>
+                                Fibra Backup
+                    </label>
+
+                        <br />
+                    <label
+                        for="costs-routers">
+                            <b>COSTES</b>
+                    </label>
+                    <input
+                        type="textarea"
+                        className='text-area'
+                        name="val9"
+                        id="costs-routers"
+                        placeholder='Adjuntar presupuestos
+                            de los routers de backup'
+                        onChange={handleInput}
+                        value={inputValue.val9}/>
+
             </form>
 
             <section>
