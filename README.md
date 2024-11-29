@@ -123,19 +123,36 @@ Los lenguajes OOB y algunas plataforma manejadas son:
     + CSS -> el cual permite la visualización amena de lo requerido
     + JS -> aplica toda la lógica de los renderizados utilizados en el DOM
     + REACT -> Utilizado para la descarga de las librerías que facilitan la visualización responsive
-    + NodeJs -> creación y comunicación con mi front por parte del back mediante los endpoints (v-LTS)
+    + Git -> conexión para el respaldo del proyecto
+            git config --global user.name "Nuestro nombre"
+            git config --global user.email emailasociadoagit@example.com
+    + NodeJs -> creación de servidor web (like %IIS & Apache) y comunicación con mi front por parte del back mediante los 
+                endpoints (v-LTS)
+                    npm init -y -> creación del package-json
+                    npm nodemon 
+                    common js -> encapsulación de datos de JS en el back
+                    npm i express-fileupload -> carga de archivos
+                    npm i express
+                    npm i nodemon
+                    npm i chalk
+                    npm i morgan
     + MySql -> creación de .env y los distintos query de conexión con la BBDD y creación de los datos necesarios,
                 así como la recuperación de los mismos
     + Postman -> creación de las rutas que permtirán que la API creada pueda ser leída
 
 Avances del proyecto:
     + frontend (READY)
-        - Creados los forms
-        - Visualización de información dinámica
-        - Captura del dato en el localhost
-        - Generación de estadística basado en la lógica creada para cada apartado
+        ✅ - Creados los forms
+        ✅ - Visualización de información dinámica
+        ✅ - Captura del dato en el localhost
+        ✅ - Generación de estadística basado en la lógica creada para cada apartado
 
     + backend (EN DESARROLLO)
-        - Creación de la BBDD
+        ✅ - Creación de la BBDD (datos en el .env_example)
         - Conexión con la BBDD
         - Conexión y creación de las principales routes de la API
+
+## CONFIGURACIONES ADICIONALES
+
+En el fichero .gitignore se contiene los ficheros que no podrán ser publicados por medidas de seguridad
+    por lo cual se deberá aplicar el npm i así como la conf nuevamente de la conexión de la BBDD
