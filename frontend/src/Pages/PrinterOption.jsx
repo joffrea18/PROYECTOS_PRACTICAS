@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../Pages/PagesCSS/Pages.css';
+import './PagesCSS/Pages.css';
 import { usePoints } from '../context/PointsContext';
 import PointsChart from '../Components/PointsChart/PointsChart';
 import { Link } from 'react-router-dom';
