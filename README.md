@@ -136,6 +136,7 @@ Los lenguajes OOB y algunas plataforma manejadas son:
                     npm i nodemon
                     npm i chalk
                     npm i morgan
+                    npm i cors
     + MySql -> creación de .env y los distintos query de conexión con la BBDD y creación de los datos necesarios,
                 así como la recuperación de los mismos
     + Postman -> creación de las rutas que permtirán que la API creada pueda ser leída
@@ -149,6 +150,7 @@ Avances del proyecto:
 
     + backend (EN DESARROLLO)
         ✅ - Creación de la BBDD (datos en el .env_example)
+        ✅ - Creación y asociación de los paquetes que se utilizarán en todo el proceso Backend
         - Conexión con la BBDD
         - Conexión y creación de las principales routes de la API
 
