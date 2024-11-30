@@ -1,5 +1,5 @@
-# PROYECTO PRACTICAS_MICROSYSCOM
-# DESARROLLO DE LA API
+# 👨🏻‍🎓 PROYECTO PRACTICAS_MICROSYSCOM 👨🏻‍🎓
+# 📲 DESARROLLO DE LA API 📲
 
 Es una aplicación desarrollada basado en los formularios, los cuales extraen el dato por el front
 desarrollado con React y JS, generando en base a una lógica desarrollada una estadística de los datos,
@@ -35,7 +35,7 @@ culminación del rellenado de todos los formularios establecidos.
         necesarios, así como la recuperación de los mismos
     +   Postman -> creación de las rutas que permtirán que la API creada pueda ser leída
 
-## Avances del proyecto:
+## 𝌙 Avances del proyecto:
 
     + frontend (READY)
         ✅ - Creados los forms
@@ -52,7 +52,7 @@ culminación del rellenado de todos los formularios establecidos.
 
 ******************************************************************************************************************************************************************************************************************************************
 
-# LIBRERIAS INSTALADAS
+# 📚 LIBRERIAS INSTALADAS 📚
 
     +   @MIU
     +   SWAL
@@ -72,14 +72,14 @@ culminación del rellenado de todos los formularios establecidos.
     +   npm i jsonwebtoken
 
 
-# PRÓXIMOS AVANCES
+# ↗️ PRÓXIMOS AVANCES ↗️
 
     +   Agregar restricción de botones del checkbox
     +   Mostrar nombre de la empresa en el reporte impreso
     +   Hacer dinámico el botón de manera emergente
 
 
-## PENDIENTES
+## ⏳ PENDIENTES
 
     +   Barra incremental en el proceso de rellenado de
     +      la información
@@ -89,7 +89,7 @@ culminación del rellenado de todos los formularios establecidos.
     +   Generar csv que permita logs de errores e
   inventario de equipos  
 
-# APARTADO DE COSTES
+# 🧧 APARTADO DE COSTES 🧧
 ## Listos
 
     +   Firewall
@@ -103,7 +103,7 @@ culminación del rellenado de todos los formularios establecidos.
     +   Servidores
 
 
-# CONFIGURACIONES ADICIONALES
+# 🛠️ CONFIGURACIONES ADICIONALES 🛠️
 
 En el fichero .gitignore se contiene los ficheros que no podrán ser publicados por medidas de
 seguridad por lo cual se deberá aplicar el npm i así como la conf nuevamente de la conexión de la BBDD
