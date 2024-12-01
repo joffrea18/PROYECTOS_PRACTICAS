@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.footer_links {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px 0;
+    text-align: center;
+    margin-top: auto;
+}
+
+.footer_links nav a {
+    color: white;
+    text-decoration: none;
+    margin: 10px 10px;
+    font-size: 14px;
+}
+
+.footer_links nav a:hover {
+    text-decoration: underline;
+}
+
