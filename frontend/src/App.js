@@ -8,7 +8,7 @@ import FirewallInfo from './Pages/FirewallInfo';
 import NotFound from './Pages/NotFound';
 import SwitchInfo from './Pages/SwitchInfo';
 import PrinterOption from './Pages/PrinterOption';
-import Options from './Components/ButtonPpal/Options';
+import Options from './Components/Options/Options';
 import { PointsProvider } from './context/PointsContext';
 import AccesPoint from './Pages/AccesPoint';
 import Navbar from './Components/Navbar/Navbar';
@@ -27,25 +27,24 @@ function App() {
 
   return (
     <div className="App">
-      {/* <AuthProvider> */}
-      <PointsProvider>
-        <Navbar entry={entry}/>
-         <Routes>
-           <Route path='/' element={<Welcome setEntry={setEntry}/>} />
-           <Route to={`/buttonppal`} element={<Options />} />
-           <Route path={`/buttonppal/routerinfo`} element={<RouterInfo />} />
-           <Route path={`/buttonppal/firewallinfo`} element={<FirewallInfo />} />
-           <Route path={`/buttonppal/switchinfo`} element={<SwitchInfo />} />
-           <Route path={`/buttonppal/accespointinfo`} element={<AccesPoint />} />
-           <Route path={`/buttonppal/xdr`} element={<XDR />} />
-           <Route path={`/buttonppal/servidoresinfo`} element={<Servidores />} />
-           {/* <Route path={`/buttonppal/costs`} element={<Costs />} /> */}
-           <Route path={`/buttonppal/printeroption`} element={<PrinterOption />} />
-           <Route path='*' element={<NotFound />} />
-         </Routes>
-      </PointsProvider>
-      {/* </AuthProvider> */}
-      <Footer />
+    {/* <AuthProvider> */}
+    <PointsProvider>
+    <Navbar entry={entry}/>
+   <Routes>
+   <Route path='/' element={<Welcome setEntry={setEntry}/>} />
+   <Route path={`/buttonppal/routerinfo`} element={<RouterInfo />} />
+   <Route path={`/buttonppal/firewallinfo`} element={<FirewallInfo />} />
+   <Route path={`/buttonppal/switchinfo`} element={<SwitchInfo />} />
+   <Route path={`/buttonppal/accespointinfo`} element={<AccesPoint />} />
+   <Route path={`/buttonppal/xdr`} element={<XDR />} />
+   <Route path={`/buttonppal/servidoresinfo`} element={<Servidores />} />
+   {/* <Route path={`/buttonppal/costs`} element={<Costs />} /> */}
+   <Route path={`/buttonppal/printeroption`} element={<PrinterOption />} />
+   <Route path='*' element={<NotFound />} />
+   </Routes>
+    </PointsProvider>
+    {/* </AuthProvider> */}
+    {/* <Footer /> */}
     </div>
   );
 }

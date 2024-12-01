@@ -142,19 +142,24 @@ console.log(totalPoints());
 
     return (
         <div>
+            <br />
+            <br />
             <section class="category">
                 {/* <h2
                     className='business'>
                         {business}</h2> */}
                  <h1>XDR</h1>
             </section>
+            <br />
+            <br />
 
             <form action="get"
                 className='forms'>
 
                 <label
                     for="xdr-solucion">
-                    Solución XDR</label>
+                    Solución XDR
+                </label>
                 <input
                     type="text"
                     id="xdr-solucion"
@@ -163,8 +168,10 @@ console.log(totalPoints());
                     onChange={handleInput}
                     value={inputValue.val1}/>
 
-                <label for="xdr-proveedor">
-                    Proveedor</label>
+                <label
+                    for="xdr-proveedor">
+                    Proveedor
+                </label>
                 <input
                     type="text"
                     id="xdr-proveedor"

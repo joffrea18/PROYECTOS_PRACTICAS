@@ -119,13 +119,16 @@ useEffect(() => {
 
     return (
         <div >
+            <br />
+            <br />
             <section
                 className='firewall-section'
                 id='firewall'>
                 {/* <h2 className='business'>{business}</h2> */}
                 <h1>Firewall</h1>
             </section>
-
+            <br />
+            <br />
             <form
                 className='forms'
                 action='get'  >
@@ -143,8 +146,9 @@ useEffect(() => {
                     value={inputValue.val1}/>
 
                     <label
-                        for="firewall-modelo">Modelo</label>
-
+                        for="firewall-modelo">
+                            Modelo
+                    </label>
                     <input
                         type="text"
                         id='firewall-modelo'

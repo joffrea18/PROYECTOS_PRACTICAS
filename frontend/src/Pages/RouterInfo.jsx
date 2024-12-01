@@ -17,27 +17,26 @@ const [ inputValue, setInput ] = useState({ num1: '',
     num3: '',
     num4: '',
     num5: '',
-    num6: '',
-    num9: ''  });
+    num6: '' });
         
 const [ checkboxes, setChexboxes ] =
-    useState({ num7: '',
-    num8: '' });
+    useState({ num7: ''});
             
             
 const points = {
-    num1: 5, // Puntos para ISP
-    num2: 5,  // Puntos para Teléfono asociado
-    num3: 6,  // Puntos para IP Estática
-    num4: 8,  // Puntos para ISP de Backup
-    num5: 8,  // Puntos para Teléfono de Backup
-    num6: 8,  // Puntos para IP Estática de Backup
-    num7: 5,  // Puntos para IP estática
-    num8: 50,   // Puntos Fibra Backup
-    num9: 5
+    num1: 10, // Puntos para ISP
+    num2: 10,  // Puntos para Teléfono asociado
+    num3: 11,  // Puntos para IP Estática
+    num4: 13,  // Puntos para ISP de Backup
+    num5: 13,  // Puntos para Teléfono de Backup
+    num6: 13,  // Puntos para IP Estática de Backup
+    num7: 20,  // Puntos para IP estática
+
     
     // Total 100
 };
+
+
             
             
 const handleInput = (e) => {
@@ -98,10 +97,15 @@ useEffect(() => {
             
 return (
         <div >
+            <br />
+            <br />
             <section
                 className="category-card" id="router">
                 <h1>Router</h1>
                 </section>
+            <br />
+            <br />
+            
                 <form action="get"
                     className='forms'>
                     <label
@@ -141,15 +145,6 @@ return (
                         onChange={handleInput}
                         placeholder='ISP de Backup'
                         value={inputValue.num4}/>
-
-                    {/* <input
-                        type="text"
-                        id="router-isp"
-                        name="num1"
-                        
-                        placeholder='ISP'
-                        value={inputValue.num1}
-                         /> */}
 
                     <label for="router-telefono">
                         Teléfono asociado</label>
@@ -199,7 +194,7 @@ return (
                         for="fibra-backup">
                         <input
                                 type="checkbox"
-                                name="num8"
+                                name="num7"
                                 onclick="toggleBackupFields()"
                                 checked={ checkboxes.num2 }
                                 onChange={handleCheckbox}/>

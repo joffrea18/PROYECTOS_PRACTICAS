@@ -1,48 +1,24 @@
-html, body, footer {
-    height: 100%; /* Asegúrate de que el body ocupe toda la altura */
-    margin: 0; /* Eliminar márgenes por defecto */
-    width: 100%;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    max-height: 100%; /* Asegura que el contenedor ocupe al menos la altura de la ventana */
-}
-
-.content {
-    flex: 1; /* Esto permite que el contenido principal ocupe el espacio restante */
-}
-
-.footer {
-    position: absolute;
-    display: flex;
-    padding: 1rem;
-    text-align: center;
-    justify-content: center;
-    align-items: center; /* Cambiado a center para centrar verticalmente */
-    width: 100%;
-}
-
-.footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.footer-logo p {
-    color: #383838;
-    font-size: 46px;
-    font-weight: 700;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .footer_links {
-    display: flex;
-    list-style: none;
-    gap: 50px;
-    color: #252525;
-    font-size: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px 0;
+    text-align: center;
+    margin-top: auto;
 }
 
+.footer_links nav a {
+    color: white;
+    text-decoration: none;
+    margin: 10px 10px;
+    font-size: 14px;
+}
 
+.footer_links nav a:hover {
+    text-decoration: underline;
+}
 

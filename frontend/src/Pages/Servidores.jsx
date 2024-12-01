@@ -6,10 +6,14 @@ import { Link } from 'react-router-dom';
 const Servidores = () => {
     return (
         <div>
+            <br />
             <section class="category-card"
                 id='servidores'>
             <h2>Servidores</h2>
             </section>
+            <br />
+            <br />
+
             <form action="get"
                 className='forms'>
             
@@ -17,36 +21,37 @@ const Servidores = () => {
                 className='server-nav'>
             <label
                 for="so-servidor">
-                    Sistema Operativo</label>
+                    Sistema Operativo
+            </label>
                 <input
                     type="text"
                     name="so-servidor"
                     placeholder='Sistema operativo'/>
                   
-                        <label
-                            for="funcion-servidor">
-                                Función</label>
-                        <input
-                            type="text"
-                            name="funcion-servidor"
-                            placeholder='Función' />
-                  
-                        <label
-                            for="ip-servidor">
-                                IP</label>
-                        <input
-                            type="text"
-                            name="ip-servidor"
-                            placeholder='IP'/>
-                        <button
-                            className='add-server'
-                            id='add-server'
-                            to={'/buttonppal/routerinfo'}>
-                            AGREGAR SERVIDOR
-                            {/* Este botón debe renderizar un
-                            nuevo espacio en el cual un form
-                            permita el add del new server */}
-                        </button>
+                    <label
+                        for="funcion-servidor">
+                            Función</label>
+                    <input
+                        type="text"
+                        name="funcion-servidor"
+                        placeholder='Función' />
+                
+                    <label
+                        for="ip-servidor">
+                            IP</label>
+                    <input
+                        type="text"
+                        name="ip-servidor"
+                        placeholder='IP'/>
+                    <button
+                        className='add-server'
+                        id='add-server'
+                        to={'/buttonppal/routerinfo'}>
+                        AGREGAR SERVIDOR
+                        {/* Este botón debe renderizar un
+                        nuevo espacio en el cual un form
+                        permita el add del new server */}
+                    </button>
                         </nav>
                         <br />
                  
@@ -72,14 +77,16 @@ const Servidores = () => {
                         <input
                             type="checkbox"
                             name="politicas-contrasenas"
-                            /> Configurar políticas de contraseñas
+                            />
+                            Configurar políticas de contraseñas
                         </label>
 
                         <label htmlFor="">
                         <input
                             type="checkbox"
                             name="control-cuentas-privilegiadas"
-                            /> Control de cuentas privilegiadas
+                            />
+                            Control de cuentas privilegiadas
                         </label>
 
                         <label htmlFor="">

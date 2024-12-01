@@ -5,6 +5,12 @@ body {
     background-color: #f0f0f0; /* Color de fondo para toda la página */
 }
 
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%; /* Garantiza que ocupe al menos toda la altura de la página */
+}
+
 .category-card {
     text-align: center; /* Centra el texto */
     margin: 20px;

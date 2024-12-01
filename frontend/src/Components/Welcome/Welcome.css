@@ -1,10 +1,11 @@
-/* * {
+* {
     margin: 0;
     padding: 0;
-} */
+    box-sizing: border-box;
+}
+
 label {
-    /* margin: 2rem 20px; */
-    /* padding: 2rem; */
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,3 +33,20 @@ link {
 .init_input {
     text-transform: uppercase;
 }
+
+.welcome {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+}
+
+section {
+    display: flex;
+    text-align: left;
+    justify-content: left;
+    font-size: xx-large;
+    
+}
+

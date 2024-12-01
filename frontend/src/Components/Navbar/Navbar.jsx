@@ -10,25 +10,24 @@ const business = localStorage.getItem('business');
 
 
 return (
-    <div className='navbar'>
-             <img
-                id= 'img-name-logo'
-                src={logo_microsyscom}
-                alt='name-microsyscom'
-            />
-                {
-                 business &&
-                 <h1 className='business'>
-                     { business}</h1>
-                }
-            
-            <img 
-                id= 'img-logo'
-                src={logo}
-                alt='logo-microsyscom' />
-            
-           
-           </div>
+<div className='navbar'>
+    <img
+        id= 'img-name-logo'
+        src={logo_microsyscom}
+        alt='name-microsyscom'
+    />
+    {
+     business &&
+     <h1 className='business'>
+        { business}</h1>
+    }
+    <img 
+        id= 'img-logo'
+        src={logo}
+        alt='logo-microsyscom' />
+    
+
+    </div>
 );
 }
 

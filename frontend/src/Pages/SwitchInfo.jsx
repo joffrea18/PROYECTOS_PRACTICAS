@@ -106,13 +106,16 @@ console.log(totalPoints());
 
     return (
         <div >
-            {/* <Navbar /> */}
+            <br />
+            <br />
             <section
                 class="category-card"
                 id="switch">
                 {/* <h2 className='business'>{business}</h2> */}
                 <h1>Switch</h1>
             </section>
+            <br />
+            <br />
 
                 <form action="get">
                     <label

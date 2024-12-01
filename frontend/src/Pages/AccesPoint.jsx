@@ -98,7 +98,8 @@ const totalPoints = () => {
 
     return (
         <div>
-            {/* <Navbar /> */}
+            <br />
+            <br />
             <section
                 id='acess_point'>
                     {/* <h2
@@ -106,7 +107,8 @@ const totalPoints = () => {
                             {business}</h2> */}
                     <h1>ACCES POINT</h1>
             </section>
-
+            <br />
+            <br />
         <form action="">
             <label
                 for="accespoint-fabricante">

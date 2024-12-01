@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import './Welcome.css';
-import Options from '../ButtonPpal/Options';
-// import Navbar from '../Navbar/Navbar';
-// import RouterInfo from '../../Pages/RouterInfo';
-
-// Componente Padre
-// El dato de business.num1 se muestra en el Dom
+import Options from '../Options/Options';
+import { Button } from '@mui/material';
 
 const Welcome = ({entry,setEntry}) => {
-      
+
+const [isMenuOpen, setIsMenuOpen] = useState(true);
 const [business, setBusiness] = useState({'business': entry});
 const empresa = JSON.stringify(business);
 localStorage.setItem('business', empresa);
+
+const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+};
 
 const handleChange = ( e ) => {
   setBusiness(e.target.value);
@@ -25,32 +26,59 @@ const handleSubmit = ( e ) => {
     return (
         
         <div>
-            
-            <br />
-            <br />
-            <br />
-            <br />
-           
+        
+        <br />
+        <br />
+        <br />
+        <br />
+       
+        <header >
+        <p className='welcome'>
+        ¡ WELCOME !
+        </p>
+        </header>
+        <br />
+        <br />
+
        <form
         onSubmit={ handleSubmit }>
-            <label htmlFor="empresa">
-                <p>¡ WELCOME !</p>
-                </label>
-                <input
-                    className='init_input'
-                    value={entry}
-                    onChange={handleChange}
-                    type="text"
-                    placeholder='Indica el nombre de la empresa'
-                    name="business"
-                    required
-                />
-        </form>
-        { 
-         business.length > 6  ? <Options business={business}/> : null
+        <input
+            className='init_input'
+            value={entry}
+            onChange={handleChange}
+            type="text"
+            placeholder='Indica el nombre de la empresa'
+            name="business"
+            required
+        />
+        <label>
+        <input
+            className='init_input'
+            value={entry}
+            onChange={handleChange}
+            type="text"
+            placeholder='Indica el número de teléfono'
+            name="telefono"
+            required
+        />
+        </label>
+    </form>
+    <Button 
+    variant='contained'
+    id='next-button'
+    style={{
+        boxShadow: '10px 5px 5px black'
+    }}>
+        comenzar
+    </ Button>
 
-    } 
-        </div>
+    <section>
+        <Options
+            isMenuOpen={isMenuOpen}
+            toggleMenu={toggleMenu}/>
+    </section>
+
+    </div>
     );
 }
 
