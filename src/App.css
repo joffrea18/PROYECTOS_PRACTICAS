@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+
+body {
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(to bottom right, #003366, #00509e);
+  color: #ffffff;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.form {
+  background-color: #ffffff;
+  color: #333333;
+  width: 450px;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form h1 {
+  text-align: center;
+  color: #003366;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.form-row {
+  margin-bottom: 15px;
+}
+
+.form-row label {
+  display: block;
+  font-weight: bold;
+  color: #003366;
+  margin-bottom: 8px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #00509e;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #00509e;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #003d80;
+}
+
+
+@media (max-width: 500px) {
+  .contact-form {
+    width: 90%;
+  }
+}
+
+
