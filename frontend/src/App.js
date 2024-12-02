@@ -1,51 +1,54 @@
+import React from 'react';
 import './App.css';
-import { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Footer from './Components/Footer/Footer';
-import Welcome from './Components/Welcome/Welcome';
-import RouterInfo from './Pages/RouterInfo';
-import FirewallInfo from './Pages/FirewallInfo';
-import NotFound from './Pages/NotFound';
-import SwitchInfo from './Pages/SwitchInfo';
-import PrinterOption from './Pages/PrinterOption';
-import Options from './Components/Options/Options';
-import { PointsProvider } from './context/PointsContext';
-import AccesPoint from './Pages/AccesPoint';
-import Navbar from './Components/Navbar/Navbar';
-import XDR from './Pages/XDR';
-import Servidores from './Pages/Servidores';
-import Costs from './Pages/Costs';
+import Navbar from './components/SideBar/Navbar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import router from './pages/Router';
+import firewall from './pages/Firewall';
+import switchs from './pages/Switchs';
+import accesspoint from './pages/Accesspoint';
+import xdr from './pages/XDR';
+import servidores from './pages/Servidores';
+import almacenamiento from './pages/Almacenamiento';
+import sai from './pages/Sai';
+import dominio from './pages/Dominio';
+import correocorporativo from './pages/Correocorporativo';
+import ldp from './pages/Ldp';
+import copiasdeseguridad from './pages/Copiasdeseguridad';
+import erp from './pages/Erp';
+import callcenter from './pages/Callcenter';
+import impresoras from './pages/Impresoras';
+import siem from './pages/Siem';
+import Contacto from './pages/Contacto';
 
-// Aquí debo de mirar introducir al email como prop al
-// componente de Buttonppal
+
+
 
 function App() {
-
-  const [entry, setEntry] = useState([]);
-  console.log(entry);
-  
-
   return (
-    <div className="App">
-    {/* <AuthProvider> */}
-    <PointsProvider>
-    <Navbar entry={entry}/>
-   <Routes>
-   <Route path='/' element={<Welcome setEntry={setEntry}/>} />
-   <Route path={`/buttonppal/routerinfo`} element={<RouterInfo />} />
-   <Route path={`/buttonppal/firewallinfo`} element={<FirewallInfo />} />
-   <Route path={`/buttonppal/switchinfo`} element={<SwitchInfo />} />
-   <Route path={`/buttonppal/accespointinfo`} element={<AccesPoint />} />
-   <Route path={`/buttonppal/xdr`} element={<XDR />} />
-   <Route path={`/buttonppal/servidoresinfo`} element={<Servidores />} />
-   {/* <Route path={`/buttonppal/costs`} element={<Costs />} /> */}
-   <Route path={`/buttonppal/printeroption`} element={<PrinterOption />} />
-   <Route path='*' element={<NotFound />} />
-   </Routes>
-    </PointsProvider>
-    {/* </AuthProvider> */}
-    {/* <Footer /> */}
-    </div>
+    <>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path='/contacto' element={<Contacto />}/>
+          <Route path='/router' component={router} />
+          <Route path='/firewall' component={firewall} />
+          <Route path='/switchs' component={switchs} />
+          <Route path='/accesspoint' component={accesspoint} />
+          <Route path='/xdr' component={xdr} />
+          <Route path='/siem' component={siem} />
+          <Route path='/servidores' component={servidores} />
+          <Route path='/almacenamientiento' component={almacenamiento} />
+          <Route path='/sai' component={sai} />
+          <Route path='/copiasdeseguridad' component={copiasdeseguridad} />
+          <Route path='/ldp' component={ldp} />
+          <Route path='/dominio' component={dominio} />
+          <Route path='/correocorporativo' component={correocorporativo} />
+          <Route path='/callcenter' component={callcenter} />
+          <Route path='/erp' component={erp} />
+          <Route path='/impresoras' component={impresoras} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 

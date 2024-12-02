@@ -1,52 +1,83 @@
-.App {
-  text-align: center;
-}
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
-body, html {
-  height: 100%;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #4c9dd9, #1e73be);
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+body {
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(to bottom right, #003366, #00509e);
+  color: #ffffff;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
-.App-link {
-  color: #61dafb;
+.form {
+  background-color: #ffffff;
+  color: #333333;
+  width: 450px;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.back-button,
-.next-button {
-  font-weight: 50;
-  padding: auto 50px;
+.form h1 {
+  text-align: center;
+  color: #003366;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.form-row {
+  margin-bottom: 15px;
+}
+
+.form-row label {
+  display: block;
+  font-weight: bold;
+  color: #003366;
+  margin-bottom: 8px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #00509e;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #00509e;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #003d80;
 }
 
 
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 500px) {
+  .contact-form {
+    width: 90%;
   }
-  to {
-    transform: rotate(360deg);
-  }
 }
+
+

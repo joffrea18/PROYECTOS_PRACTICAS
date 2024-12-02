@@ -13,6 +13,7 @@ try {
     
     console.log("Eliminando tablas si existen...");
     await connection.query('DROP TABLE IF EXISTS business');
+    await connection.query('DROP TABLE IF EXISTS contactos');
     await connection.query('DROP TABLE IF EXISTS routerinfo');
     await connection.query('DROP TABLE IF EXISTS firewallinfo');
     await connection.query('DROP TABLE IF EXISTS switchinfo');
@@ -34,6 +35,22 @@ try {
       ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
       `);
 
+      await connection.query (`
+      CREATE TABLE contactos (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        companyName VARCHAR(255) NOT NULL,
+        businessActivity VARCHAR(255) DEFAULT NULL,
+        contactPerson VARCHAR(255) DEFAULT NULL,
+        email VARCHAR(255) DEFAULT NULL,
+        phone VARCHAR(20) DEFAULT NULL,
+        department VARCHAR(255) DEFAULT NULL,
+        date DATE DEFAULT NULL,
+        time TIME DEFAULT NULL,
+        PRIMARY KEY (id),
+        FOREIGN KEY (id_business) REFERENCES business(id)
+      ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+      `);
+      
     await connection.query (`
     CREATE TABLE IF NOT EXISTS routerinfo (
         id int unsigned NOT NULL AUTO_INCREMENT,
@@ -47,7 +64,7 @@ try {
         costes varchar(500) DEFAULT NULL,
         apuntes varchar(250) DEFAULT NULL,
         PRIMARY KEY (id),
-        FOREIGN KEY (id_business) REFERENCES business(id),
+        FOREIGN KEY (id_contactos) REFERENCES contactos(id),
         UNIQUE KEY telefono (telefono)
       ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
       `);

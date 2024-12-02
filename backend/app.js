@@ -7,34 +7,16 @@ const fileUpload = require('express-fileupload');
 const app = express();
 const port = 4000;
 const cors = require('cors');
-const { home } = require ('./src/controllers/business');
+const { home } = require('./src/controllers/business/home');
 
 // este es el primer middleware por donde pasa
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
 app.use(cors());
 
-// Controllers user
-// Conexión a MySQL
-// const db = mysql2.createConnection({
-//     host: 'localhost',
-//     user: 'root',
-//     password: '24022016',
-//     database: 'MICROSYSCOM'
-// });
-
-// db.connect(err => {
-//     if (err) {
-//         console.error('Error al conectar con MySQL:', err);
-//         return;
-//     }
-//     console.log('Conexión a MySQL exitosa');
-// });
-
-app.get('/', home);
-// app.get('/buttonppal/firewallinfo', firewall); // Visualización de información del firewall
-
+app.post('/contacto', home);
 
 
 app.use((req, res) => {
