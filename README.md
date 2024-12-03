@@ -48,7 +48,7 @@ culminación del rellenado de todos los formularios establecidos.
         ✅ - Creación y asociación de los paquetes que se utilizarán en todo el proceso Backend
         ✅ - Conexión con la BBDD
         - Conexión con Postman (Testing de la aplicación)
-        - Conexión y creación de las principales routes de la API
+        (EN DESARROLLO DE ENDPOINTS) - Conexión y creación de las principales routes de la API
 
 ******************************************************************************************************************************************************************************************************************************************
 
