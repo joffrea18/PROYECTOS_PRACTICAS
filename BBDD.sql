@@ -21,6 +21,13 @@ GRANT SELECT, INSERT, UPDATE ON accespointinfo TO 'joffrearias'@'localhost';
 GRANT SELECT, INSERT, UPDATE ON xdr TO 'joffrearias'@'localhost';
 GRANT SELECT, INSERT, UPDATE ON servidoresinfo TO 'joffrearias'@'localhost';
 
+SELECT * FROM business b
+UNION
+SELECT * FROM contactos c
+WHERE c.id_business = b.id;
+
+INSERT INTO business (name, telefono)
+VALUE ('pepe', 888888888);
 
 
 CREATE TABLE IF NOT EXISTS business (
@@ -34,6 +41,7 @@ CREATE TABLE IF NOT EXISTS business (
 
 CREATE TABLE contactos (
         id INT AUTO_INCREMENT PRIMARY KEY,
+        id_business int unsigned,
         companyName VARCHAR(255) NOT NULL,
         businessActivity VARCHAR(255) DEFAULT NULL,
         contactPerson VARCHAR(255) DEFAULT NULL,
@@ -41,10 +49,14 @@ CREATE TABLE contactos (
         phone VARCHAR(20) DEFAULT NULL,
         department VARCHAR(255) DEFAULT NULL,
         date DATE DEFAULT NULL,
-        time TIME DEFAULT NULL
+        time TIME DEFAULT NULL,
+        FOREIGN KEY (id_business) REFERENCES business(id)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-SELECT * FROM contactos;
+SELECT * FROM contactos, business
+WHERE id = 1 ;
+
+SELECT * FROM business;
 
 CREATE TABLE IF NOT EXISTS routerinfo (
         id int unsigned NOT NULL AUTO_INCREMENT,

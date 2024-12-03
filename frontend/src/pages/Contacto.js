@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 function Contacto() {
-  // Estado para manejar los valores del formulario
+  
+  const { reset } = useForm();
+  const [mensajeError, setMensajeError] = useState('');
+
   const [formData, setFormData] = useState({
     companyName: "",
     businessActivity: "",
@@ -13,9 +20,18 @@ function Contacto() {
     time: "",
   });
 
+  const schema = yup.object({
+    email: yup.string().email('Correo inválido').required('El correo es obligatorio'),
+    nombre: yup.string().required('El nombre es obligatorio'),
+  });
+  
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    resolver: yupResolver(schema),
+  });
+
   // Cargar datos desde sessionStorage al montar el componente
   useEffect(() => {
-    const savedData = sessionStorage.getItem("contactForm");
+    const savedData = sessionStorage.getItem("contactoForm");
     if (savedData) {
       setFormData(JSON.parse(savedData)); // Convertir el string en un objeto
     }
@@ -26,12 +42,14 @@ function Contacto() {
     const { name, value } = e.target;
     setFormData((prevData) => {
       const updatedData = { ...prevData, [name]: value };
-      sessionStorage.setItem("contactForm", JSON.stringify(updatedData)); // Guardar en sessionStorage
+      sessionStorage.setItem("contactoForm", JSON.stringify(updatedData)); // Guardar en sessionStorage
       return updatedData;
     });
   };
 
-  const handleSubmit = async () => {
+  const onSubmit = async (data) => {
+
+    setMensajeError('');
     try {
       const response = await fetch("http://localhost:4000/contacto", {
         method: "POST",
@@ -47,9 +65,18 @@ function Contacto() {
   
       const data = await response.json();
       console.log("Datos enviados exitosamente:", data);
+
+      toast.success('Cliente registrado exitosamente');
+      reset();
       window.location.href = "/firewall";
     } catch (error) {
       console.error("Error al enviar los datos:", error);
+      if (error.response && error.response?.status === 409) {
+        console.error('Error del servidor:', error.response.data);
+        toast.error(error.response?.data?.error);
+      } else {
+        setMensajeError('Ha ocurrido un error.');
+      }
     }
   };
 
@@ -151,12 +178,15 @@ function Contacto() {
 
         <button
           type="button" 
-          onClick={handleSubmit}
+          onClick={onSubmit}
           className="btn btn-primary"
         >
           Ir al Firewall
         </button>
       </form>
+
+      {mensajeError && <p style={{ color: 'red' }}>{mensajeError}</p>}
+
     </div>
   );
 }
