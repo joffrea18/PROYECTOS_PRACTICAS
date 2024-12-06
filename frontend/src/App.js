@@ -19,6 +19,7 @@ import callcenter from './pages/Callcenter';
 import impresoras from './pages/Impresoras';
 import siem from './pages/Siem';
 import Contacto from './pages/Contacto';
+import Welcome from './components/Welcome/Welcome';
 
 
 
@@ -26,28 +27,29 @@ import Contacto from './pages/Contacto';
 function App() {
   return (
     <>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path='/contacto' element={<Contacto />}/>
-          <Route path='/router' component={router} />
-          <Route path='/firewall' component={firewall} />
-          <Route path='/switchs' component={switchs} />
-          <Route path='/accesspoint' component={accesspoint} />
-          <Route path='/xdr' component={xdr} />
-          <Route path='/siem' component={siem} />
-          <Route path='/servidores' component={servidores} />
-          <Route path='/almacenamientiento' component={almacenamiento} />
-          <Route path='/sai' component={sai} />
-          <Route path='/copiasdeseguridad' component={copiasdeseguridad} />
-          <Route path='/ldp' component={ldp} />
-          <Route path='/dominio' component={dominio} />
-          <Route path='/correocorporativo' component={correocorporativo} />
-          <Route path='/callcenter' component={callcenter} />
-          <Route path='/erp' component={erp} />
-          <Route path='/impresoras' component={impresoras} />
-        </Routes>
-      </Router>
+    <Router>
+    <Navbar />
+    <Routes>
+    <Route path='/' element={ <Welcome />}/>
+    <Route path='/contacto' element={<Contacto />}/>
+    <Route path='/router' component={router} />
+    <Route path='/firewall' component={firewall} />
+    <Route path='/switchs' component={switchs} />
+    <Route path='/accesspoint' component={accesspoint} />
+    <Route path='/xdr' component={xdr} />
+    <Route path='/siem' component={siem} />
+    <Route path='/servidores' component={servidores} />
+    <Route path='/almacenamientiento' component={almacenamiento} />
+    <Route path='/sai' component={sai} />
+    <Route path='/copiasdeseguridad' component={copiasdeseguridad} />
+    <Route path='/ldp' component={ldp} />
+    <Route path='/dominio' component={dominio} />
+    <Route path='/correocorporativo' component={correocorporativo} />
+    <Route path='/callcenter' component={callcenter} />
+    <Route path='/erp' component={erp} />
+    <Route path='/impresoras' component={impresoras} />
+    </Routes>
+    </Router>
     </>
   );
 }

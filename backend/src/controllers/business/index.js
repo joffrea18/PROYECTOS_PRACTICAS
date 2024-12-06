@@ -1,11 +1,13 @@
 'use strict'
 
-const { home } = require('./home');
-const { firewall } = require('./firewall');
+import { home } from './home';
+import { firewall } from './firewall';
+import { contact } from './contact';
 
 
-module.exports = {
+export default {
     home,
+    contact,
     firewall
 };
 

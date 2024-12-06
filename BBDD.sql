@@ -21,10 +21,10 @@ GRANT SELECT, INSERT, UPDATE ON accespointinfo TO 'joffrearias'@'localhost';
 GRANT SELECT, INSERT, UPDATE ON xdr TO 'joffrearias'@'localhost';
 GRANT SELECT, INSERT, UPDATE ON servidoresinfo TO 'joffrearias'@'localhost';
 
-SELECT * FROM business b
+SELECT id, date FROM business b
 UNION
-SELECT * FROM contactos c
-WHERE c.id_business = b.id;
+SELECT id, id_business FROM contactos c;
+-- WHERE c.id_businnes IS NULL;
 
 INSERT INTO business (name, telefono)
 VALUE ('pepe', 888888888);
@@ -53,10 +53,11 @@ CREATE TABLE contactos (
         FOREIGN KEY (id_business) REFERENCES business(id)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-SELECT * FROM contactos, business
-WHERE id = 1 ;
+SELECT * FROM contactos c, business b
+WHERE c.id = 2 ;
 
 SELECT * FROM business;
+SELECT * FROM contactos;
 
 CREATE TABLE IF NOT EXISTS routerinfo (
         id int unsigned NOT NULL AUTO_INCREMENT,

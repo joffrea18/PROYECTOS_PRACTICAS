@@ -1,45 +1,39 @@
-'use strict'
+'use strict';
 
 const { getDB } = require("../../database/getDB");
 const { newError } = require('../../../helps');
 const express = require("express");
-const router = express.Router();
-const brcypt = require('bcrypt');
 const Joi = require('joi');
-const { registerClient } = require("../../database/registerClient");
+const { registerBusiness } = require("../../database/registerBusiness");
 
 const users = Joi.object({
-    companyName: Joi.string().min(1).max(255).required(), 
-  businessActivity: Joi.string().min(1).max(255).required(),
-  contactPerson: Joi.string().min(1).max(255).required(), 
-  email: Joi.string().email().required(), 
-  phone: Joi.string().pattern(/^\+?[1-9]\d{1,14}$/).required(),
-  department: Joi.string().min(1).max(255).required(), 
-  date: Joi.date().iso().required(), 
-  time: Joi.string().pattern(/^([01]\d|2[0-3]):([0-5]\d)$/).required()
-})
+    name: Joi.string(),
+    telefono: Joi.string(),
+});
+
 
 const home = async (req, res, next) => {
-    let connect;
+    
+    let connect = await getDB();
 
     try {
-        let { companyName, businessActivity, contactPerson, email, phone, department, date, time } = req.body;
+        let { name, telefono } = req.body;
 
         await users.validateAsync(req.body)
 
-        if (!companyName || !email || !phone) {
-         throw newError('Los campos Company, Email & Phone no pueden ser vacíos', 411);
+        if (!name || !telefono) {
+         throw newError('Los campos no pueden ser vacíos', 411);
         }
 
-        if (companyName && businessActivity && contactPerson && email && phone && department && date && time) {
-            const validation = users.validate(companyName, businessActivity, contactPerson, email, phone, department, date, time)
+        if (name && telefono) {
+            const validation = users.validate(name, telefono)
             if (!validation.error) {
                 console.log("Por favor verifique los datos y vuelva a intentarlo nuevamente");
                 
             }
         }
 
-        const id = await registerClient(companyName, businessActivity, contactPerson, email, phone, department, date, time);
+        const id = await registerBusiness(name, telefono);
 
         res.send({
             status: 'ok',

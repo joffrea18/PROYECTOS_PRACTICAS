@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 const { getDB } = require('./getDB');
 const { newError } = require('../../helps');

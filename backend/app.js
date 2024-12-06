@@ -7,6 +7,7 @@ const fileUpload = require('express-fileupload');
 const app = express();
 const port = 4000;
 const cors = require('cors');
+const { contact } = require('./src/controllers/business/contact');
 const { home } = require('./src/controllers/business/home');
 
 // este es el primer middleware por donde pasa
@@ -16,7 +17,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
 app.use(cors());
 
-app.post('/contacto', home);
+app.post('/', home);
+app.post('/contacto', contact);
 
 
 app.use((req, res) => {
