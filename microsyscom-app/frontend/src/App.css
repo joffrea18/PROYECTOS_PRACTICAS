@@ -78,13 +78,16 @@ button:hover {
 
 
 @media (max-width: 375px) {
+  body{
+    max-width: 90%;
+    margin-left: 1rem;
+  }
   .contact-form {
     width: 90%;
   }
   .container {
     padding: 10px; /* Reducir márgenes */
   }
-
   form {
     max-width: 90%; /* Ocupa casi todo el ancho */
   }

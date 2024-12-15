@@ -99,11 +99,16 @@ span {
   margin-left: 16px;
 }
 
-@media (max-width: 350px) {
-  .main{
+@media (max-width: 375px) {
+  main{
     max-width: 100%;
   }
-  img{
-    padding: 10px;
+  .logo{
+    margin-left: 1rem;
   }
+  .img_name{
+    margin-left: 9rem;
+    max-width: 90%;
+  }
+ 
 }
