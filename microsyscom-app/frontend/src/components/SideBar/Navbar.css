@@ -16,6 +16,7 @@
   width: 27%;
   margin-left: 12rem;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
 .img_name {
@@ -96,4 +97,13 @@
 
 span {
   margin-left: 16px;
+}
+
+@media (max-width: 350px) {
+  .main{
+    max-width: 100%;
+  }
+  img{
+    padding: 10px;
+  }
 }
