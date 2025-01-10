@@ -1,0 +1,493 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+/* Estilo inicial del botón */
+#fill-button {
+    position: relative;
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff; /* Color del texto */
+    background: #3498db; /* Fondo inicial del botón */
+    border: none;
+    cursor: pointer;
+    overflow: hidden; /* Ocultar el relleno que se desborda */
+    border-radius: 25px; /* Bordes redondeados */
+    transition: background-color 0.4s ease; /* Transición del fondo */
+  }
+  
+  /* Fondo de relleno que se activará con la animación */
+  #fill-button::after {
+    content: ""; /* Necesario para el pseudo-elemento */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0; /* Ancho inicial en 0 */
+    height: 100%;
+    background: #2ecc71; /* Color de relleno: Verde */
+    transition: width 0.4s ease; /* Transición suave del relleno */
+    z-index: 0; /* Asegura que el relleno quede detrás del texto */
+  }
+  
+  /* El texto del botón siempre encima del fondo */
+  #fill-button span {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Cambia el color de fondo y activa el relleno cuando se pulsa */
+  #fill-button.filled::after {
+    width: 100%; /* El relleno crece hasta cubrir todo el botón */
+  }
+  
+  /* Cambia el color del texto cuando está rellenado */
+  #fill-button.filled {
+    background: #2ecc71; /* Cambia el fondo del botón */
+  }
+  
+#overall-score-container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+  }
+  
+  #central-circle {
+    position: absolute;
+    top: 120px; /* Centrado dentro del contenedor */
+    left: 120px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%; /* Forma circular */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    font-weight: bold;
+  }
+  
+  .ring {
+    fill: none; /* Anillos sin relleno */
+    stroke-width: 20; /* Grosor del anillo */
+  }
+  
+  .background-ring {
+    stroke: rgba(255, 255, 255, 0.1); /* Anillo de fondo */
+  }
+  
+  .ring-1, .ring-2 {
+    stroke-dasharray: 608; /* Circunferencia del círculo */
+    stroke-dashoffset: 608; /* Comienza sin relleno */
+    transition: stroke 0.3s ease, stroke-dashoffset 1s ease;
+  }
+  
+/* Contenedor principal */
+.score-container {
+    display: flex; /* Alinea los elementos en una fila */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    gap: 30px; /* Espacio entre las secciones */
+    padding: 20px;
+    background-color: #0e182a; /* Fondo oscuro similar al de la imagen */
+    border-radius: 15px; /* Bordes redondeados */
+  }
+  
+  /* Contenedor del gráfico circular */
+  #overall-score-container {
+    position: relative; /* Posicionamiento relativo para superponer elementos */
+    width: 400px; /* Ancho y alto fijos */
+    height: 400px;
+  }
+  
+  /* Estilo del círculo central */
+  #central-circle {
+    position: absolute;
+    top: 120px; /* Posiciona el círculo en el centro del SVG */
+    left: 120px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%; /* Forma circular */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Estilo del número en el centro del gráfico */
+  #score-number {
+    font-size: 50px; /* Tamaño de fuente grande */
+    font-weight: bold;
+    color: #ffffff; /* Blanco */
+  }
+  
+  /* Contenedor de las tarjetas */
+  .category {
+    display: flex; /* Alinea las tarjetas en fila */
+    gap: 20px; /* Espaciado entre tarjetas */
+  }
+  
+  /* Estilo de cada tarjeta */
+  .category-card {
+    background-color: #1a2a3b; /* Fondo de cada tarjeta */
+    border-radius: 15px; /* Bordes redondeados */
+    padding: 20px;
+    width: 200px; /* Ancho fijo */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Sombra para darle profundidad */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .category-card h3 {
+    color: #ffffff; /* Color del título en blanco */
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  
+  /* Puntajes de cada tarjeta */
+  #perimeter-score,
+  #business-continuity-score,
+  #data-protection-score {
+    width: 60px; /* Ancho y alto para un círculo */
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; /* Redondeado completo */
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 15px; /* Espaciado inferior */
+    color: #ffffff; /* Texto en blanco */
+  }
+  
+  /* Colores de cada puntaje según el nivel de riesgo */
+  #perimeter-score {
+    background-color: #ff7b23; /* Naranja */
+  }
+  
+  #business-continuity-score {
+    background-color: #c53030; /* Rojo */
+  }
+  
+  #data-protection-score {
+    background-color: #2f855a; /* Verde */
+  }
+  
+  /* Estilo de cada nivel de riesgo */
+  .moderate-risk {
+    color: #ff9800; /* Color anaranjado */
+    margin-bottom: 20px; /* Espaciado inferior */
+    font-weight: bold;
+  }
+  
+  .high-risk {
+    color: #ff3b3b; /* Rojo */
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .low-risk {
+    color: #2f855a; /* Verde */
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  /* Lista de elementos dentro de cada tarjeta */
+  .item-list {
+    display: flex;
+    flex-wrap: wrap; /* Permite ajustar los elementos en varias líneas */
+    justify-content: center;
+    gap: 10px; /* Espaciado entre los elementos */
+  }
+  
+  .item-list span {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 12px; /* Bordes redondeados */
+    font-size: 14px;
+    color: #ffffff; /* Texto blanco */
+  }
+  
+  /* Colores específicos para los ítems de la lista */
+  .item-list span:nth-child(1) { /* Primer ítem: rojo */
+    background-color: #c53030;
+  }
+  
+  .item-list span:nth-child(2) { /* Segundo ítem: verde */
+    background-color: #2f855a;
+  }
+  
+  .item-list span:nth-child(3) { /* Tercer ítem: verde oscuro */
+    background-color: #2c7a7b;
+  }
+  
+  .item-list span:nth-child(4) {
+    background-color: #9b2c2c; /* Color extra si se necesita para el cuarto ítem */
+  }
+  
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h3 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+label {
+    width: 200px;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+select {
+    width: 200px;
+    padding: 5px;
+    margin-bottom: 15px;
+    background: #333;
+    border: 1px solid #444;
+    color: #fff;
+}
+
+button {
+    background-color: #00ff99;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #00e68a;
+}
+
+#score-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.score-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#overall-score-container {
+    position: relative;
+}
+
+#progress-ring {
+    transform: rotate(-90deg);
+}
+
+.ring {
+    fill: transparent;
+    stroke-linecap: butt; /* Quitar bordes bruscos */
+    stroke-width: 40px; /* Grosor del anillo */
+    stroke: transparent; /* Bordes invisibles */
+}
+
+.background-ring {
+    stroke: #4d4d4d; /* Color gris de fondo */
+    stroke-linecap: round;
+}
+
+#central-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #121212;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px; /* Radio 40px */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#score-number {
+    font-size: 32px;
+    color: #ffffff;
+}
+
+#risk-level {
+    font-size: 24px;
+    margin-top: 15px;
+}
+
+.category {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.category-card {
+    background: #1e1e1e;
+    padding: 15px;
+    border-radius: 8px;
+    width: 30%;
+    text-align: center;
+}
+
+.category-card h3 {
+    margin: 0 0 10px;
+}
+
+.category-card p {
+    font-size: 20px;
+    margin: 5px 0;
+}
+
+.category-card .item-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.category-card .item-list span {
+    margin: 5px;
+    padding: 5px 10px;
+    background: #00ff99;
+    border-radius: 5px;
+}
+
+.moderate-risk {
+    color: #ffcc00;
+}
+
+.high-risk {
+    color: #ff4444;
+}
+
+.low-risk {
+    color: #44ff44;
+}
+#score-section {
+    display: grid; /* Definimos que el contenedor es un grid */
+    grid-template-columns: 33% 67%; /* Especificamos las proporciones de las columnas */
+    width: 100%; /* Ancho completo del contenedor */
+  }
+
+  #overall-score-container {
+    display: flex;
+    flex-direction: column;    /* Coloca los elementos en una columna */
+    align-items: center;       /* Centra horizontalmente todos los elementos */
+  }
+  .category {
+    display: flex; /* Alinea las tarjetas horizontalmente */
+    justify-content: center; /* Centra el conjunto de tarjetas */
+    gap: 20px; /* Espacio entre las tarjetas */
+    padding: 20px;
+  }
+  
+  .category-card {
+    background-color: #0e182a; /* Fondo oscuro */
+    border: 1px solid #2d3748; /* Borde sutil */
+    border-radius: 15px; /* Bordes redondeados */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 250px; /* Ancho fijo */
+    margin: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Sombra para profundidad */
+  }
+  
+  .category-card h3 {
+    color: #ffffff; /* Texto blanco */
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  
+  /* Diseño del puntaje para cada tarjeta */
+  #perimeter-score,
+  #business-continuity-score,
+  #data-protection-score {
+    width: 60px; /* Ancho y alto iguales para formar un círculo */
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; /* Redondeado completo */
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 15px; /* Espaciado inferior */
+    color: #ffffff; /* Texto blanco */
+  }
+  
+  /* Estilo de cada puntaje según el nivel de riesgo */
+  #perimeter-score {
+    background-color: #ff7b23; /* Naranja */
+  }
+  
+  #business-continuity-score {
+    background-color: #c53030; /* Rojo */
+  }
+  
+  #data-protection-score {
+    background-color: #2f855a; /* Verde */
+  }
+  
+  /* Estilo de cada nivel de riesgo */
+  .moderate-risk {
+    color: #ff9800; /* Anaranjado */
+    margin-bottom: 20px; /* Espaciado inferior */
+    font-weight: bold;
+  }
+  
+  .high-risk {
+    color: #ff3b3b; /* Rojo */
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .low-risk {
+    color: #2f855a; /* Verde */
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  /* Lista de elementos */
+  .item-list {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en varias líneas */
+    justify-content: center;
+    gap: 10px; /* Espaciado entre los elementos */
+  }
+  
+  .item-list span {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 12px; /* Bordes redondeados */
+    font-size: 14px;
+    color: #ffffff; /* Color del texto */
+  }
+  
+  /* Colores específicos para los ítems de la lista */
+  .item-list span:nth-child(1) { /* Primer ítem: rojo */
+    background-color: #c53030;
+  }
+  
+  .item-list span:nth-child(2) { /* Segundo ítem: verde */
+    background-color: #2f855a;
+  }
+  
+  .item-list span:nth-child(3) { /* Tercer ítem: verde oscuro */
+    background-color: #2c7a7b;
+  }
+  
