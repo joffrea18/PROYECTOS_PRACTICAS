@@ -4,13 +4,12 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f6fa; /* Fondo claro, como en la segunda captura */
-}
 
 .container {
-    max-width: 800px; /* Ajusta el ancho según el diseño deseado */
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    /* max-width: 50%; */
     margin: 5rem auto;
     padding: 20px;
     background-color: white; /* Fondo blanco del componente */
@@ -27,17 +26,10 @@ body {
     margin-bottom: 20px;
 }
 
-/* Input fields */
-input[type="text"] {
-    width: 100%; /* Toma todo el ancho del contenedor */
-    padding: 10px 15px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc; /* Borde gris claro */
-    border-radius: 5px; /* Bordes redondeados */
-    font-size: 16px; /* Tamaño de texto más grande */
-    background-color: #f9f9f9; /* Fondo suave */
-    box-sizing: border-box; /* Para evitar problemas de tamaño */
+label{
+    margin-bottom: 1rem;
 }
+
 
 /* Button */
 button {
@@ -73,4 +65,11 @@ button:hover {
 .score-section .description {
     font-size: 14px;
     color: #666; /* Gris claro */
+}
+
+@media (min-width: 100px),
+( max-width: 500px) {
+    .container{
+        max-width: 60%;
+    }
 }

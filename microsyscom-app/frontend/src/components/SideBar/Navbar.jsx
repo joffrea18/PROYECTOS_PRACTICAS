@@ -21,15 +21,16 @@ function Navbar() {
     <FaIcons.FaBars onClick={showSidebar} />
     </Link>
     <section>
-      <a href={'http://localhost:3000/'}>
+    <Link to='/'>
     <img 
     className='logo'
     alt='logo'
     src={logo}
     />
-    </a>
+    </Link>
     </section>
-    <section>
+    <section
+    className='logoname'>
     <img
       className='img_name'
       alt='logo_name'

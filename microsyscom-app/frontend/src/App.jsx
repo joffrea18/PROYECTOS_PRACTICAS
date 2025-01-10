@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import Navbar from './components/SideBar/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import firewall from './pages/Firewall';
 import switchs from './pages/Switchs';
 import accesspoint from './pages/Accesspoint';
 import xdr from './pages/XDR';
@@ -20,6 +19,10 @@ import siem from './pages/Siem';
 import Contacto from './pages/Contacto';
 import Welcome from './components/Welcome/Welcome';
 import Routers from './pages/Routers';
+import Firewall from './pages/Firewall';
+// import Footer from './components/Footer/Footer';
+// import Login from './pages/Login';
+// import Validator from './components/Validator/Validator';
 
 
 
@@ -31,9 +34,11 @@ function App() {
     <Navbar />
     <Routes>
     <Route path='/' element={ <Welcome />}/>
+    {/* <Route path='/login' element={<Login/>}/> */}
+    {/* <Route path='/validator' element={<Validator />} /> */}
     <Route path='/contacto' element={<Contacto />}/>
-    <Route path='/router' component={<Routers />} />
-    <Route path='/firewall' component={firewall} />
+    <Route path='/router' element={<Routers />} />
+    <Route path='/firewall' element={<Firewall/>} />
     <Route path='/switchs' component={switchs} />
     <Route path='/accesspoint' component={accesspoint} />
     <Route path='/xdr' component={xdr} />
@@ -49,6 +54,7 @@ function App() {
     <Route path='/erp' component={erp} />
     <Route path='/impresoras' component={impresoras} />
     </Routes>
+    {/* <Footer /> */}
     </Router>
     </>
   );

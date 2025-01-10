@@ -1,28 +1,34 @@
 .navbar {
   background-color: rgba(63, 38, 226, 0.4);
   width: 100vw;
-  margin-top: 0.5rem;
-  height: 5vh;
+  height: 9vh;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .menu-bars {
-  margin-left: 2rem;
+  margin-left: 0.5rem;
   font-size: 2rem;
   background: none;
 }
 
 .logo{
   width: 47%;
+  justify-content: center;
   /* position: relative; */
 }
 
 .img_name {
   width: 23%;
+  margin-bottom: 1rem;
   /* margin-left: 63rem; */
+}
+
+.logoname {
+  display: grid;
+  align-items: stretch;
 }
 
 .nav-menu {

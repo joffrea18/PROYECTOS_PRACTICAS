@@ -33,7 +33,7 @@ VALUE ('pepe', 888888888);
 CREATE TABLE IF NOT EXISTS business (
 	id int unsigned NOT NULL AUTO_INCREMENT,
 	date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	name varchar(100) NOT NULL,
+	dominio varchar(100) NOT NULL,
 	telefono numeric(15,0) DEFAULT NULL,
 	PRIMARY KEY (id),
 	UNIQUE KEY name (name)
@@ -60,27 +60,24 @@ SELECT * FROM business;
 SELECT * FROM contactos;
 
 CREATE TABLE IF NOT EXISTS routerinfo (
-        id int unsigned NOT NULL AUTO_INCREMENT,
-        id_contactos INT NOT NULL,
+        id int AUTO_INCREMENT PRIMARY KEY,
+        id_business int unsigned,
         date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        isp varchar(100) NOT NULL,
+        isp TINYINT UNSIGNED NOT NULL,
+        isp_backup VARCHAR(100) NULL,
         telefono numeric(15,0) DEFAULT NULL,
         telefono_backup numeric(15,0) DEFAULT NULL,
         ip_estatica char(100) DEFAULT NULL,
         ip_estatica_backup char(100) DEFAULT NULL,
         fibra_backup boolean DEFAULT false,
         costes varchar(500) DEFAULT NULL,
-        apuntes varchar(250) DEFAULT NULL,
-        PRIMARY KEY (id),
-        FOREIGN KEY (id_contactos) REFERENCES contactos(id)
-			ON DELETE CASCADE 
-			ON UPDATE CASCADE,
+        FOREIGN KEY (id_business) REFERENCES business(id),
         UNIQUE KEY telefono (telefono)
       ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE IF NOT EXISTS firewallinfo (
-        id int unsigned NOT NULL AUTO_INCREMENT,
-        id_routerinfo int unsigned NOT NULL,
+        id int AUTO_INCREMENT PRIMARY KEY,
+        id_business int unsigned,
         date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
         fabricante varchar(125) DEFAULT NULL,
         modelo varchar(125) DEFAULT NULL,
@@ -102,16 +99,12 @@ CREATE TABLE IF NOT EXISTS firewallinfo (
         automatic_backup boolean DEFAULT false,
         vpn_limitadogeo boolean DEFAULT false,
         costes varchar(250) DEFAULT NULL,
-        apuntes varchar(250) DEFAULT NULL,
-        PRIMARY KEY (id),
-        FOREIGN KEY (id_routerinfo) REFERENCES routerinfo(id)
-			ON DELETE CASCADE 
-			ON UPDATE CASCADE
+        FOREIGN KEY (id_business) REFERENCES business(id)
       ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE IF NOT EXISTS switchinfo (
-        id INT unsigned NOT NULL AUTO_INCREMENT,
-        id_firewallinfo int unsigned NOT NULL,
+        id int AUTO_INCREMENT PRIMARY KEY,
+        id_business int unsigned,
         date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
         fabricante varchar(125) DEFAULT NULL,
         modelo varchar(125) DEFAULT NULL,
@@ -123,15 +116,12 @@ CREATE TABLE IF NOT EXISTS switchinfo (
         automatic_backup boolean DEFAULT false,
         costes varchar(250) DEFAULT NULL,
         apuntes varchar(250) DEFAULT NULL,
-        PRIMARY KEY (id),
-        FOREIGN KEY (id_firewallinfo) REFERENCES firewallinfo(id)
-			ON DELETE CASCADE 
-			ON UPDATE CASCADE
+        FOREIGN KEY (id_business) REFERENCES business(id)
         ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE IF NOT EXISTS accespointinfo (
-        id INT unsigned NOT NULL AUTO_INCREMENT,
-        id_switchinfo INT unsigned NOT NULL,
+        id int AUTO_INCREMENT PRIMARY KEY,
+        id_business int unsigned,
         date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
         fabricante varchar(125) DEFAULT NULL,
         modelo varchar(125) DEFAULT NULL,
@@ -150,15 +140,12 @@ CREATE TABLE IF NOT EXISTS accespointinfo (
         cert_eap_tls boolean DEFAULT false,
         costes varchar(250) DEFAULT NULL,
         apuntes varchar(250) DEFAULT NULL,
-        PRIMARY KEY (id),
-        FOREIGN KEY (id_switchinfo) REFERENCES switchinfo(id)
-			ON DELETE CASCADE 
-			ON UPDATE CASCADE
+        FOREIGN KEY (id_business) REFERENCES business(id)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE IF NOT EXISTS xdr (
-        id INT unsigned NOT NULL AUTO_INCREMENT,
-        id_accespointinfo INT unsigned NOT NULL,
+        id int AUTO_INCREMENT PRIMARY KEY,
+        id_business int unsigned,
         date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
         solucion_xdr varchar(125) DEFAULT NULL,
         proveedor varchar(125) DEFAULT NULL,
@@ -188,19 +175,13 @@ CREATE TABLE IF NOT EXISTS xdr (
         parches boolean DEFAULT false,
         costes varchar(250) DEFAULT NULL,
         apuntes varchar(250) DEFAULT NULL,
-        PRIMARY KEY (id),
-        FOREIGN KEY (id_accespointinfo) REFERENCES accespointinfo(id)
-			ON DELETE CASCADE 
-			ON UPDATE CASCADE
+        FOREIGN KEY (id_business) REFERENCES business(id)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE IF NOT EXISTS servidoresinfo (
-        id INT unsigned NOT NULL AUTO_INCREMENT,
-        id_xdr INT unsigned NOT NULL,
+        id int AUTO_INCREMENT PRIMARY KEY,
+        id_business int unsigned,
         date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        PRIMARY KEY (id),
-        FOREIGN KEY (id_xdr) REFERENCES xdr(id)
-			ON DELETE CASCADE 
-			ON UPDATE CASCADE
+        FOREIGN KEY (id_business) REFERENCES business(id)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 

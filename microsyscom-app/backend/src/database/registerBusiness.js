@@ -4,7 +4,7 @@ const { getDB } = require('./getDB');
 const { newError } = require('../../helps');
 const brcypt = require('bcrypt');
 
-const registerBusiness = async (name, telefono) => {
+const registerBusiness = async (dominio, telefono) => {
 
     let connection;
 
@@ -22,17 +22,16 @@ const registerBusiness = async (name, telefono) => {
         }
        
         const [createUser] = await connection.query(`
-        INSERT INTO business (id, date, name, telefono,) VALUES(?, ?, ?, ?)
+        INSERT INTO business (dominio, telefono) VALUES(?, ?)
         `,
-        [name, telefono]
+        [dominio, telefono]
         );
-   
-        
+
         return createUser.insertId;
         
        }finally{
            if (connection) {
-               connection.release();
+           connection.release();
            }
        } 
 };

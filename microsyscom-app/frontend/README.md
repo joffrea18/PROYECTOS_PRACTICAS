@@ -64,6 +64,8 @@ culminación del rellenado de todos los formularios establecidos.
     +   npm install chart.js react-chartjs-2
     +   npm install yup @hookform/resolvers
     +   npm install react-hook-form
+    +   npm i react-intl
+    +   npm i sweetalert2
 
 
 ## Paquetes instalados en el back

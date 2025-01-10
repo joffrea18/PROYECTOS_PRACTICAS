@@ -4,11 +4,11 @@ const { getDB } = require("../database/getDB");
 const { newError } = require('../../helps');
 const express = require("express");
 const Joi = require('joi');
-const { registerBusiness } = require("../database/registerBusiness");
+const { registerBusiness } = require("../database");
 
 const users = Joi.object({
-    name: Joi.string(),
-    telefono: Joi.string(),
+    dominio: Joi.string(),
+    telefono: Joi.number(),
 });
 
 
@@ -17,27 +17,27 @@ const home = async (req, res, next) => {
     let connect = await getDB();
 
     try {
-        let { name, telefono } = req.body;
+        let { dominio, telefono } = req.body;
 
         await users.validateAsync(req.body)
 
-        if (!name || !telefono) {
+        if (!dominio || !telefono) {
          throw newError('Los campos no pueden ser vacíos', 411);
         }
 
-        if (name && telefono) {
-            const validation = users.validate(name, telefono)
+        if (dominio && telefono) {
+            const validation = users.validate(dominio, telefono)
             if (!validation.error) {
                 console.log("Por favor verifique los datos y vuelva a intentarlo nuevamente");
                 
             }
         }
 
-        const id = await registerBusiness(name, telefono);
+        const id = await registerBusiness(dominio, telefono);
 
         res.send({
             status: 'ok',
-            message: `Usuario creado con id: ${id}`
+            message: `Datos registrados con id: ${id}`
         })
 
     } catch (error) {

@@ -1,51 +1,48 @@
-// import './PagesCSS/Pages.css';
 import { React , useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import Button from '@mui/material/Button';
 import { usePoints } from '../context/PointsContext';
+import { toast } from 'react-toastify';
+import { useForm } from 'react-hook-form';
 
 const SwitchInfo = ( ) => {
 
-// const business = localStorage.getItem('business');
+const { reset } = useForm();
 const { setPoints } = usePoints();
-
-    // Está reventando en la lectura de "name" en la arrow function / función manejadora
+const [ mensajeError, setMensajeError ] = useState('');
 
 const [ inputValue, setInput ]
    = useState({
-       val1: '',
-       val2: '',
-       val3: '',
-       val10: '' });
+   fabricante: '',
+   modelo: '',
+   apuntes: '',
+   costes: '' });
 
 const [ checkboxes, setChexboxes ]
     = useState({
-        val4: '',
-        val5: '',
-        val6: '',
-        val7: '',
-        val8: '',
-        val9: ''
+        licencia: '',
+        anti_storm: '',
+        segment_vlans: '',
+        gest_aislada: '',
+        automatic_backup: '',
+        monitoreo_disp: ''
     });
 
 
 const pointsf = {
-    val1: 9, //
-    val2: 9,  //
-    val3: 9,  //
-    val4: 9,  //
-    val5: 9,  //
-    val6: 9,  //
-    val7: 9,  //
-    val8: 9,  //
-    val9: 5,  //
-    val10: 5  //
+    fabricante: 9, //
+    modelo: 9,  //
+    apuntes: 9,  //
+    licencia: 9,  //
+    anti_storm: 9,  //
+    segment_vlans: 9,  //
+    gest_aislada: 9,  //
+    automatic_backup: 9,  //
+    monitoreo_disp: 5,  //
+    costes: 5  //
     // Total 100
 };
 
 
 const handleInput = (e) => {
-    // e.preventDefault;
     const { name, value } = e.target;
     setInput({
         ...inputValue,
@@ -104,6 +101,41 @@ useEffect(() => {
 
 console.log(totalPoints());
 
+  const onSubmit = async (data) => {
+
+    setMensajeError('');
+    try {
+      const response = await fetch("http://localhost:4000/switchs", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(
+        {...inputValue,
+        ...checkboxes}), 
+      });
+  
+      if (!response.ok) {
+        throw new Error("Error en la solicitud");
+      }
+  
+      const data = await response.json();
+      console.log("Datos enviados exitosamente:", data);
+
+      toast.success('Cliente registrado exitosamente');
+      reset();
+      window.location.href = "/accesspoint";
+    } catch (error) {
+      console.error("Error al enviar los datos:", error);
+      if (error.response && error.response?.status === 409) {
+        console.error('Error del servidor:', error.response.data);
+        toast.error(error.response?.data?.error);
+      } else {
+        setMensajeError('Ha ocurrido un error.');
+      }
+    }
+  };
+
     return (
         <div >
             <br />
@@ -125,73 +157,72 @@ console.log(totalPoints());
                     <input
                         type="text"
                         id='switch-fabricante'
-                        name="val1"
+                        name="fabricante"
                         onChange={handleInput}
                         placeholder='Fabricante'
-                        value={inputValue.val1} />
-                
+                        value={inputValue.fabricante} />
                     <label
                         for="switch-modelo">
-                            Modelo</label>
+                    Modelo</label>
                     <input
                         type="text"
                         id='switch-modelo'
-                        name="val2"
+                        name="modelo"
                         onChange={handleInput}
                         placeholder='Modelo'
-                        value={inputValue.val2} />
+                        value={inputValue.modelo} />
                 
                     <label htmlFor="">                       
                         <input
                             type="checkbox"
-                            name="val4"
+                            name="licencia"
                             onChange={handleCheckbox}
-                            value={checkboxes.val4} />
+                            value={checkboxes.licencia} />
                         Licencia
                         </label>
                         
                         <label htmlFor="">
                         <input
                             type="checkbox"
-                            name="val5"
+                            name="anti_storm"
                             onChange={handleCheckbox}
-                            value={checkboxes.val5} />
+                            value={checkboxes.anti_storm} />
                         Anti-storm
                         </label>
 
                         <label htmlFor="">
                         <input
                             type="checkbox"
-                            name="val7"
+                            name="gest_aislada"
                             onChange={handleCheckbox}
-                            value={checkboxes.val7} />
+                            value={checkboxes.gest_aislada} />
                         Gestión aislada
                         </label>
 
                         <label htmlFor="">
                         <input
                             type="checkbox"
-                            name="val9"
+                            name="monitoreo_disp"
                             onChange={handleCheckbox}
-                            value={checkboxes.val9} />
+                            value={checkboxes.monitoreo_disp} />
                         Monitoreo del dispositivo
                         </label>
 
                         <label htmlFor="">                    
                         <input
                             type="checkbox"
-                            name="val6"
+                            name="segment_vlans"
                             onChange={handleCheckbox}
-                            value={checkboxes.val6} />
+                            value={checkboxes.segment_vlans} />
                         Segmentación por VLANs
                         </label>
                                             
                         <label htmlFor="">
                         <input
                            type="checkbox"
-                           name="val8"
+                           name="automatic_backup"
                            onChange={handleCheckbox}
-                           value={checkboxes.val8} />
+                           value={checkboxes.automatic_backup} />
                         Backup automático ≤ 1 semana
                         </label>
 
@@ -203,35 +234,29 @@ console.log(totalPoints());
                             type="textarea"
                             className='text-area'
                             id='costs-switch'
-                            name="val10"
+                            name="costes"
                             onChange={handleInput}
                             placeholder='Adjuntar
                                 presupuestos de los Switch
                                     para las sedes que carecen
                                     de él'
-                            value={inputValue.val10} /> 
+                            value={inputValue.costes} /> 
 
                         <textarea
-                            name="val3"
+                            name="apuntes"
                             className='text-area'
                             onChange={handleInput}
                             placeholder='Apunta tus Notas aquí'
-                            value={inputValue.val3} />
-                </form>
+                            value={inputValue.apuntes} />
 
-           <Link
-            style={{textDecoration : 'none' }}
-            to={`/buttonppal/accespointinfo`} > 
-           <Button
-            variant='contained'
-            id='next-button'
-            style={{
-                boxShadow: '10px 5px 5px black'
-            }}>
-                    NEXT
-           </Button>
-           </Link>
-           {/* <h1>POINTS: { totalPoints() }</h1> */}
+                <button
+        type="button" 
+        onClick={onSubmit}
+        className="btn btn-primary"
+        >
+        Ir al Firewall
+      </button>
+        </form>
         </div>
     );
 }
