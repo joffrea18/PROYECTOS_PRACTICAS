@@ -75,3 +75,10 @@ button:hover {
     font-size: 14px;
     color: #666; /* Gris claro */
 }
+
+@media (min-width: 100px),
+( max-width: 500px) {
+    .container{
+        max-width: 60%;
+    }
+}

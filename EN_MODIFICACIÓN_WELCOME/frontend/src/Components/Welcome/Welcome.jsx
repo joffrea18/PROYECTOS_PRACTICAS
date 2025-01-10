@@ -15,6 +15,7 @@ const Welcome = () => {
     //   emailAddress.length = 5;
       const handleChange = (e) => {
           setDominio(e.target.value);
+          setTelefono(e.target.value);
         };
     
         const onSubmit = async (formData) => {
