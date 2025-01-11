@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
-import './PagesCSS/Pages.css';
 
 const NotFound = () => {
     return (

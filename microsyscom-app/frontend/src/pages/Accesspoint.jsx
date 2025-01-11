@@ -1,13 +1,10 @@
-// import './PagesCSS/Pages.css';
-import { React , useState, useEffect } from 'react';
+import { React , useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
-import { usePoints } from '../context/PointsContext';
 
 const AccesPoint = () => {
 
     const business = localStorage.getItem('business');
-    const { setPoints } = usePoints();
 
     // Está reventando en la lectura de "name" en la arrow function / función manejadora
 
@@ -85,31 +82,14 @@ const totalPoints = () => {
 
     console.log(inputValue.name);
 
-    useEffect(() => {
-        const total = totalPoints();
-        setPoints((prevPoints) => ({
-            ...prevPoints,
-            accespoint: total,
-        })); // Actualiza los puntos en el contexto
-    }, [inputValue]); // Dependencias para actualizar cuando cambie algo
-    
-
     console.log(totalPoints());
 
     return (
-        <div>
-            <br />
-            <br />
-            <section
-                id='acess_point'>
-                    {/* <h2
-                        className='business'>
-                            {business}</h2> */}
+        <div className="accesspoint">
+    <form
+      className='form'
+      action='post'  >
                     <h1>ACCES POINT</h1>
-            </section>
-            <br />
-            <br />
-        <form action="">
             <label
                 for="accespoint-fabricante">
                  Fabricante
@@ -287,7 +267,6 @@ const totalPoints = () => {
                 placeholder='Apunta tus Observaciones'
                 value={inputValue.val5} />
 
-        </form>
 
            <Link
             style={{textDecoration : 'none' }}
@@ -301,6 +280,7 @@ const totalPoints = () => {
                     NEXT
            </Button>
            </Link>
+         </form>
 
         </div>
     );

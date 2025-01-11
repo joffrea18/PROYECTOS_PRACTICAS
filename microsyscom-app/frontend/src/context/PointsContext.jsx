@@ -15,10 +15,10 @@ export const PointsProvider = ({ children }) => {
     
     return (
         <PointsContext.Provider value={
-                { points, setPoints,
-                id, setId,
-                businessA, setBusinessA }}>
-            {children}
+            { points, setPoints,
+            id, setId,
+            businessA, setBusinessA }}>
+        {children}
         </PointsContext.Provider>
     );
 };

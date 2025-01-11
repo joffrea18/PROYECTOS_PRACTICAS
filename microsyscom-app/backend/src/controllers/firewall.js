@@ -41,19 +41,18 @@ const firewall = async (req, res, next) => {
 
         await data.validateAsync(req.body)
 
-        if (fabricante && modelo) {
-            const validation = data.validate(fabricante, modelo)
+        if (email_security) {
+            const validation = data.validate(email_security)
             if (!validation.error) {
-                console.log("Por favor verifique los datos y vuelva a intentarlo nuevamente"); 
+                console.log("Por favor verifique los datos fabricante & modelo y vuelva a intentarlo nuevamente"); 
             }
         }
 
         const id = await registerFirewall(fabricante, modelo, ips, licencia,
-            sandboxing, email_security, ssl_inspection, sis_alertslogin,
-            serv_antimalware, fil_reputacion, detect_response, cert_confiable, 
-            monit_dispositivo, segmen_vlans, acces_uiexterior, acces_uinterior, 
-            vpn_mfa, automatic_backup, vpn_limitadogeo, costes)
-
+        sandboxing, email_security, ssl_inspection, sis_alertslogin,
+        serv_antimalware, fil_reputacion, detect_response, cert_confiable, 
+        monit_dispositivo, segmen_vlans, acces_uiexterior, acces_uinterior, 
+        vpn_mfa, automatic_backup, vpn_limitadogeo, costes)
         res.send({
             status: 'ok',
             message: `Datos registrados correctamente con el id: ${id}`

@@ -16,7 +16,7 @@ const Welcome = () => {
   );
 
  useEffect(() => {
- const savedData = sessionStorage.getItem("contactoForm");
+ const savedData = sessionStorage.getItem("welcomeForm");
  if (savedData) {
  setInput(JSON.parse(savedData)); // Convertir el string en un objeto
  }

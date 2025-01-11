@@ -6,7 +6,7 @@ const express = require("express");
 const Joi = require('joi');
 const { registerRouter } = require('../database');
 
-const users = Joi.object({
+const data = Joi.object({
     isp: Joi.number(),
     isp_backup: Joi.string(),
     telefono: Joi.number(),
@@ -33,39 +33,16 @@ const router = async (req, res, next) => {
             costes
         } = req.body;
 
-        await users.validateAsync(req.body)
-
-        if (!isp ||
-        !isp_backup ||
-        !telefono ||
-        !telefono_backup ||
-        !ip_estatica ||
-        !ip_estatica_backup ||
-        !fibra_backup ||
-        !costes) {
-            throw newError('Los campos no pueden ser vacíos', 411);
-        }
+        await data.validateAsync(req.body)
 
         if (isp &&
-        isp_backup &&
-        telefono &&
-        telefono_backup &&
-        ip_estatica &&
-        ip_estatica_backup &&
-        fibra_backup &&
-        costes) {
-            const validation = users.validate(
-            isp,
-            isp_backup,
-            telefono,
-            telefono_backup,
-            ip_estatica,
-            ip_estatica_backup,
-            fibra_backup,
-            costes
+        telefono) {
+            const validation = data.validate(
+                isp &&
+                telefono
             )
             if (!validation.error) {
-                console.log("Por favor verifique los datos e ingrese nuevamente");
+                console.log("Por favor verifique los datos isp & teléfono e ingrese nuevamente");
                 
             }
             

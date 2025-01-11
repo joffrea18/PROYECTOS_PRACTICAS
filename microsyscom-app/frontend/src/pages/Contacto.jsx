@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import Button from '@mui/material/Button';
 
 function Contacto() {
   
@@ -31,6 +32,7 @@ function Contacto() {
 
   // Cargar datos desde sessionStorage al montar el componente
   useEffect(() => {
+    sessionStorage.clear();
     const savedData = sessionStorage.getItem("contactoForm");
     if (savedData) {
       setInput(JSON.parse(savedData)); // Convertir el string en un objeto
@@ -164,13 +166,16 @@ function Contacto() {
     />
     {mensajeError && <p style={{ color: 'red' }}>{mensajeError}</p>}
     <p>Puntos totales: {calculateTotalPoints()}</p>
-    <button
+    <Button
+      variant='contained'
       type="button" 
       onClick={onSubmit}
       className="btn btn-primary"
-    >
-    Ir al Router
-    </button>
+      style={{
+        boxShadow: '10px 5px 5px black'
+      }}>
+    NEXT Router
+   </Button>
   </form>
     </div>
   );

@@ -1,8 +1,8 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-// import { usePoints } from '../context/PointsContext';
+import Button from '@mui/material/Button';
 
 
 const Routers = () => {
@@ -233,13 +233,16 @@ return (
     {mensajeError && <p style={{ color: 'red' }}>{mensajeError}</p>}
     <p>Puntos totales: {totalPoints()}</p>
 
-    <button
+    <Button
+      variant='contained'
       type="button" 
       onClick={onSubmit}
       className="btn btn-primary"
-    >
-    Ir al Firewall
-    </button>
+      style={{
+        boxShadow: '10px 5px 5px black'
+      }}>
+    NEXT Firewall
+   </Button>
     </form>
     </div>
   );

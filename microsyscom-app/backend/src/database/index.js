@@ -5,6 +5,7 @@ const { registerBusiness } = require('./registerBusiness');
 const { registerRouter } = require('./registerRouter');
 const { registerClient } = require('./registerClient');
 const { registerFirewall } = require('./registerFirewall');
+const { registerSwitch } = require('./registerSwitch');
 
 module.exports = {
     getDB,
@@ -12,4 +13,5 @@ module.exports = {
     registerRouter,
     registerClient,
     registerFirewall,
+    registerSwitch,
 };

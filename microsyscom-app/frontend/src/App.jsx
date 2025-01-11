@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import Navbar from './components/SideBar/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import switchs from './pages/Switchs';
 import accesspoint from './pages/Accesspoint';
 import xdr from './pages/XDR';
 import servidores from './pages/Servidores';
@@ -22,6 +21,9 @@ import Routers from './pages/Routers';
 import Firewall from './pages/Firewall';
 // import Footer from './components/Footer/Footer';
 import Login from './pages/Login';
+import Switch from './pages/Switch';
+import NotFound from './pages/NotFound';
+import AccesPoint from './pages/Accesspoint';
 // import Validator from './components/Validator/Validator';
 
 
@@ -36,11 +38,11 @@ function App() {
     <Route path='/' element={ <Welcome />}/>
     <Route path='/login' element={<Login/>}/>
     {/* <Route path='/validator' element={<Validator />} /> */}
-    <Route path='/contacto' element={<Contacto />}/>
+    <Route path='/contacto' element={<Contacto />} />
     <Route path='/router' element={<Routers />} />
-    <Route path='/firewall' element={<Firewall/>} />
-    <Route path='/switchs' component={switchs} />
-    <Route path='/accesspoint' component={accesspoint} />
+    <Route path='/firewall' element={<Firewall />} />
+    <Route path='/switch' element={<Switch />} />
+    <Route path='/accesspoint' element={<AccesPoint />} />
     <Route path='/xdr' component={xdr} />
     <Route path='/siem' component={siem} />
     <Route path='/servidores' component={servidores} />
@@ -53,6 +55,7 @@ function App() {
     <Route path='/callcenter' component={callcenter} />
     <Route path='/erp' component={erp} />
     <Route path='/impresoras' component={impresoras} />
+    <Route path='*' element={<NotFound />} />
     </Routes>
     {/* <Footer /> */}
     </Router>

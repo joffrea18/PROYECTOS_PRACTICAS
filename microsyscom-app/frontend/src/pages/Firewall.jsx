@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import { usePoints } from '../context/PointsContext';
+import Button from '@mui/material/Button';
 
 function Firewall() {
-  const { setPoints } = usePoints();
   const { reset } = useForm();
   const [mensajeError, setMensajeError] = useState('');
   
@@ -57,14 +56,6 @@ const [ checkboxes, setCheckboxes ]
   costes: 5,
   fil_reputacion: 5
  };
-  
-  
-  useEffect(() => {
-    const storedValue = sessionStorage.getItem("firewallForm"); 
-    if (storedValue) {
-      setInput(storedValue); 
-    }
-  }, []);
 
   
   const handleInput = (e) => {
@@ -113,15 +104,6 @@ const totalPoints = () => {
   return calculateInputPoints() + calculateCheckboxPoints();
 };
 
-useEffect(() => {
-  const total = totalPoints();
-  setPoints((prevPoints) => ({
-    ...prevPoints,
-    Firewall: total,
-  })); // Actualiza los puntos en el contexto
-}, [inputValue, checkboxes]); // Dependencias para actualizar cuando cambie algo
-    
-
 console.log(totalPoints());
 
 
@@ -148,7 +130,7 @@ console.log(totalPoints());
 
       toast.success('Cliente registrado exitosamente');
       reset();
-      window.location.href = "/switchs";
+      window.location.href = "/switch";
     } catch (error) {
       console.error("Error al enviar los datos:", error);
       if (error.response && error.response?.status === 409) {
@@ -163,191 +145,194 @@ console.log(totalPoints());
   return (
     <div className="firewall">
     <form
-            className='form'
-            action='post'  >
+      className='form'
+      action='post'  >
     <h1>Firewall</h1>
-            <label
-                for="firewall-fabricante">
-                    Fabricante
-            </label>
-            <input
-                type="text"
-                id='firewall-fabricante'
-                name="fabricante"
-                onChange={handleInput}
-                placeholder='Fabricante'
-                value={inputValue.fabricante}/>
-                <label
-                    for="firewall-modelo">
-                        Modelo
-                </label>
-                <input
-                    type="text"
-                    id='firewall-modelo'
-                    name="modelo"
-                    placeholder='Modelo'
-                    onChange={handleInput}
-                    value={inputValue.modelo}/>
-                <br/>
-                {/* LICENCIA prela los demás checkboxes */}
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="ips"
-                    value={checkboxes.ips}
-                    onChange={handleCheckbox}
-                    /> IPS
-                </label>
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="licencia"
-                    value={checkboxes.licencia}
-                    onChange={handleCheckbox}
-                /> Licencia
-                </label>
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="sandboxing"
-                    value={checkboxes.sandboxing}
-                    onChange={handleCheckbox}
-                    /> SandBoxing
-                </label>
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="email_security"
-                    value={checkboxes.email_security}
-                    onChange={handleCheckbox}
-                    /> Email Security
-                </label>
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="ssl_inspection"
-                    value={checkboxes.ssl_inspection}
-                    onChange={handleCheckbox}
-                    /> SSL Inspection
-                </label>
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="sis_alertslogin"
-                    value={checkboxes.sis_alertslogin}
-                    onChange={handleCheckbox}
-                    /> Sistema de alertas Login
-                </label>
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="serv_antimalware"
-                    value={checkboxes.serv_antimalware}
-                    onChange={handleCheckbox}
-                    /> Servicios Anti-Malware
-                </label>
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="fil_reputacion"
-                    value={checkboxes.fil_reputacion}
-                    onChange={handleCheckbox}
-                    /> Filtros de reputación
-                </label>
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="detect_response"
-                    value={checkboxes.detect_response}
-                    onChange={handleCheckbox}
-                    /> Detection & Response
-                </label>
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="cert_confiable"
-                    value={checkboxes.cert_confiable}
-                    onChange={handleCheckbox}
-                    /> Certificado confiable
-                </label>
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="monit_dispositivo"
-                    value={checkboxes.monit_dispositivo}
-                    onChange={handleCheckbox}
-                    /> Monitoreo del dispositivo
-                </label>
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="segmen_vlans"
-                    value={checkboxes.segmen_vlans}
-                    onChange={handleCheckbox}
-                    /> Segmentación por VLANs
-                </label>
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="acces_uiexterior"
-                    value={checkboxes.acces_uiexterior}
-                    onChange={handleCheckbox}
-                    /> Acceso UI desde IP exterior
-                </label>
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="acces_uinterior"
-                    value={checkboxes.acces_uinterior}
-                    onChange={handleCheckbox}
-                    /> Acceso UI desde puerto interior
-                </label>
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="vpn_mfa"
-                    value={checkboxes.vpn_mfa}
-                    onChange={handleCheckbox}
-                    /> VPN protocolo seguro & MFA
-                </label>
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="automatic_backup"
-                    value={checkboxes.automatic_backup}
-                    onChange={handleCheckbox}
-                    /> Backup automático ≤ 1 semana
-                </label>
-                <label htmlFor="">
-                <input
-                    type="checkbox"
-                    name="vpn_limitadogeo"
-                    value={checkboxes.vpn_limitadogeo}
-                    onChange={handleCheckbox}
-                    /> VPN - Limitado Geograficamente
-                </label>
-                <label 
-                    for="costs-firewall">
-                        <b>COSTES</b>
-                </label>
-                <input
-                    type="text"
-                    id='costs-firewall'
-                    name="costes"
-                    onChange={handleInput}
-                    placeholder='Adjuntar
-                        presupuestos de los
-                            Firewalls'
-                    value={inputValue.costes} />
+    <label
+      for="firewall-fabricante">
+    Fabricante
+    </label>
+    <nput
+      type="text"
+      id='firewall-fabricante'
+      name="fabricante"
+      onChange={handleInput}
+      placeholder='Fabricante'
+      value={inputValue.fabricante}/>
+    <label
+      for="firewall-modelo">
+    Modelo
+    </label>
+    <input
+      type="text"
+      id='firewall-modelo'
+      name="modelo"
+      placeholder='Modelo'
+      onChange={handleInput}
+      value={inputValue.modelo}/>
+    <br/>
+    {/* LICENCIA prela los demás checkboxes */}
+    <label htmlFor="">
+    <input
+      type="checkbox"
+      name="ips"
+      value={checkboxes.ips}
+      onChange={handleCheckbox}
+      /> IPS
+    </label>
+    <label htmlFor="">
+    <input
+      type="checkbox"
+      name="licencia"
+      value={checkboxes.licencia}
+      onChange={handleCheckbox}
+    /> Licencia
+    </label>
+    <label htmlFor="">
+    <input
+      type="checkbox"
+      name="sandboxing"
+      value={checkboxes.sandboxing}
+      onChange={handleCheckbox}
+      /> SandBoxing
+    </label>
+    <label htmlFor="">
+    <input
+      type="checkbox"
+      name="email_security"
+      value={checkboxes.email_security}
+      onChange={handleCheckbox}
+      /> Email Security
+    </label>
+    <label htmlFor="">
+    <input
+      type="checkbox"
+      name="ssl_inspection"
+      value={checkboxes.ssl_inspection}
+      onChange={handleCheckbox}
+      /> SSL Inspection
+    </label>
+    <label htmlFor="">
+    <input
+      type="checkbox"
+      name="sis_alertslogin"
+      value={checkboxes.sis_alertslogin}
+      onChange={handleCheckbox}
+      /> Sistema de alertas Login
+    </label>
+    <label htmlFor="">
+    <input
+      type="checkbox"
+      name="serv_antimalware"
+      value={checkboxes.serv_antimalware}
+      onChange={handleCheckbox}
+      /> Servicios Anti-Malware
+    </label>
+    <label htmlFor="">
+    <input
+      type="checkbox"
+      name="fil_reputacion"
+      value={checkboxes.fil_reputacion}
+      onChange={handleCheckbox}
+      /> Filtros de reputación
+    </label>
+    <label htmlFor="">
+    <input
+      type="checkbox"
+      name="detect_response"
+      value={checkboxes.detect_response}
+      onChange={handleCheckbox}
+      /> Detection & Response
+    </label>
+    <label htmlFor="">
+    <input
+      type="checkbox"
+      name="cert_confiable"
+      value={checkboxes.cert_confiable}
+      onChange={handleCheckbox}
+      /> Certificado confiable
+    </label>
+    <label htmlFor="">
+    <input
+      type="checkbox"
+      name="monit_dispositivo"
+      value={checkboxes.monit_dispositivo}
+      onChange={handleCheckbox}
+      /> Monitoreo del dispositivo
+    </label>
+    <label htmlFor="">
+    <input
+      type="checkbox"
+      name="segmen_vlans"
+      value={checkboxes.segmen_vlans}
+      onChange={handleCheckbox}
+      /> Segmentación por VLANs
+    </label>
+    <label htmlFor="">
+    <input
+      type="checkbox"
+      name="acces_uiexterior"
+      value={checkboxes.acces_uiexterior}
+      onChange={handleCheckbox}
+      /> Acceso UI desde IP exterior
+    </label>
+    <label htmlFor="">
+    <input
+      type="checkbox"
+      name="acces_uinterior"
+      value={checkboxes.acces_uinterior}
+      onChange={handleCheckbox}
+      /> Acceso UI desde puerto interior
+    </label>
+    <label htmlFor="">
+    <input
+      type="checkbox"
+      name="vpn_mfa"
+      value={checkboxes.vpn_mfa}
+      onChange={handleCheckbox}
+      /> VPN protocolo seguro & MFA
+    </label>
+    <label htmlFor="">
+    <input
+      type="checkbox"
+      name="automatic_backup"
+      value={checkboxes.automatic_backup}
+      onChange={handleCheckbox}
+      /> Backup automático ≤ 1 semana
+    </label>
+    <label htmlFor="">
+    <input
+      type="checkbox"
+      name="vpn_limitadogeo"
+      value={checkboxes.vpn_limitadogeo}
+      onChange={handleCheckbox}
+      /> VPN - Limitado Geograficamente
+    </label>
+    <label 
+    for="costs-firewall">
+    <b>COSTES</b>
+    </label>
+    <input
+      type="text"
+      id='costs-firewall'
+      name="costes"
+      onChange={handleInput}
+      placeholder='Adjuntar
+      presupuestos de los
+      Firewalls'
+      value={inputValue.costes} />
     {mensajeError && <p style={{ color: 'red' }}>{mensajeError}</p>}
     <p>Puntos totales: {totalPoints()}</p>
-    <button
-        type="button" 
-        onClick={onSubmit}
-        className="btn btn-primary"
-        >
-        Ir al Firewall
-      </button>
+    <Button
+      variant='contained'
+      type="button" 
+      onClick={onSubmit}
+      className="btn btn-primary"
+      style={{
+        boxShadow: '10px 5px 5px black'
+      }}>
+    NEXT Switch
+   </Button>
     </form>
     </div>
   );

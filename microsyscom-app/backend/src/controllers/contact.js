@@ -26,14 +26,14 @@ const contact = async (req, res, next) => {
 
         await users.validateAsync(req.body)
 
-        if (!companyName || !email || !phone) {
-         throw newError('Los campos Company, Email & Phone no pueden ser vacíos', 411);
+        if (!email || !phone) {
+         throw newError('Los campos Email & Phone no pueden ser vacíos', 411);
         }
 
-        if (companyName && businessActivity && contactPerson && email && phone && department && date && time) {
-            const validation = users.validate(companyName, businessActivity, contactPerson, email, phone, department, date, time)
+        if (email && phone) {
+            const validation = users.validate(email, phone)
             if (!validation.error) {
-                console.log("Por favor verifique los datos y vuelva a intentarlo nuevamente");
+                console.log("Por favor verifique los datos email & telefono y vuelva a intentarlo nuevamente");
                 
             }
         }

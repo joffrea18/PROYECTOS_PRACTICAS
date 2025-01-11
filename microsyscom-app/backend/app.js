@@ -11,6 +11,7 @@ const { contact } = require('./src/controllers/contact');
 const { home } = require('./src/controllers/home');
 const { router } = require('./src/controllers/router');
 const { firewall } = require('./src/controllers/firewall');
+const { switchs } = require('./src/controllers/switch');
 
 // este es el primer middleware por donde pasa
 app.use(morgan('dev'));
@@ -23,6 +24,7 @@ app.post('/', home);
 app.post('/contacto', contact);
 app.post('/router', router);
 app.post('/firewall', firewall);
+app.post('/switch', switchs);
 
 
 app.use((req, res) => {

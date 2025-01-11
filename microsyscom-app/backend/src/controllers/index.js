@@ -10,5 +10,6 @@ export default {
     home,
     contact,
     router,
+    firewall,
 };
 
