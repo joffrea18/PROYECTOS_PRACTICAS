@@ -1,46 +1,36 @@
 import React, { useState, useEffect }  from 'react';
 // import { useUserActions } from '../../hooks/api';
-import { useUser } from '../../UserContext';
 import './Welcome.css';
-import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import { yupResolver } from '@hookform/resolvers/yup';
-import Swal from "sweetalert2";
-import { useIntl } from "react-intl";
-import * as yup from 'yup';
 
 const Welcome = () => {
-  const [user] = useUser() || [{}];
-  const navigate = useNavigate();
-  const [dominio, setDominio] = useState('');
-  const [telefono, setTelefono] = useState('');
+  const { reset } = useForm();
   const [mensajeError, setMensajeError] = useState('');
-  const [saveCredentials, setSaveCredentials] = useState(false);
-  const intl = useIntl();
 
-  const schema = yup.object().shape({
-    dominio: yup.string().required('El nombre de dominio es obligatorio'),
-    telefono: yup.string().required('El teléfono es obligatorio'),
-  });
-
-  useEffect(() => {
-    let localData;
-    try {
-      localData = JSON.parse(localStorage.getItem("data"));
-    } catch (error) {
-      console.error("Error parsing localStorage data:", error);
+  const [inputValue, setInput] = useState(
+    {
+      dominio: '',
+      telefono: ''
     }
-    if (localData) {
-      setDominio(localData.dominio || '');
-      setTelefono(localData.telefono || '');
-      setSaveCredentials(true);
-    }
-  }, []);
+  );
 
-  const { register, handleSubmit, formState: { errors }, reset } = useForm({
-    resolver: yupResolver(schema),
-  });
+ useEffect(() => {
+ const savedData = sessionStorage.getItem("contactoForm");
+ if (savedData) {
+ setInput(JSON.parse(savedData)); // Convertir el string en un objeto
+ }
+ }, []);
+
+ // Manejar cambios en los inputs
+ const handleInputChange = (e) => {
+ const { name, value } = e.target;
+ setInput((prevData) => {
+ const updatedData = { ...prevData, [name]: value };
+ sessionStorage.setItem("contactoForm", JSON.stringify(updatedData)); // Guardar en sessionStorage
+ return updatedData;
+ });
+ };
 
   const onSubmit = async (formData) => {
     setMensajeError('');
@@ -50,66 +40,59 @@ const Welcome = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(inputValue),
       });
 
       if (!response.ok) throw new Error("Error en la solicitud de conexión con el servidor");
       const data = await response.json();
-
-      if (data.status === "error") {
-        Swal.fire({
-          title: intl.formatMessage({ id: "singInError" }),
-          text: data.message,
-          icon: "error",
-          confirmButtonText: "Ok",
-        });
-      } else if (data.status === "ok") {
-        if (saveCredentials) {
-          localStorage.setItem("data", JSON.stringify({ dominio, telefono }));
-        } else {
-          localStorage.clear();
-        }
-        Swal.fire({
-          title: intl.formatMessage({ id: "modalEntrada" }, { name: user?.info?.name || "Usuario" }),
-          timer: 2000,
-          timerProgressBar: true,
-          willClose: () => navigate('/contacto'),
-        });
-      }
+      console.log("Cliente registrado con éxito", data);
+      
       toast.success('Cliente validado exitosamente');
       reset();
+      window.location.href = "/contacto";
     } catch (error) {
-      setMensajeError('Ha ocurrido un error. Por favor verifique todos los datos');
+      console.error("Error al enviar los datos:", error);
+      if (error.response && error.response?.status === 409) {
+        console.error('Error del servidor:', error.response.data);
+        toast.error(error.response?.data?.error);
+      } else {
+        window.location.href = "/login";
+        setMensajeError('Error en el envío de datos en al servidor. Verifique nuevamente');
+      }
     }
   };
 
   return (
     <div>
-      <form className="container" onSubmit={handleSubmit(onSubmit)}>
-        <h1>¡WELCOME!</h1>
-        <section>
-          <label>Nombre de la Empresa</label>
-          <input
-            type="text"
-            className="input_welcome"
-            {...register("nombre")}
-            placeholder="Dominio / Business nombre*"
-          />
-          {errors.nombre && <p style={{ color: 'red' }}>{errors.nombre.message}</p>}
-        </section>
-        <section>
-          <input
-            type="telefono"
-            name="telefono"
-            className="input_welcome"
-            {...register("telefono")}
-            placeholder="Teléfono*"
-          />
-          {errors.telefono && <p style={{ color: 'red' }}>{errors.telefono.message}</p>}
-        </section>
-        <button type="submit" className="btn-welcome">Agregar y Continuar</button>
-        {mensajeError && <p style={{ color: 'red' }}>{mensajeError}</p>}
-      </form>
+    <form className="container">
+    <h1>¡WELCOME!</h1>
+    <section>
+    <label>Nombre de la Empresa</label>
+    <input
+      type="text"
+      name="dominio"
+      className="input_welcome"
+      value={inputValue.dominio}
+      onChange={handleInputChange}
+      placeholder="Dominio / Business nombre*"
+    />
+    </section>
+    <section>
+    <input
+      type="telefono"
+      name="telefono"
+      className="input_welcome"
+      value={inputValue.telefono}
+      onChange={handleInputChange}
+      placeholder="Teléfono*"
+    />
+    </section>
+    {mensajeError && <p style={{ color: 'red' }}>{mensajeError}</p>}
+    <button type="button"
+    className="btn-welcome"
+    onClick={onSubmit}>Agregar y Continuar
+    </button>
+    </form>
     </div>
   );
 };

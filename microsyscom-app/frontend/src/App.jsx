@@ -21,7 +21,7 @@ import Welcome from './components/Welcome/Welcome';
 import Routers from './pages/Routers';
 import Firewall from './pages/Firewall';
 // import Footer from './components/Footer/Footer';
-// import Login from './pages/Login';
+import Login from './pages/Login';
 // import Validator from './components/Validator/Validator';
 
 
@@ -34,7 +34,7 @@ function App() {
     <Navbar />
     <Routes>
     <Route path='/' element={ <Welcome />}/>
-    {/* <Route path='/login' element={<Login/>}/> */}
+    <Route path='/login' element={<Login/>}/>
     {/* <Route path='/validator' element={<Validator />} /> */}
     <Route path='/contacto' element={<Contacto />}/>
     <Route path='/router' element={<Routers />} />
