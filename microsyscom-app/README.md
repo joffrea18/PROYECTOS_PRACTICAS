@@ -39,6 +39,8 @@ esto permitirá un registro estable de logs en la bbdd permitiendo la recuperaci
             +   AccesPoint
             +   XDR
             +   Servidores
+            +   ERP
+            +   SAI
         ❌ - Generación de estadísticas (VOLVER A MIRAR, POR MODIFICACIONES DE LOS COMPONENTES)
         ❌ - Impresión de reporte (VOLVER A MIRAR, POR MODIFICACIONES DE LOS COMPONENTES)
 
@@ -54,7 +56,6 @@ esto permitirá un registro estable de logs en la bbdd permitiendo la recuperaci
 
     - Barra incremental en el proceso de rellenado de la información (implementado en el PoinstChart)
     - Menu Sidebar
-        - SAI
         - Almacenamiento
         - Copias de Seguridad
         - Dominio
@@ -62,7 +63,6 @@ esto permitirá un registro estable de logs en la bbdd permitiendo la recuperaci
         - Correo Corporativo
         - Call Center
         - Impresoras
-        - ERP
         - Otras Aplicaciones
 
 # ↗️ PRÓXIMOS AVANCES ↗️

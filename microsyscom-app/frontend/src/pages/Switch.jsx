@@ -1,7 +1,6 @@
 import { React , useState } from 'react';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
-import Button from '@mui/material/Button';
 
 const SwitchInfo = ( ) => {
 
@@ -27,7 +26,7 @@ const [ checkboxes, setChexboxes ]
   });
 
 
-const pointsf = {
+const points = {
   fabricante: 9, 
   modelo: 9,  
   licencia: 9,  
@@ -44,17 +43,35 @@ const pointsf = {
 
 const handleInput = (e) => {
   const { name, value } = e.target;
-  setInput({
-    ...inputValue,
-    [name]: value,
+  setInput((inputValue) => {
+    const updatedData = {...inputValue,[name]: value};
+
+    (
+      () => {
+        const sumPoints = points;
+        const localPoints = JSON.stringify(sumPoints);
+        localStorage.setItem('points', localPoints);
+      }
+    )()
+
+    return updatedData;
   });
 }
 
 const handleCheckbox = (e) => {
   const { name, checked } = e.target;
-  setChexboxes({
-    ...checkboxes,
-    [name]: checked,
+  setChexboxes((checkboxes) => {
+    const updatedData = {...checkboxes,[name]: checked};
+
+    (
+      () => {
+        const sumPoints = points;
+        const localPoints = JSON.stringify(sumPoints);
+        localStorage.setItem('points', localPoints);
+      }
+    )()
+
+    return updatedData;
   });
 }
 
@@ -66,7 +83,7 @@ const calculateInputPoints = () => {
   // Sumar puntos de los inputs
   Object.keys(inputValue).forEach((key) => {
     if (inputValue[key]) {
-      totalPoints += pointsf[key]; // Sumar puntos si hay valor en el input
+      totalPoints += points[key]; // Sumar puntos si hay valor en el input
     }
   });
   return totalPoints;
@@ -77,12 +94,20 @@ const calculateCheckboxPoints = () => {
   // Sumar puntos de los checkboxes
   Object.keys(checkboxes).forEach((key) => {
     if (checkboxes[key]) {
-      totalPoints += pointsf[key]; // Sumar puntos si el checkbox está activo
+      totalPoints += points[key]; // Sumar puntos si el checkbox está activo
     }
   });
   return totalPoints;
 };
 
+function puntitos () {
+  const storedPoints = JSON.parse(localStorage.getItem('points')) || {}; 
+  return Object.values(storedPoints).reduce((acc, val) => acc + val, 0);
+}
+
+console.log(puntitos());
+
+            
 const totalPoints = () => {
   return calculateInputPoints() + calculateCheckboxPoints();
 };
@@ -91,8 +116,8 @@ console.log({inputValue});
 console.log(totalPoints());
 
 
-  const onSubmit = async (data) => {
-
+  const onSubmit = async (event) => {
+    event.preventDefault();
     setMensajeError('');
     try {
       const response = await fetch("http://localhost:4000/switch", {
@@ -163,7 +188,7 @@ return (
     </label>
     
     <label htmlFor="">
-    <nput
+    <input
       type="checkbox"
       name="anti_storm"
       onChange={handleCheckbox}
@@ -225,8 +250,9 @@ return (
       placeholder='Apunta tus Notas aquí'
       value={inputValue.apuntes} />  
     {mensajeError && <p style={{ color: 'red' }}>{mensajeError}</p>}
-    <p>Puntos totales: {totalPoints()}</p>  
-    <Button
+    <p>Puntos Switch: {totalPoints()}</p>
+    <p>Puntos API: {puntitos()}</p>  
+    <button
   variant='contained'
   type="button" 
   onClick={onSubmit}
@@ -235,7 +261,7 @@ return (
     boxShadow: '10px 5px 5px black'
   }}>
     NEXT AccessPoint
-   </Button>
+   </button>
     </form>
     </div>
   );

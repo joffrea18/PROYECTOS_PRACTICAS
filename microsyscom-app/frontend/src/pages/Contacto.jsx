@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-// import { usePoints } from '../context/PointsContext';
-import Button from '@mui/material/Button';
 
 function Contacto() {
   
   const { reset } = useForm();
-  const [mensajeError, setMensajeError] = useState('Los campos Fecha & Hora son obligatorios');
-  // const { setPoints } = usePoints();
+  const [mensajeError, setMensajeError] = useState('');
 
   const [inputValue, setInput] = useState({
     companyName: "",
@@ -32,16 +29,25 @@ function Contacto() {
     time: 15, // Puntos para la hora
   };
 
-
-  // Manejar cambios en los inputs
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setInput((prevData) => {
       const updatedData = { ...prevData, [name]: value };
-      sessionStorage.setItem("contactForm", JSON.stringify(updatedData)); // Guardar en sessionStorage
+      // sessionStorage.setItem("contactForm", JSON.stringify(updatedData));
+      
+      (
+        () => {
+          const sumPoints = points;
+          const localPoints = JSON.stringify(sumPoints);
+          localStorage.setItem('points', localPoints);
+        }
+      )()
+
       return updatedData;
     });
   };
+
+
 
   const calculateTotalPoints = () => {
     let totalPoints = 0;
@@ -54,9 +60,14 @@ function Contacto() {
     return totalPoints;
   };
 
+  function puntitos () {
+    const storedPoints = JSON.parse(localStorage.getItem('points')) || {}; 
+    return Object.values(storedPoints).reduce((acc, val) => acc + val, 0);
+  }
 
-  const onSubmit = async (data) => {
 
+  const onSubmit = async (event) => {
+    event.preventDefault();
     setMensajeError('');
     try {
       const response = await fetch("http://localhost:4000/contacto", {
@@ -145,14 +156,14 @@ function Contacto() {
       onChange={handleInputChange}
       placeholder="Ingresa el departamento"
     />
-    <label>Fecha</label>
+    <label>Fecha *</label>
     <input
       type="date"
       name="date"
       value={inputValue.date}
       onChange={handleInputChange}
     />
-    <label>Hora</label>
+    <label>Hora *</label>
     <input
       type="time"
       name="time"
@@ -160,17 +171,15 @@ function Contacto() {
       onChange={handleInputChange}
     />
     {mensajeError && <p style={{ color: 'red' }}>{mensajeError}</p>}
-    <p>Puntos totales: {calculateTotalPoints()}</p>
-    <Button
+    <p>Puntos Contacto: {calculateTotalPoints()}</p>
+    <p>Puntos API: {puntitos()}</p>
+    <button
       variant='contained'
       type="button" 
       onClick={onSubmit}
-      className="btn btn-primary"
-      style={{
-        boxShadow: '10px 5px 5px black'
-      }}>
+      className="btn btn-primary">
     NEXT Router
-   </Button>
+   </button>
   </form>
     </div>
   );

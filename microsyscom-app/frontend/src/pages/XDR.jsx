@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import Button from '@mui/material/Button';
 import { toast } from 'react-toastify';
-// import usePoints from '../context/PointsContext';
 
 
 const XDR = () => {
 
 const { reset } = useForm();
 const [mensajeError, setMensajeError] = useState('');
-// const { setPoints } = usePoints();
 
 const [ inputValue, setInput ]
     = useState({
@@ -47,62 +44,76 @@ const [ checkboxes, setCheckboxes ]
     pol_seguridad: false,
     });
 
-const pointsf = {
-    val1: 3.4,
-    val2: 3.4,
-    val3: 3.4,
-    antimalware: 3.4,
-    antitampering: 3.4,
-    antiexploit_advance: 3.4,
-    firewall: 3.4,
-    control_contenido: 3.4,
-    antiphishing: 3.4,
-    analisis_web: 3.4,
-    netw_att_def: 3.4,
-    user_authoriz: 3.4,
-    control_disp: 3.4,
-    advan_treatC: 3.4,
-    admin_risk: 3.4,
-    sandbox_analyzer: 3.4,
-    aptprotection: 3.4,
-    email_protect: 3.4,
-    cifrado_datos: 3.4,
-    control_app: 3.4,
-    control_naveg: 3.4,
-    parches: 3.4,
-    analisis_comp: 3.4,
-    ransomware: 3.4,
-    treath_hunting: 3.4,
-    remote_forensics: 3.4,
-    pol_seguridad: 2.4,
-    costes: 2.4,   
+const points = {
+    antimalware: 4,
+    antitampering: 4,
+    antiexploit_advance:  4,
+    firewall:  4,
+    control_contenido:  4,
+    antiphishing:  4,
+    analisis_web:  4,
+    netw_att_def:  4,
+    user_authoriz:  4,
+    control_disp:  4,
+    advan_treatC:  4,
+    admin_risk:  4,
+    sandbox_analyzer:  4,
+    aptprotection:  4,
+    email_protect:  4,
+    cifrado_datos:  4,
+    control_app:  4,
+    control_naveg:  4,
+    parches:  4,
+    analisis_comp:  4,
+    ransomware:  4,
+    treath_hunting:  4,
+    remote_forensics:  4,
+    pol_seguridad:  4,
+    costes:  4,   
 };
 
-console.log(pointsf);
+console.log(points);
 
 const handleInput = (e) => {
-    // e.preventDefault;
     const { name, value } = e.target;
-    setInput({
-        ...inputValue,
-        [name]: value,
+    setInput((inputValue) => {
+      const updatedData = {...inputValue,[name]: value};
+  
+      (
+        () => {
+          const sumPoints = points;
+          const localPoints = JSON.stringify(sumPoints);
+          localStorage.setItem('points', localPoints);
+        }
+      )()
+  
+      return updatedData;
     });
-}
+  }
 
-const handleCheckbox = (e) => {
+  const handleCheckbox = (e) => {
     const { name, checked } = e.target;
-    setCheckboxes({
-        ...checkboxes,
-        [name]: checked,
+    setCheckboxes((checkboxes) => {
+      const updatedData = {...checkboxes,[name]: checked};
+  
+      (
+        () => {
+          const sumPoints = points;
+          const localPoints = JSON.stringify(sumPoints);
+          localStorage.setItem('points', localPoints);
+        }
+      )()
+  
+      return updatedData;
     });
-}
+  }
 
 const calculateInputPoints = () => {
     let totalPoints = 0;
     // Sumar puntos de los inputs
     Object.keys(inputValue).forEach((key) => {
         if (inputValue[key]) {
-            totalPoints += pointsf[key]; // Sumar puntos si hay valor en el input
+            totalPoints += points[key]; // Sumar puntos si hay valor en el input
         }
     });
 
@@ -114,15 +125,24 @@ const calculateCheckboxPoints = () => {
     // Sumar puntos de los checkboxes
     Object.keys(checkboxes).forEach((key) => {
         if (checkboxes[key]) {
-            totalPoints += pointsf[key]; // Sumar puntos si el checkbox está activo
+            totalPoints += points[key]; // Sumar puntos si el checkbox está activo
         }
     });
     return totalPoints;
 };
 
-const totalPoints = () => {
+  
+  function puntitos () {
+    const storedPoints = JSON.parse(localStorage.getItem('points')) || {}; 
+    return Object.values(storedPoints).reduce((acc, val) => acc + val, 0);
+  }
+  
+//   console.log(puntitos());
+  
+              
+  const totalPoints = () => {
     return calculateInputPoints() + calculateCheckboxPoints();
-};
+  };
 
  
 console.log(totalPoints());
@@ -401,18 +421,16 @@ const onSubmit = async (data) => {
             onChange={handleInput}
             value={inputValue.apuntes}/>
        {mensajeError && <p style={{ color: 'red' }}>{mensajeError}</p>}
-    <p>Puntos totales: {totalPoints()}</p>
+    <p>Puntos XDR: {totalPoints()}</p>
+    <p>Puntos API: {puntitos()}</p>
 
-    <Button
+    <button
       variant='contained'
       type="button" 
       onClick={onSubmit}
-      className="btn btn-primary"
-      style={{
-        boxShadow: '10px 5px 5px black'
-      }}>
+      className="btn btn-primary">
     NEXT Servidores
-   </Button>
+   </button>
     </form>
     </div>
     );

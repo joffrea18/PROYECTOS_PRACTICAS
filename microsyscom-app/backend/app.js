@@ -14,6 +14,9 @@ const { firewall } = require('./src/controllers/firewall');
 const { switchs } = require('./src/controllers/switchs');
 const { accesspoint } = require('./src/controllers/acccespoint');
 const { xdr } = require('./src/controllers/xdr');
+const { servidores } = require('./src/controllers/servidores');
+const { sai } = require('./src/controllers/sai');
+const { erp } = require('./src/controllers/erp');
 
 // este es el primer middleware por donde pasa
 app.use(morgan('dev'));
@@ -29,6 +32,9 @@ app.post('/firewall', firewall);
 app.post('/switch', switchs);
 app.post('/accesspoint', accesspoint);
 app.post('/xdr', xdr);
+app.post('/servidores', servidores);
+app.post('/sai', sai);
+app.post('/erp', erp);
 
 
 app.use((req, res) => {

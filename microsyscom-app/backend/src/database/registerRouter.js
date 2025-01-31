@@ -18,7 +18,7 @@ const registerRouter = async ( isp,
      );
 
      if(user.length > 0) {
-        throw newError('Ya existe un usuario registrado con ese número de teléfono');
+     throw newError('Ya existe un usuario registrado con ese número de teléfono');
      }
 
      const [createUser] = await connection.query(

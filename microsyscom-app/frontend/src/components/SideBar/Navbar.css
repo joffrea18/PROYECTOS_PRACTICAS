@@ -22,8 +22,6 @@
 
 .img_name {
   width: 23%;
-  /* margin-bottom: 0.5rem; */
-  /* margin-left: 63rem; */
 }
 
 .logoname {
@@ -33,7 +31,6 @@
 
 .nav-menu {
   background-color: #060b26;
-  /* width: 250px;  */
   height: 100vh;
   display: flex;
   justify-content: center;

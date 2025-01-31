@@ -8,6 +8,9 @@ const { registerFirewall } = require('./registerFirewall');
 const { registerSwitch } = require('./registerSwitch');
 const { registerAccessP } = require('./registerAccessP');
 const { registerXdr } = require('./registerXdr');
+const { registerServidores } = require('./resgisterServidores');
+const { registerSai } = require('./registerSai');
+const { registerErp } = require('./registerErp');
 
 module.exports = {
     getDB,
@@ -18,4 +21,7 @@ module.exports = {
     registerSwitch,
     registerAccessP,
     registerXdr,
+    registerServidores,
+    registerSai,
+    registerErp,
 };

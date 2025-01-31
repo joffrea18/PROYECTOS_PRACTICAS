@@ -14,6 +14,9 @@ import AccessPoint from './pages/Accesspoint';
 import XDR from './pages/XDR';
 import Servidores from './pages/Servidores';
 import PrinterOption from './context/PrinterOption';
+import Sai from './pages/Sai';
+import Almacenamiento from './pages/Almacenamiento';
+import Erp from './pages/Erp';
 // import PrinterOption from './context/PrinterOption';
 // import { PointsProvider } from './context/PointsContext';
 // import Validator from './components/Validator/Validator';
@@ -40,16 +43,16 @@ function App() {
     {/* <Route path='/siem' component={siem} /> */}
     {/* En servidores pendiente incorporar el botón de adición de servidores secundarios */}
     <Route path='/servidores' element={<Servidores />} />
-    {/* <Route path='/almacenamientiento' component={almacenamiento} /> */}
-    {/* <Route path='/sai' component={sai} /> */}
+    <Route path='/sai' element={<Sai />} />
+    <Route path='/almacenamiento' element={<Almacenamiento />} />
     {/* <Route path='/copiasdeseguridad' component={copiasdeseguridad} /> */}
     {/* <Route path='/ldp' component={ldp} /> */}
     {/* <Route path='/dominio' component={dominio} /> */}
     {/* <Route path='/correocorporativo' component={correocorporativo} /> */}
     {/* <Route path='/callcenter' component={callcenter} /> */}
-    {/* <Route path='/erp' component={erp} /> */}
+    <Route path='/erp' element={<Erp />} />
     {/* <Route path='/impresoras' component={impresoras} /> */}
-    {/* <Route path='/printeroption' element={<PrinterOption />} /> */}
+    <Route path='/printReport' element={<PrinterOption />} />
     <Route path='*' element={<NotFound />} />
     </Routes>
     {/* </ PointsProvider> */}

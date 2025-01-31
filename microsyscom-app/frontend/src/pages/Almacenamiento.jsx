@@ -1,11 +1,25 @@
 import React from 'react';
 
-function almacenamiento() {
+function Almacenamiento() {
   return (
     <div className='almacenamiento'>
-      <h1>almacenamiento</h1>
+    <form action='post'
+    className='form'>
+    <h1>Almacenamiento</h1>
+    <label
+    for="tipo">
+    Tipo
+    </label>
+    <input
+      type="text"
+      id='tipo'
+      name="tipo"
+      // onChange={handleInput}
+      // value={inputValue.fabricante}
+      placeholder='Tipo'/>
+    </form>
     </div>
   );
 }
 
-export default almacenamiento;
+export default Almacenamiento;

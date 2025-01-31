@@ -1,206 +1,192 @@
-import React from 'react';
-import Button from '@mui/material/Button';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 
 const Servidores = () => {
+    const { reset } = useForm();
+    const [ mensajeError, setMensajeError ] = useState('');
+
+    const [ inputValue, setInput ] = useState({
+        fabricante: '',
+        modelo: '',
+        so: '',
+        copias_segu: '',
+        ips: '',
+        apuntes: ''
+    })
+
+    const points = {
+        fabricante: 17,
+        modelo: 17,
+        so: 17,
+        copias_segu: 17,
+        ips: 16,
+        apuntes: 16
+    }
+
+    const handleInput = (e) => {
+        const { name, value } = e.target;
+        setInput((inputValue) => {
+          const updatedData = {...inputValue,[name]: value};
+      
+          (
+            () => {
+              const sumPoints = points;
+              const localPoints = JSON.stringify(sumPoints);
+              localStorage.setItem('points', localPoints);
+            }
+          )()
+      
+          return updatedData;
+        });
+      }
+
+  const calculateInputPoints = () => {
+    let totalPoints = 0;
+
+    Object.keys(inputValue).forEach((key) => {
+        if (inputValue[key]) {
+            totalPoints += points[key];
+        }
+    } )
+    return totalPoints;
+  }
+
+  
+  function puntitos () {
+    const storedPoints = JSON.parse(localStorage.getItem('points')) || {}; 
+    return Object.values(storedPoints).reduce((acc, val) => acc + val, 0);
+  }
+  
+//   console.log(puntitos());
+  
+              
+  const totalPoints = () => {
+    return calculateInputPoints();
+  };
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setMensajeError('');
+    try {
+        const response = await fetch("http://localhost:4000/servidores",
+           { 
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(
+                {
+                    ...inputValue,
+                }
+            ),
+        }
+        );
+
+        if (!response.ok) {
+            throw new Error("Error en conexión con el servidor")
+        }
+
+        const data = await response.json()
+        console.log("enviado con éxito", data);
+        
+        toast.success('Datos registrados en BBDD')
+        reset();
+        window.location.href = "/sai"
+    } catch (error) {
+        console.log("Error en el envío d los datos:", error);
+        if (error.respose && error.respose?.status === 409) {
+            console.log("Error del servidor:", error.respose.data);
+            toast.error(error.response?.data?.error)
+        } else {
+            setMensajeError("Ha ocurrido un error con la conexión en el servidor")
+        }
+    }
+
+  }
+
     return (
-        <div>
-            <form action="">
-            <h2>Servidores</h2>            
-            <nav
-                className='server-nav'>
-            <label
-                for="so-servidor">
-            Sistema Operativo
-            </label>
-                <input
-                    type="text"
-                    name="so-servidor"
-                    placeholder='Sistema operativo'/>
-                  
-                    <label
-                        for="funcion-servidor">
-                    Función</label>
-                    <input
-                        type="text"
-                        name="funcion-servidor"
-                        placeholder='Función' />
-                    <label
-                        for="ip-servidor">
-                    IP</label>
-                    <input
-                        type="text"
-                        name="ip-servidor"
-                        placeholder='IP'/>
-                    <button
-                        className='add-server'
-                        id='add-server'
-                        to={'/buttonppal/routerinfo'}>
-                    AGREGAR SERVIDOR
-                    {/* Este botón debe renderizar un
-                    nuevo espacio en el cual un form
-                    permita el add del new server */}
-                    </button>
-                        </nav>
-                        <br />
-                 
-                        <nav
-                            className='server-nav-w'>
-                        <h3>Windows Server</h3>
-
-                        <label htmlFor="">
-                        <input
-                            type="checkbox"
-                            name="mfa"
-                            /> MFA
-                        </label>
-
-                        <label htmlFor="">
-                        <input
-                            type="checkbox"
-                            name="laps"
-                            /> LAPS
-                        </label>
-
-                        <label htmlFor="">
-                        <input
-                            type="checkbox"
-                            name="politicas-contrasenas"
-                            />
-                            Configurar políticas de contraseñas
-                        </label>
-
-                        <label htmlFor="">
-                        <input
-                            type="checkbox"
-                            name="control-cuentas-privilegiadas"
-                            />
-                            Control de cuentas privilegiadas
-                        </label>
-
-                        <label htmlFor="">
-                        <input
-                            type="checkbox"
-                            name="deshabilitar-cuentas-predeterminadas"
-                            /> Deshabilitar cuentas predeterminadas
-                        </label>
-
-                        <label htmlFor="">
-                        <input
-                            type="checkbox"
-                            name="configuracion-uac"
-                            /> Configuración de UAC (User Account Control)
-                        </label>
-
-                        <label htmlFor="">
-                            <input
-                                type="checkbox"
-                                name="configurar-rdp"
-                                onchange="toggleRdpOptions(this)"
-                                /> Configurar y restringir RDP
-                        </label>
-
-                        <label htmlFor="">
-                            <input
-                                type="checkbox"
-                                name="network-level-authentication"
-                                disabled
-                                /> Habilitar Network Level Authentication (NLA)
-                        </label>
-
-                        <label htmlFor="">
-                            <input
-                                type="checkbox"
-                                name="rdp-gateway"
-                                disabled
-                                /> Usar RDP Gateway
-                        </label>
-
-                        <label htmlFor="">
-                        <input
-                            type="checkbox"
-                            name="aislar-fsmo"
-                            /> Aislar roles FSMO
-                        </label>
-
-                        <label htmlFor="">
-                        <input
-                            type="checkbox"
-                            name="gpo-restrictivas"
-                            /> GPOs restrictivas
-                        </label>
-
-                        <label htmlFor="">
-                        <input
-                            type="checkbox"
-                            name="monitoreo-dispositivo-servidor"
-                            /> Monitoreo del dispositivo
-                        </label>
-                        </nav>
-                        <br />
-
-                        <nav
-                            className='server-nav-w'>
-                        <h3>Linux</h3>
-
-                        <label htmlFor="">
-                        <input
-                            type="checkbox"
-                            name="selinux"
-                            /> Implementar SELinux o AppArmor
-                        </label>
-
-                        <label htmlFor="">
-                        <input
-                            type="checkbox"
-                            name="deshabilitar-ssh-root"
-                            /> Deshabilitar el acceso SSH directo a la cuenta root
-                        </label>
-
-                        <label htmlFor="">
-                        <input
-                            type="checkbox"
-                            name="autenticacion-clave-publica"
-                            /> Utilizar autenticación mediante clave pública en SSH
-                        </label>
-
-                        <label htmlFor="">
-                        <input
-                            type="checkbox"
-                            name="restricciones-ssh"
-                            /> Implementar restricciones de usuarios y de IP en SSH
-                        </label>
-
-                        <label htmlFor="">
-                        <input
-                            type="checkbox"
-                            name="cambiar-puerto-ssh"
-                            /> Cambiar el puerto predeterminado de SSH
-                        </label>
-
-                        <label htmlFor="">
-                        <input
-                            type="checkbox"
-                            name="fail2ban"
-                            /> Implementar Fail2ban
-                        </label>
-
-                        <label htmlFor="">
-                        <input
-                            type="checkbox"
-                            name="herramientas-integridad"
-                            /> Herramientas de monitoreo (AIDE y Tripwire)
-                        </label>
-                        </nav>
-
-           <Button
-            variant='contained'
-            id='next-button'
-            style={{
-                boxShadow: '10px 5px 5px black'
-            }}>
-                    PRINT REPORT
-           </Button>
+        <div className='servidores'>
+        <form action="post"
+        className='form'>
+        <section
+            className="category-card" id="router">
+        <h1>Servidores</h1>            
+        </section>
+        <label
+            for="fabricante">
+        Fabricante
+        </label>
+        <input
+            type="text"
+            name="fabricante"
+            value={inputValue.fabricante}
+            onChange={handleInput}
+            placeholder='Fabricante'/>
+        <label
+            for="fabricante">
+        Modelo
+        </label>
+        <input
+            type="text"
+            name="modelo"
+            value={inputValue.modelo}
+            onChange={handleInput}
+            placeholder='Modelo'/>
+        <label
+            for="so-servidor">
+        Sistema Operativo
+        </label>
+        <input
+            type="text"
+            name="so-servidor"
+            value={inputValue.so}
+            onChange={handleInput}
+            placeholder='Sistema operativo'/>
+        <label
+            for="copias_segu">
+        Copias de Seguridad
+        </label>
+        <input
+            type="text"
+            name="copias_segu"
+            value={inputValue.copias_segu}
+            onChange={handleInput}
+            placeholder='Copias de Seguridad'/>
+        <label
+            for="ips">
+        IPS</label>
+        <input
+            type="text"
+            name="ips"
+            value={inputValue.ips}
+            onChange={handleInput}
+            placeholder='IPS'/>
+        {/* <button
+            className='add-server'
+            id='add-server'
+            to={'/buttonppal/routerinfo'}>
+        AGREGAR SERVIDOR
+        </button> */}
+        <input
+        type="textarea"
+        className='text-area'
+        name="apuntes"
+        id="apuntes"
+        value={inputValue.apuntes}
+        onChange={handleInput}
+        placeholder='Indicar apuntes referente a los servidores anexados'/>
+        { mensajeError && <p style={{ color: 'red' }}>{mensajeError}</p> }
+        <p>Puntos Servidores: {totalPoints()}</p>
+        <p>Puntos API: {puntitos()}</p>
+       <button
+        variant='contained'
+        type="button"
+        onClick={onSubmit}
+        className="btn btn-primary">
+     NEXT SAI
+       </button>
         </form>
         </div>
     );

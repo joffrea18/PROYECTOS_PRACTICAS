@@ -11,6 +11,15 @@ DROP TABLE IF EXISTS switchinfo;
 DROP TABLE IF EXISTS accespointinfo;
 DROP TABLE IF EXISTS xdr;
 DROP TABLE IF EXISTS servidoresinfo;
+DROP TABLE IF EXISTS sai;
+DROP TABLE IF EXISTS almacenamiento;
+DROP TABLE IF EXISTS copiasseguridad;
+DROP TABLE IF EXISTS dominio;
+DROP TABLE IF EXISTS pag_web;
+DROP TABLE IF EXISTS correo_corp;
+DROP TABLE IF EXISTS call_center;
+DROP TABLE IF EXISTS impresoras;
+DROP TABLE IF EXISTS erp;
 
 CREATE USER joffrearias@localhost IDENTIFIED BY 'root';
 GRANT ALL PRIVILEGES ON MICROSYSCOM TO 'joffrearias'@'localhost';
@@ -22,16 +31,17 @@ GRANT SELECT, INSERT, UPDATE ON switchinfo TO 'joffrearias'@'localhost';
 GRANT SELECT, INSERT, UPDATE ON accespointinfo TO 'joffrearias'@'localhost';
 GRANT SELECT, INSERT, UPDATE ON xdr TO 'joffrearias'@'localhost';
 GRANT SELECT, INSERT, UPDATE ON servidoresinfo TO 'joffrearias'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON sai TO 'joffrearias'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON almacenamiento TO 'joffrearias'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON copiasseguridad TO 'joffrearias'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON dominio TO 'joffrearias'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON pag_web TO 'joffrearias'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON correo_corp TO 'joffrearias'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON call_center TO 'joffrearias'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON impresoras TO 'joffrearias'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON erp TO 'joffrearias'@'localhost';
 
-SELECT id, date FROM business b
-UNION
-SELECT id, id_business FROM contactos c;
--- WHERE c.id_businnes IS NULL;
 
-INSERT INTO business (name, telefono)
-VALUE ('pepe', 888888888);
-
-SELECT * FROM business;
 CREATE TABLE IF NOT EXISTS business (
 	id int unsigned NOT NULL AUTO_INCREMENT,
 	date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -54,12 +64,6 @@ CREATE TABLE contactos (
         time TIME DEFAULT NULL,
         FOREIGN KEY (id_business) REFERENCES business(id)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-SELECT * FROM contactos c, business b
-WHERE c.id = 2 ;
-
-SELECT * FROM business;
-SELECT * FROM contactos;
 
 CREATE TABLE IF NOT EXISTS routerinfo (
         id int AUTO_INCREMENT PRIMARY KEY,
@@ -181,9 +185,134 @@ CREATE TABLE IF NOT EXISTS xdr (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE IF NOT EXISTS servidoresinfo (
-        id int AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_business INT UNSIGNED,
+    fabricante VARCHAR(250) DEFAULT NULL,
+    modelo VARCHAR(250) DEFAULT NULL,
+    so VARCHAR(250) DEFAULT NULL,
+    copias_segu VARCHAR(250) DEFAULT NULL,
+    ips VARCHAR(250) DEFAULT NULL,
+    apuntes VARCHAR(250) DEFAULT NULL,
+    date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_business)
+        REFERENCES business (id)
+)  ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=UTF8MB4 COLLATE = UTF8MB4_0900_AI_CI;
+
+CREATE TABLE IF NOT EXISTS sai (
+		id int AUTO_INCREMENT PRIMARY KEY,
         id_business int unsigned,
+        fabricante VARCHAR(250) DEFAULT NULL,
+        modelo VARCHAR(250) DEFAULT NULL,
+        disp_conectados VARCHAR(250) DEFAULT NULL,
+        ip_vlan_cloud VARCHAR(250) DEFAULT NULL,
+        apuntes VARCHAR(250) DEFAULT NULL,
         date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (id_business) REFERENCES business(id)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+CREATE TABLE IF NOT EXISTS almacenamiento ( 
+		id int AUTO_INCREMENT PRIMARY KEY,
+        id_business int unsigned,
+        tipo VARCHAR(250) DEFAULT NULL,
+        fabricante VARCHAR(250) DEFAULT NULL,
+        modelo VARCHAR(250) DEFAULT NULL,
+        copias_segu VARCHAR(250) DEFAULT NULL,
+        ips VARCHAR(250) DEFAULT NULL,
+        apuntes VARCHAR(250) DEFAULT NULL,
+        date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (id_business) REFERENCES business(id)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE IF NOT EXISTS copiasseguridad ( 
+		id int AUTO_INCREMENT PRIMARY KEY,
+        id_business int unsigned,
+        fabricante VARCHAR(250) DEFAULT NULL,
+        proveedor VARCHAR(250) DEFAULT NULL,
+        contacto INT DEFAULT NULL,
+        politica_retencion VARCHAR(250) DEFAULT NULL,
+        apuntes VARCHAR(250) DEFAULT NULL,
+        date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (id_business) REFERENCES business(id)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE IF NOT EXISTS dominio ( 
+		id int AUTO_INCREMENT PRIMARY KEY,
+        id_business int unsigned,
+        dominio VARCHAR(250) DEFAULT NULL,
+        regist_dominio VARCHAR(250) DEFAULT NULL,
+        apuntes VARCHAR(250) DEFAULT NULL,
+        date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (id_business) REFERENCES business(id)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE IF NOT EXISTS pag_web ( 
+		id int AUTO_INCREMENT PRIMARY KEY,
+        id_business int unsigned,
+        direccion VARCHAR(250) DEFAULT NULL,
+        hosting int DEFAULT NULL,
+        proveedor VARCHAR(250) DEFAULT NULL,
+        contacto int DEFAULT NULL,
+        apuntes VARCHAR(250) DEFAULT NULL,
+        date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (id_business) REFERENCES business(id)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE IF NOT EXISTS correo_corp ( 
+		id int AUTO_INCREMENT PRIMARY KEY,
+        id_business int unsigned,
+        dominio VARCHAR(250) DEFAULT NULL,
+        proveedor VARCHAR(250) DEFAULT NULL,
+        contacto int DEFAULT NULL,
+        apuntes VARCHAR(250) DEFAULT NULL,
+        date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (id_business) REFERENCES business(id)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE IF NOT EXISTS call_center ( 
+		id int AUTO_INCREMENT PRIMARY KEY,
+        id_business int unsigned,
+        fabricante VARCHAR(250) DEFAULT NULL,
+        proveedor VARCHAR(250) DEFAULT NULL,
+        version_so VARCHAR(250) DEFAULT NULL,
+        modelo VARCHAR(250) DEFAULT NULL,
+        ip VARCHAR(250) DEFAULT NULL,
+        apuntes VARCHAR(250) DEFAULT NULL,
+        date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (id_business) REFERENCES business(id)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE IF NOT EXISTS impresoras ( 
+		id int AUTO_INCREMENT PRIMARY KEY,
+        id_business int unsigned,
+        fabricante VARCHAR(250) DEFAULT NULL,
+        modelo VARCHAR(250) DEFAULT NULL,
+        contacto INT DEFAULT NULL,
+        ip VARCHAR(250) DEFAULT NULL,
+        apuntes VARCHAR(250) DEFAULT NULL,
+        date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (id_business) REFERENCES business(id)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE IF NOT EXISTS erp ( 
+		id int AUTO_INCREMENT PRIMARY KEY,
+        id_business int unsigned,
+        fabricante VARCHAR(250) DEFAULT NULL,
+        proveedor VARCHAR(250) DEFAULT NULL,
+        date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (id_business) REFERENCES business(id)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+SELECT id, date FROM business b
+UNION
+SELECT id, id_business FROM contactos c;
+-- WHERE c.id_businnes IS NULL;
+
+INSERT INTO business (name, telefono)
+VALUE ('pepe', 888888888);
+
+SELECT * FROM contactos c, business b
+WHERE c.id = 2 ;
+
+SELECT * FROM business;
+SELECT * FROM contactos;
+SELECT * FROM business;

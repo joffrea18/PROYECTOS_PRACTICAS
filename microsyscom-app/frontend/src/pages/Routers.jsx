@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-// import { usePoints } from '../context/PointsContext';
-import Button from '@mui/material/Button';
 
 
 const Routers = () => {
 
 const { reset } = useForm();
 const [mensajeError, setMensajeError] = useState('');
-const [contactoPoints, setContactoPoints] = useState(0);
-// const { setPoints } = usePoints();
     
 const [ inputValue, setInput ] = useState({ isp: false,
   isp_backup: '',
-  telefono: 0,
-  telefono_backup: 0,
+  telefono: '',
+  telefono_backup: '',
   ip_estatica: '',
   ip_estatica_backup: '',
   costes: '' });
@@ -38,17 +34,35 @@ const points = {
       
 const handleInput = (e) => {
   const { name, value } = e.target;
-  setInput({
-    ...inputValue,
-    [name]: value,
+  setInput((inputValue) => {
+    const updatedData = {...inputValue,[name]: value};
+
+    (
+      () => {
+        const sumPoints = points;
+        const localPoints = JSON.stringify(sumPoints);
+        localStorage.setItem('points', localPoints);
+      }
+    )()
+
+    return updatedData;
   });
 }
             
 const handleCheckbox = (e) => {
   const { name, checked } = e.target;
-  setChexboxes({
-    ...checkboxes,
-    [name]: checked,
+  setChexboxes((checkboxes) => {
+    const updatedData = {...checkboxes,[name]: checked};
+
+    (
+      () => {
+        const sumPoints = points;
+        const localPoints = JSON.stringify(sumPoints);
+        localStorage.setItem('points', localPoints);
+      }
+    )()
+
+    return updatedData;
   });
 }
 
@@ -74,24 +88,22 @@ const calculateCheckboxPoints = () => {
   return totalPoints;
 };
 
-useEffect(() => {
-  const storedContactoData = sessionStorage.getItem("contactForm");
-  if (storedContactoData) {
-    const contactoData = JSON.parse(storedContactoData);
-    const contactoPoints = Object.keys(contactoData).reduce((total, key) => {
-      return contactoData[key] ? total + (points[key] || 0) : total;
-    }, 0);
-    setContactoPoints(contactoPoints);
-  }
-}, []);
+
+function puntitos () {
+  const storedPoints = JSON.parse(localStorage.getItem('points')) || {}; 
+  return Object.values(storedPoints).reduce((acc, val) => acc + val, 0);
+}
+
+// console.log(puntitos());
+
             
 const totalPoints = () => {
-  return calculateInputPoints() + calculateCheckboxPoints() + contactoPoints;
+  return calculateInputPoints() + calculateCheckboxPoints();
 };
 
 
-const onSubmit = async (data) => {
-
+const onSubmit = async (event) => {
+    event.preventDefault();
     setMensajeError('');
     try {
       const response = await fetch("http://localhost:4000/router", {
@@ -114,6 +126,7 @@ const onSubmit = async (data) => {
 
       toast.success('Datos enviados exitosamente');
       reset();
+      // localStorage.removeItem("points");
       window.location.href = "/firewall";
     } catch (error) {
       console.error("Error al enviar los datos:", error);
@@ -129,14 +142,13 @@ const onSubmit = async (data) => {
             
 return (
     <div >
-    <form className='form'>
+    <form action="post"
+    className='form'>
     <section
       className="category-card" id="router">
     <h1>Router</h1>
     </section>
 
-    <form action="post"
-      className='forms'>
     <label
       for="router-isp"
     >ISP
@@ -167,7 +179,7 @@ return (
     <option value="17" >Lyca</option>
     </select>
     <label>
-      ISP Backup
+    ISP Backup
     </label>
     <input
       type="text"
@@ -214,16 +226,14 @@ return (
       value={inputValue.ip_estatica_backup}/>
     <label
       for="fibra-backup">
-        Fibra Backup
-        
+    Fibra Backup
+      
     <input
       type="checkbox"
       name="fibra_backup"
-      onclick="toggleBackupFields()"
       checked={ checkboxes.fibra_backup }
       onChange={handleCheckbox}/>
-      </label>
-
+    </label>
     <label
       for="costs-routers">
     <b>COSTES</b>
@@ -237,21 +247,17 @@ return (
       de los routers de backup'
       onChange={handleInput}
       value={inputValue.costes}/>
-    </form>
-   
     {mensajeError && <p style={{ color: 'red' }}>{mensajeError}</p>}
-    <p>Puntos totales: {totalPoints()}</p>
+    <p>Puntos Router: {totalPoints()}</p>
+    <p>Puntos API: {puntitos()}</p>
 
-    <Button
+    <button
       variant='contained'
       type="button" 
       onClick={onSubmit}
-      className="btn btn-primary"
-      style={{
-        boxShadow: '10px 5px 5px black'
-      }}>
+      className="btn btn-primary">
     NEXT Firewall
-   </Button>
+   </button>
     </form>
     </div>
   );

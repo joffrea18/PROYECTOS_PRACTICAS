@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-// import { usePoints } from '../context/PointsContext';
-import Button from '@mui/material/Button';
 
 const AccesPoint = () => {
 
     const { reset } = useForm();
     const [mensajeError, setMensajeError] = useState('');     
-    // const { setPoints } = usePoints();
 
     const [ inputValue, setInput ] = useState({
     fabricante: '',
@@ -33,7 +30,7 @@ const AccesPoint = () => {
         monitoreo_dispo: false,
     })
 
-   const pointsf = {
+   const points = {
         fabricante: 5, //
         modelo: 6,  //
         gestion_aislada: 6,  //
@@ -56,19 +53,37 @@ const AccesPoint = () => {
 
     const handleInput = (e) => {
         const { name, value } = e.target;
-        setInput({
-            ...inputValue,
-            [name]: value,
+        setInput((inputValue) => {
+          const updatedData = {...inputValue,[name]: value};
+      
+          (
+            () => {
+              const sumPoints = points;
+              const localPoints = JSON.stringify(sumPoints);
+              localStorage.setItem('points', localPoints);
+            }
+          )()
+      
+          return updatedData;
         });
-    }
+      }
 
-    const handleCheckbox = (e) => {
-    const { name, checked } = e.target;
-    setCheckboxes({
-      ...checkboxes,
-      [name]: checked,
-    });
-  }
+      const handleCheckbox = (e) => {
+        const { name, checked } = e.target;
+        setCheckboxes((checkboxes) => {
+          const updatedData = {...checkboxes,[name]: checked};
+      
+          (
+            () => {
+              const sumPoints = points;
+              const localPoints = JSON.stringify(sumPoints);
+              localStorage.setItem('points', localPoints);
+            }
+          )()
+      
+          return updatedData;
+        });
+      }
     console.log(inputValue.name);
 
 
@@ -78,22 +93,44 @@ const AccesPoint = () => {
         // Sumar puntos de los inputs
         Object.keys(inputValue).forEach((key) => {
             if (inputValue[key]) {
-                totalPoints += pointsf[key]; // Sumar puntos si hay valor en el input
+                totalPoints += points[key]; // Sumar puntos si hay valor en el input
             }
         });
 
         return totalPoints;
     };
 
-const totalPoints = () => {
-        return calculateInputPoints();
-    };
+    const calculateCheckboxPoints = () => {
+    let totalPoints = 0;
+    
+    // Sumar puntos de los checkboxes
+    Object.keys(checkboxes).forEach((key) => {
+      if (checkboxes[key]) {
+        totalPoints += points[key]; // Sumar puntos si el checkbox está activo
+      }
+    });
+    
+    return totalPoints;
+  };
+
+  
+function puntitos () {
+  const storedPoints = JSON.parse(localStorage.getItem('points')) || {}; 
+  return Object.values(storedPoints).reduce((acc, val) => acc + val, 0);
+}
+  
+//   console.log(puntitos());
+  
+              
+  const totalPoints = () => {
+    return calculateInputPoints() + calculateCheckboxPoints();
+  };
 
 console.log(totalPoints());
 
 
-const onSubmit = async (data) => {
-
+const onSubmit = async (event) => {
+    event.preventDefault();
     setMensajeError('');
     try {
       const response = await fetch("http://localhost:4000/accesspoint", {
@@ -297,16 +334,14 @@ const onSubmit = async (data) => {
             placeholder='Apunta tus Observaciones'
             value={inputValue.apuntes} />
         {mensajeError && <p style={{ color: 'red' }}>{mensajeError}</p>}
-        <p>Puntos totales: {totalPoints()}</p>
-       <Button
+        <p>Puntos AccesPoint: {totalPoints()}</p>
+        <p>Puntos API: {puntitos()}</p>
+       <button
         variant='contained'
         type='button'
-        onClick={onSubmit}
-        style={{
-            boxShadow: '10px 5px 5px black'
-        }}>
+        onClick={onSubmit}>
         NEXT XDR
-       </Button>
+       </button>
         </form>
         </div>
     );

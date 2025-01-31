@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-// import { usePoints } from '../context/PointsContext';
-import Button from '@mui/material/Button';
 
 function Firewall() {
   const { reset } = useForm();
   const [mensajeError, setMensajeError] = useState('');
-  // const { setPoints } = usePoints();
 
   const [ inputValue, setInput ]
   = useState({
@@ -60,19 +57,37 @@ const [ checkboxes, setCheckboxes ]
  };
 
   
-  const handleInput = (e) => {
-    const { name, value } = e.target;
-    setInput({
-    ...inputValue,
-    [name]: value,
-  });
-  }
+ const handleInput = (e) => {
+  const { name, value } = e.target;
+  setInput((inputValue) => {
+    const updatedData = {...inputValue,[name]: value};
 
-  const handleCheckbox = (e) => {
+    (
+      () => {
+        const sumPoints = points;
+        const localPoints = JSON.stringify(sumPoints);
+        localStorage.setItem('points', localPoints);
+      }
+    )()
+
+    return updatedData;
+  });
+}
+
+const handleCheckbox = (e) => {
   const { name, checked } = e.target;
-  setCheckboxes({
-    ...checkboxes,
-    [name]: checked,
+  setCheckboxes((checkboxes) => {
+    const updatedData = {...checkboxes,[name]: checked};
+
+    (
+      () => {
+        const sumPoints = points;
+        const localPoints = JSON.stringify(sumPoints);
+        localStorage.setItem('points', localPoints);
+      }
+    )()
+
+    return updatedData;
   });
 }
 
@@ -102,6 +117,14 @@ const calculateCheckboxPoints = () => {
   return totalPoints;
 };
 
+function puntitos () {
+  const storedPoints = JSON.parse(localStorage.getItem('points')) || {}; 
+  return Object.values(storedPoints).reduce((acc, val) => acc + val, 0);
+}
+
+// console.log(puntitos());
+
+            
 const totalPoints = () => {
   return calculateInputPoints() + calculateCheckboxPoints();
 };
@@ -109,8 +132,8 @@ const totalPoints = () => {
 console.log(totalPoints());
 
 
-  const onSubmit = async (data) => {
-
+  const onSubmit = async (event) => {
+    event.preventDefault();
     setMensajeError('');
     try {
       const response = await fetch("http://localhost:4000/firewall", {
@@ -124,7 +147,7 @@ console.log(totalPoints());
       });
   
       if (!response.ok) {
-        throw new Error("Error en la solicitud");
+        throw new Error("Error en conexión con el servidor")
       }
   
       const data = await response.json();
@@ -154,7 +177,7 @@ console.log(totalPoints());
       for="firewall-fabricante">
     Fabricante
     </label>
-    <nput
+    <input
       type="text"
       id='firewall-fabricante'
       name="fabricante"
@@ -324,17 +347,15 @@ console.log(totalPoints());
       Firewalls'
       value={inputValue.costes} />
     {mensajeError && <p style={{ color: 'red' }}>{mensajeError}</p>}
-    <p>Puntos totales: {totalPoints()}</p>
-    <Button
+    <p>Puntos Firewall: {totalPoints()}</p>
+    <p>Puntos API: {puntitos()}</p>
+    <button
       variant='contained'
       type="button" 
       onClick={onSubmit}
-      className="btn btn-primary"
-      style={{
-        boxShadow: '10px 5px 5px black'
-      }}>
+      className="btn btn-primary">
     NEXT Switch
-   </Button>
+   </button>
     </form>
     </div>
   );
